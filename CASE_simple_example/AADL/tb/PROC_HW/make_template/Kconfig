@@ -1,0 +1,13 @@
+config APP_PROC_HW
+    bool "PROC_HW (from AADL)"
+    default n
+    select APP_CAMKES_EXECUTIVE
+    help
+        PROC_HW (from AADL).
+
+config APP_PROC_HW_TB_DEBUG
+    bool "Enable trusted build debugging for the PROC_HW application"
+    default n
+    depends on APP_PROC_HW && PRINTING
+    help
+        Enable trusted build debugging for the PROC_HW application.
