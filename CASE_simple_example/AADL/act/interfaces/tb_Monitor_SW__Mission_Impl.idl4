@@ -1,0 +1,4 @@
+procedure tb_Monitor_SW__Mission_Impl {
+  bool read(refin SW__Mission_Impl m);
+  bool write(out SW__Mission_Impl m);
+};

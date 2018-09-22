@@ -1,0 +1,4 @@
+procedure tb_Monitor_SW__Command_Impl_1 {
+  bool enqueue(refin SW__Command_Impl m);
+  bool dequeue(out SW__Command_Impl m);
+};

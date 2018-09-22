@@ -1,0 +1,4 @@
+procedure tb_Monitor_SW__MissionWindow_Impl_1 {
+  bool enqueue(refin SW__MissionWindow_Impl m);
+  bool dequeue(out SW__MissionWindow_Impl m);
+};

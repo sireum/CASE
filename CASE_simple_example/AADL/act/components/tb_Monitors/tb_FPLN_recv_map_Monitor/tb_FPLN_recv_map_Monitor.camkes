@@ -1,0 +1,6 @@
+component tb_FPLN_recv_map_Monitor {
+  include tb_Monitor_SW__Command_Impl_1.idl4;
+
+  provides tb_Monitor_SW__Command_Impl_1 mon;
+  emits QueuedData monsig;
+}
