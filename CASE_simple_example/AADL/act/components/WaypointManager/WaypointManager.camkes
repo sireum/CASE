@@ -1,3 +1,6 @@
+import tb_Monitor_SW__Mission_Impl.idl4;
+import tb_Monitor_SW__MissionWindow_Impl_1.idl4;
+import tb_Monitor_SW__Coordinate_Impl_1.idl4;
 component WaypointManager {
   include <tb_PROC_HW_types.h>;
   control;

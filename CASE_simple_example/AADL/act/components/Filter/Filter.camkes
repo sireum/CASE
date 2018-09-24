@@ -1,3 +1,4 @@
+import tb_Monitor_SW__Command_Impl_1.idl4;
 component Filter {
   include <tb_PROC_HW_types.h>;
   control;
