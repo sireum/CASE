@@ -1,0 +1,3 @@
+property set camkes is
+	Binary_Semaphore : aadlstring applies to ( all );
+end camkes;

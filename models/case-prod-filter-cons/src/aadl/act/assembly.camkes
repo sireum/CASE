@@ -1,0 +1,17 @@
+import <std_connector.camkes>;
+
+import "interfaces/TransferString.idl4";
+import "components/CakeMLFilter/CakeMLFilter.camkes";
+import "components/Producer/Producer.camkes";
+import "components/Consumer/Consumer.camkes";
+
+assembly {
+  composition {
+    component CakeMLFilter cakemlfilter;
+    component Producer producer;
+    component Consumer consumer;
+
+    connection seL4RPCCall conn1(from cakemlfilter.server, to consumer.client);
+    connection seL4RPCCall conn2(from producer.server, to cakemlfilter.client);
+  }
+}

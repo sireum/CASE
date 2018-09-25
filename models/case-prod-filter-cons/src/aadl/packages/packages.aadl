@@ -1,0 +1,83 @@
+package mycase
+public
+	with Data_Model, camkes;
+	
+	system case_system
+	end case_system;
+	
+	system implementation case_system.i
+		subcomponents
+			proc_HW : processor MC_Proc.Impl;
+			proc : process case_process.i;
+    properties
+      Actual_Processor_Binding => (reference (proc_HW)) applies to proc;			
+	end case_system.i;
+	
+	 processor MC_Proc
+    --features
+    --  MCA: requires bus access MC_Bus;      
+  end MC_Proc;
+  
+   processor implementation MC_Proc.Impl    
+  end MC_Proc.Impl;
+  
+	process case_process
+	end case_process;
+	
+	process implementation case_process.i
+		subcomponents
+			cakemlfilter: thread CakeMLFilter.i;
+			producer: thread Producer.i;
+			consumer: thread Consumer.i;
+			transfer_string: subprogram TransferString.i;
+		connections
+			prod_to_filter: subprogram access producer.server -> cakemlfilter.client;
+			filter_to_cons: subprogram access cakemlfilter.server -> consumer.client;
+			
+	end case_process.i;
+
+
+	thread CakeMLFilter
+		features
+			server: requires subprogram access TransferString.i;
+			client: provides subprogram access TransferString.i;		
+	end CakeMLFilter;
+	
+	thread implementation CakeMLFilter.i
+		properties
+			camkes::Binary_Semaphore => "binsem";
+	end CakeMLFilter.i;
+	
+	
+	thread Producer
+		features
+			server: requires subprogram access TransferString.i;		
+	end Producer;
+	
+	thread implementation Producer.i
+	end Producer.i;
+
+	
+	thread Consumer
+		features
+			client: provides subprogram access TransferString.i;		
+	end Consumer;
+	
+	thread implementation Consumer.i
+	end Consumer.i;
+	
+	
+	subprogram TransferString
+		features
+			s: in parameter String;		
+	end TransferString;
+	
+	subprogram implementation TransferString.i
+	end TransferString.i;
+	
+	
+	data string
+		properties    
+			Data_Model::Data_Representation => String;
+  end String;
+end mycase;

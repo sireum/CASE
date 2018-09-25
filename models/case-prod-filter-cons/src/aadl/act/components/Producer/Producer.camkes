@@ -1,0 +1,6 @@
+
+component Producer {
+  include <tb_proc_HW_types.h>;
+  control;
+  uses TransferString server;
+}

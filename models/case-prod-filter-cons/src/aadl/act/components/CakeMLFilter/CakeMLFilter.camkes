@@ -1,0 +1,8 @@
+
+component CakeMLFilter {
+  include <tb_proc_HW_types.h>;
+  control;
+  provides TransferString client;
+  uses TransferString server;
+  has binary_semaphore binsem;
+}
