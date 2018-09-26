@@ -1,0 +1,7 @@
+
+component tb_OsmPlannerService_RouteRequest_in_Monitor {
+  include tb_Monitor_ROUTE__RouteRequest_i_1.idl4;
+
+  provides tb_Monitor_ROUTE__RouteRequest_i_1 mon;
+  emits QueuedData monsig;
+}

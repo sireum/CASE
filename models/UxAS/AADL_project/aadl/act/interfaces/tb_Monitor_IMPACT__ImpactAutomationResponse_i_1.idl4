@@ -1,0 +1,5 @@
+procedure tb_Monitor_IMPACT__ImpactAutomationResponse_i_1 {
+  include tb_uxas_processor_types.h;
+  bool enqueue(refin IMPACT__ImpactAutomationResponse_i m);
+  bool dequeue(out IMPACT__ImpactAutomationResponse_i m);
+};

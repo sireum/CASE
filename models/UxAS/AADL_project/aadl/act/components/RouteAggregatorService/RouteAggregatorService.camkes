@@ -1,0 +1,24 @@
+import tb_Monitor_UXTASK__UniqueAutomationRequest_i_1.idl4;
+import tb_Monitor_ROUTE__RoutePlanResponse_i_1.idl4;
+import tb_Monitor_UXTASK__TaskPlanOptions_i_1.idl4;
+import tb_Monitor_ROUTE__RoutePlanRequest_i_1.idl4;
+import tb_Monitor_UXTASK__AssignmentCostMatrix_i_1.idl4;
+import tb_Monitor_ROUTE__RouteResponse_i_1.idl4;
+component RouteAggregatorService {
+  include <tb_uxas_processor_types.h>;
+  control;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_in;
+  uses tb_Monitor_ROUTE__RoutePlanResponse_i_1 tb_RoutePlanResponse_in;
+  uses tb_Monitor_UXTASK__TaskPlanOptions_i_1 tb_TaskPlanOptions_in;
+  uses tb_Monitor_ROUTE__RoutePlanRequest_i_1 tb_RoutePlanRequest_out0;
+  uses tb_Monitor_ROUTE__RoutePlanRequest_i_1 tb_RoutePlanRequest_out1;
+  uses tb_Monitor_ROUTE__RoutePlanRequest_i_1 tb_RoutePlanRequest_out2;
+  uses tb_Monitor_UXTASK__AssignmentCostMatrix_i_1 tb_AssignmentCostMatrix_out0;
+  uses tb_Monitor_ROUTE__RouteResponse_i_1 tb_RouteResponse_out0;
+  uses tb_Monitor_ROUTE__RouteResponse_i_1 tb_RouteResponse_out1;
+  uses tb_Monitor_ROUTE__RouteResponse_i_1 tb_RouteResponse_out2;
+  uses tb_Monitor_ROUTE__RouteResponse_i_1 tb_RouteResponse_out3;
+  consumes QueuedData tb_UniqueAutomationRequest_in_notification;
+  consumes QueuedData tb_RoutePlanResponse_in_notification;
+  consumes QueuedData tb_TaskPlanOptions_in_notification;
+}

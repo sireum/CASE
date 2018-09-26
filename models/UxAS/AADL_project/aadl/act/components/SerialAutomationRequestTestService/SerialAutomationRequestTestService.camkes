@@ -1,0 +1,10 @@
+import tb_Monitor_IMPACT__ImpactAutomationResponse_i_1.idl4;
+import tb_Monitor_CMASI__AutomationResponse_i_1.idl4;
+component SerialAutomationRequestTestService {
+  include <tb_uxas_processor_types.h>;
+  control;
+  uses tb_Monitor_IMPACT__ImpactAutomationResponse_i_1 tb_ImpactAutomationResponse_in;
+  uses tb_Monitor_CMASI__AutomationResponse_i_1 tb_AutomationResponse_in;
+  consumes QueuedData tb_ImpactAutomationResponse_in_notification;
+  consumes QueuedData tb_AutomationResponse_in_notification;
+}

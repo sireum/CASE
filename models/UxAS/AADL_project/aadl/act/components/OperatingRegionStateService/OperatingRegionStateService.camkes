@@ -1,0 +1,9 @@
+import tb_Monitor_CMASI__OperatingRegion_i_1.idl4;
+component OperatingRegionStateService {
+  include <tb_uxas_processor_types.h>;
+  control;
+  uses tb_Monitor_CMASI__OperatingRegion_i_1 tb_OperatingRegion_out0;
+  uses tb_Monitor_CMASI__OperatingRegion_i_1 tb_OperatingRegion_out1;
+  uses tb_Monitor_CMASI__OperatingRegion_i_1 tb_OperatingRegion_out2;
+  uses tb_Monitor_CMASI__OperatingRegion_i_1 tb_OperatingRegion_out3;
+}

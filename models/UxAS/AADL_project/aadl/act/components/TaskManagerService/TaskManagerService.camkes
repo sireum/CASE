@@ -1,0 +1,13 @@
+import tb_Monitor_CMASI__AutomationResponse_i_1.idl4;
+import tb_Monitor_UXTASK__UniqueAutomationRequest_i_1.idl4;
+component TaskManagerService {
+  include <tb_uxas_processor_types.h>;
+  control;
+  uses tb_Monitor_CMASI__AutomationResponse_i_1 tb_AutomationResponse_in;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_out0;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_out1;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_out2;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_out3;
+  uses tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 tb_UniqueAutomationRequest_out4;
+  consumes QueuedData tb_AutomationResponse_in_notification;
+}

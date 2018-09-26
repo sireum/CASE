@@ -1,0 +1,7 @@
+
+component tb_BatchSummaryService_RoutePlanResponse_in_Monitor {
+  include tb_Monitor_ROUTE__RoutePlanResponse_i_1.idl4;
+
+  provides tb_Monitor_ROUTE__RoutePlanResponse_i_1 mon;
+  emits QueuedData monsig;
+}
