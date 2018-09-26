@@ -1,7 +1,0 @@
-import tb_Monitor_CMASI__AutomationResponse_i_1.idl4;
-component WaypointPlanManagerService {
-  include <tb_uxas_processor_types.h>;
-  control;
-  uses tb_Monitor_CMASI__AutomationResponse_i_1 tb_AutomationResponse_in;
-  consumes QueuedData tb_AutomationResponse_in_notification;
-}

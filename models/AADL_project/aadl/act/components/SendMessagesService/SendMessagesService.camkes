@@ -1,5 +1,0 @@
-
-component SendMessagesService {
-  include <tb_uxas_processor_types.h>;
-
-}

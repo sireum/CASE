@@ -1,5 +1,0 @@
-procedure tb_Monitor_CMASI__AutomationResponse_i_1 {
-  include tb_uxas_processor_types.h;
-  bool enqueue(refin CMASI__AutomationResponse_i m);
-  bool dequeue(out CMASI__AutomationResponse_i m);
-};

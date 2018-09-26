@@ -1,7 +1,0 @@
-
-component tb_AngledAreaSearchTask_SensorFootprintResponse_in_Monitor {
-  include tb_Monitor_UXTASK__SensorFootprintResponse_i_1.idl4;
-
-  provides tb_Monitor_UXTASK__SensorFootprintResponse_i_1 mon;
-  emits QueuedData monsig;
-}

@@ -1,7 +1,0 @@
-import tb_Monitor_UXTASK__TaskPlanOptions_i_1.idl4;
-component OverwatchTask {
-  include <tb_uxas_processor_types.h>;
-  control;
-  uses tb_Monitor_UXTASK__TaskPlanOptions_i_1 tb_TaskPlanOptions_out0;
-  uses tb_Monitor_UXTASK__TaskPlanOptions_i_1 tb_TaskPlanOptions_out1;
-}

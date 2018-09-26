@@ -1,7 +1,0 @@
-import tb_Monitor_UXNATIVE__VideoRecord_i_1.idl4;
-component Challenge_TelemetryReceiver {
-  include <tb_uxas_processor_types.h>;
-  control;
-  uses tb_Monitor_UXNATIVE__VideoRecord_i_1 tb_VideoRecord_in;
-  consumes QueuedData tb_VideoRecord_in_notification;
-}

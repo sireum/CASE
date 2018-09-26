@@ -1,5 +1,0 @@
-procedure tb_Monitor_UXTASK__SensorFootprintResponse_i_1 {
-  include tb_uxas_processor_types.h;
-  bool enqueue(refin UXTASK__SensorFootprintResponse_i m);
-  bool dequeue(out UXTASK__SensorFootprintResponse_i m);
-};

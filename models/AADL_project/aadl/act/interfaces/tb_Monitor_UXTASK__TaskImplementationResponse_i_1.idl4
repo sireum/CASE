@@ -1,5 +1,0 @@
-procedure tb_Monitor_UXTASK__TaskImplementationResponse_i_1 {
-  include tb_uxas_processor_types.h;
-  bool enqueue(refin UXTASK__TaskImplementationResponse_i m);
-  bool dequeue(out UXTASK__TaskImplementationResponse_i m);
-};
