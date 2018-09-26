@@ -1,0 +1,5 @@
+procedure tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 {
+  include tb_uxas_processor_types.h;
+  bool enqueue(refin UXTASK__UniqueAutomationRequest_i m);
+  bool dequeue(out UXTASK__UniqueAutomationRequest_i m);
+};

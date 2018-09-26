@@ -1,0 +1,7 @@
+
+component tb_RoutePlannerService_OperatingRegion_in_Monitor {
+  include tb_Monitor_CMASI__OperatingRegion_i_1.idl4;
+
+  provides tb_Monitor_CMASI__OperatingRegion_i_1 mon;
+  emits QueuedData monsig;
+}

@@ -1,0 +1,5 @@
+
+component MessageLoggerDataService {
+  include <tb_uxas_processor_types.h>;
+
+}
