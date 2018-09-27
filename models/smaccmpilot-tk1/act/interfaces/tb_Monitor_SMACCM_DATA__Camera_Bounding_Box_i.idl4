@@ -1,0 +1,5 @@
+procedure tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i {
+  include tb_smaccmpilot_tk1_types.h;
+  bool read(refin SMACCM_DATA__Camera_Bounding_Box_i m);
+  bool write(out SMACCM_DATA__Camera_Bounding_Box_i m);
+};

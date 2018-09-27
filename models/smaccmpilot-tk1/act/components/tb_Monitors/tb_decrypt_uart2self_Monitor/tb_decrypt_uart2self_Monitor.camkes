@@ -1,0 +1,6 @@
+component tb_decrypt_uart2self_Monitor {
+  include tb_Monitor_SMACCM_DATA__UART_Packet_i_100.idl4;
+
+  provides tb_Monitor_SMACCM_DATA__UART_Packet_i_100 mon;
+  emits QueuedData monsig;
+}

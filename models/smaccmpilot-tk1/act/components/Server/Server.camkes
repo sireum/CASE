@@ -1,0 +1,13 @@
+component Server {
+  include <tb_smaccmpilot_tk1_types.h>;
+  control;
+  uses tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i tb_vm2self;
+  uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_self2encrypt0;
+  uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_decrypt2self;
+  uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_self2framing0;
+  uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_framing2self;
+  uses tb_Monitor_Base_Types__Boolean_1 tb_self2vm_reboot0;
+  consumes QueuedData tb_vm2self_notification;
+  consumes QueuedData tb_decrypt2self_notification;
+  consumes QueuedData tb_framing2self_notification;
+}

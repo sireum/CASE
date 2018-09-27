@@ -1,0 +1,6 @@
+component Clock_Driver {
+  include <tb_smaccmpilot_tk1_types.h>;
+
+  provides clkcar_inf clkcar;
+  provides gen_fwd_inf clkcarfwd;
+}

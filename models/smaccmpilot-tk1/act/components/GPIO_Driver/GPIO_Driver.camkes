@@ -1,0 +1,8 @@
+component GPIO_Driver {
+  include <tb_smaccmpilot_tk1_types.h>;
+
+  provides gpio_inf gpio_spi_can1_cs;
+  provides gpio_inf gpio_usb_vbus_en1;
+  emits Notification CAN1Int;
+  consumes Notification CANIntAck;
+}
