@@ -1,0 +1,4 @@
+procedure SMACCM_DATA__CAN_Frame_i_writer {
+  include <tb_smaccmpilot_tk1_types.h>;
+  bool write_SMACCM_DATA__CAN_Frame_i(refin SMACCM_DATA__CAN_Frame_i arg);
+};

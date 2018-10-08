@@ -1,0 +1,4 @@
+#ifdef __tb_can_driver_framing2self_Monitor_H__
+#define __tb_can_driver_framing2self_Monitor_H__
+
+#endif // __tb_can_driver_framing2self_Monitor_H__

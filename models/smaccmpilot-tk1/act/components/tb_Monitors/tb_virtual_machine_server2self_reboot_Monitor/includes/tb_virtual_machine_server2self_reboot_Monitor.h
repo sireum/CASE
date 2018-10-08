@@ -1,0 +1,4 @@
+#ifdef __tb_virtual_machine_server2self_reboot_Monitor_H__
+#define __tb_virtual_machine_server2self_reboot_Monitor_H__
+
+#endif // __tb_virtual_machine_server2self_reboot_Monitor_H__

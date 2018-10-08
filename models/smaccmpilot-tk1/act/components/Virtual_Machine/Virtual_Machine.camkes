@@ -1,8 +1,11 @@
+import tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i.idl4;
+import tb_Monitor_bool_1.idl4;
+
 component Virtual_Machine {
   include <tb_smaccmpilot_tk1_types.h>;
   control;
   uses tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i tb_self2server0;
-  uses tb_Monitor_Base_Types__Boolean_1 tb_server2self_reboot;
+  uses tb_Monitor_bool_1 tb_server2self_reboot;
   uses gen_fwd_inf clkcarfwd;
   uses gen_fwd_inf uartfwd;
   uses gpio_inf gpio_usb_vbus_en1;

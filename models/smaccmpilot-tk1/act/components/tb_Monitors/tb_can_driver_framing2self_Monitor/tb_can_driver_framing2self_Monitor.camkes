@@ -1,5 +1,6 @@
+import tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4;
+
 component tb_can_driver_framing2self_Monitor {
-  include tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4;
 
   provides tb_Monitor_SMACCM_DATA__CAN_Frame_i_1 mon;
   emits QueuedData monsig;

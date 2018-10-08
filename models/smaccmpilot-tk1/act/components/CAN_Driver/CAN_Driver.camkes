@@ -1,9 +1,13 @@
+import tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4;
+import tb_Monitor_bool_1.idl4;
+import tb_Monitor_SMACCM_DATA__CAN_Frame_i_10.idl4;
+
 component CAN_Driver {
   include <tb_smaccmpilot_tk1_types.h>;
   control;
   uses tb_Monitor_SMACCM_DATA__CAN_Frame_i_1 tb_framing2self;
-  uses tb_Monitor_Base_Types__Boolean_1 tb_self2framing_status0;
-  uses tb_Monitor_SMACCM_DATA__CAN_Frame_i_1 tb_self2framing_frame0;
+  uses tb_Monitor_bool_1 tb_self2framing_status0;
+  uses tb_Monitor_SMACCM_DATA__CAN_Frame_i_10 tb_self2framing_frame0;
   uses gpio_inf gpio_spi_can1_cs;
   uses clkcar_inf clkcar;
   emits Notification CANIntAck;
