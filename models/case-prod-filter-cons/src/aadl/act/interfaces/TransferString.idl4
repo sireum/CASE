@@ -1,3 +1,0 @@
-procedure TransferString {
-  void transfer_string(in string s);
-};

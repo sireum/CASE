@@ -1,6 +1,6 @@
+import tb_Monitor_SW__Mission_Impl.idl4;
 
 component tb_WPM_flight_plan_Monitor {
-  include tb_Monitor_SW__Mission_Impl.idl4;
 
   provides tb_Monitor_SW__Mission_Impl mon;
   emits DataportWrite monsig;
