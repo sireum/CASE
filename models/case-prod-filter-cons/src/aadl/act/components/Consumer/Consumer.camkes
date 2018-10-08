@@ -1,6 +1,0 @@
-
-component Consumer {
-  include <tb_proc_HW_types.h>;
-
-  provides TransferString client;
-}

@@ -1,0 +1,3 @@
+procedure TransferString_i {
+  void transfer_string(in string s);
+};
