@@ -1,0 +1,4 @@
+procedure UXTASK__UniqueAutomationResponse_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_UXTASK__UniqueAutomationResponse_i(refin UXTASK__UniqueAutomationResponse_i arg);
+};

@@ -1,0 +1,38 @@
+#ifndef __tb_AADL_AutomationRequestValidatorService_types__H
+#define __tb_AADL_AutomationRequestValidatorService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_TaskInitialized_in_dequeue(UXTASK__TaskInitialized_i * tb_TaskInitialized_in);
+bool tb_KeepOutZone_in_dequeue(CMASI__KeepOutZone_i * tb_KeepOutZone_in);
+bool tb_SurfaceVehicleConfiguration_in_dequeue(IMPACT__SurfaceVehicleConfiguration_i * tb_SurfaceVehicleConfiguration_in);
+bool tb_AirVehicleConfiguration_in_dequeue(CMASI__AirVehicleConfiguration_i * tb_AirVehicleConfiguration_in);
+bool tb_AreaOfInterest_in_dequeue(IMPACT__AreaOfInterest_i * tb_AreaOfInterest_in);
+bool tb_AutomationRequest_in_dequeue(CMASI__AutomationRequest_i * tb_AutomationRequest_in);
+bool tb_GroundVehicleState_in_dequeue(IMPACT__GroundVehicleState_i * tb_GroundVehicleState_in);
+bool tb_TaskAutomationRequest_in_dequeue(UXTASK__TaskAutomationRequest_i * tb_TaskAutomationRequest_in);
+bool tb_UniqueAutomationResponse_in_dequeue(UXTASK__UniqueAutomationResponse_i * tb_UniqueAutomationResponse_in);
+bool tb_PointOfInterest_in_dequeue(IMPACT__PointOfInterest_i * tb_PointOfInterest_in);
+bool tb_RemoveTasks_in_dequeue(CMASI__RemoveTasks_i * tb_RemoveTasks_in);
+bool tb_Task_in_dequeue(CMASI__Task_i * tb_Task_in);
+bool tb_OperatingRegion_in_dequeue(CMASI__OperatingRegion_i * tb_OperatingRegion_in);
+bool tb_GroundVehicleConfiguration_in_dequeue(IMPACT__GroundVehicleConfiguration_i * tb_GroundVehicleConfiguration_in);
+bool tb_AirVehicleState_in_dequeue(CMASI__AirVehicleState_i * tb_AirVehicleState_in);
+bool tb_SurfaceVehicleState_in_dequeue(IMPACT__SurfaceVehicleState_i * tb_SurfaceVehicleState_in);
+bool tb_KeepInZone_in_dequeue(CMASI__KeepInZone_i * tb_KeepInZone_in);
+bool tb_ImpactAutomationRequest_in_dequeue(IMPACT__ImpactAutomationRequest_i * tb_ImpactAutomationRequest_in);
+bool tb_LineOfInterest_in_dequeue(IMPACT__LineOfInterest_i * tb_LineOfInterest_in);
+bool tb_ServiceStatus_in_dequeue(CMASI__ServiceStatus_i * tb_ServiceStatus_in);
+bool tb_SearchTask_in_dequeue(CMASI__SearchTask_i * tb_SearchTask_in);
+bool tb_AreaSearchTask_in_dequeue(CMASI__AreaSearchTask_i * tb_AreaSearchTask_in);
+bool tb_LineSearchTask_in_dequeue(CMASI__LineSearchTask_i * tb_LineSearchTask_in);
+bool tb_LoiterTask_in_dequeue(CMASI__LoiterTask_i * tb_LoiterTask_in);
+bool tb_MustFlyTask_in_dequeue(CMASI__MustFlyTask_i * tb_MustFlyTask_in);
+bool tb_PointSearchTask_in_dequeue(CMASI__PointSearchTask_i * tb_PointSearchTask_in);
+bool tb_ServiceStatus_out_enqueue(const CMASI__ServiceStatus_i * tb_ServiceStatus_out);
+bool tb_ImpactAutomationResponse_out_enqueue(const IMPACT__ImpactAutomationResponse_i * tb_ImpactAutomationResponse_out);
+bool tb_AutomationResponse_out_enqueue(const CMASI__AutomationResponse_i * tb_AutomationResponse_out);
+bool tb_TaskAutomationResponse_out_enqueue(const UXTASK__TaskAutomationResponse_i * tb_TaskAutomationResponse_out);
+bool tb_UniqueAutomationRequest_out_enqueue(const UXTASK__UniqueAutomationRequest_i * tb_UniqueAutomationRequest_out);
+
+#endif // __tb_AADL_AutomationRequestValidatorService_types__H

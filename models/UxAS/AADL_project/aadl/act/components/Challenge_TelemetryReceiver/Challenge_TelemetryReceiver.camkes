@@ -1,4 +1,5 @@
 import tb_Monitor_UXNATIVE__VideoRecord_i_1.idl4;
+
 component Challenge_TelemetryReceiver {
   include <tb_uxas_processor_types.h>;
   control;

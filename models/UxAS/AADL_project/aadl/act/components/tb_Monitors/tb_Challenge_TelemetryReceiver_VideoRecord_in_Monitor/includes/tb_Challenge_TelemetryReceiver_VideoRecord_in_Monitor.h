@@ -1,0 +1,4 @@
+#ifdef __tb_Challenge_TelemetryReceiver_VideoRecord_in_Monitor_H__
+#define __tb_Challenge_TelemetryReceiver_VideoRecord_in_Monitor_H__
+
+#endif // __tb_Challenge_TelemetryReceiver_VideoRecord_in_Monitor_H__

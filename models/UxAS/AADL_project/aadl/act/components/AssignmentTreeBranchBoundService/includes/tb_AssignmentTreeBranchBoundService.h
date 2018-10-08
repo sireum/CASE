@@ -1,0 +1,12 @@
+#ifndef __tb_AADL_AssignmentTreeBranchBoundService_types__H
+#define __tb_AADL_AssignmentTreeBranchBoundService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_TaskPlanOptions_in_dequeue(UXTASK__TaskPlanOptions_i * tb_TaskPlanOptions_in);
+bool tb_AssignmentCostMatrix_in_dequeue(UXTASK__AssignmentCostMatrix_i * tb_AssignmentCostMatrix_in);
+bool tb_UniqueAutomationRequest_in_dequeue(UXTASK__UniqueAutomationRequest_i * tb_UniqueAutomationRequest_in);
+bool tb_ServiceStatus_out_enqueue(const CMASI__ServiceStatus_i * tb_ServiceStatus_out);
+bool tb_TaskAssignmentSummary_out_enqueue(const UXTASK__TaskAssignmentSummary_i * tb_TaskAssignmentSummary_out);
+
+#endif // __tb_AADL_AssignmentTreeBranchBoundService_types__H

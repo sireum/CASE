@@ -1,6 +1,6 @@
+import tb_Monitor_ROUTE__RoutePlanRequest_i_1.idl4;
 
 component tb_OsmPlannerService_RoutePlanRequest_in_Monitor {
-  include tb_Monitor_ROUTE__RoutePlanRequest_i_1.idl4;
 
   provides tb_Monitor_ROUTE__RoutePlanRequest_i_1 mon;
   emits QueuedData monsig;

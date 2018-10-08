@@ -1,0 +1,16 @@
+#ifndef __tb_AADL_TaskTrackerService_types__H
+#define __tb_AADL_TaskTrackerService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_MissionCommand_in_dequeue(CMASI__MissionCommand_i * tb_MissionCommand_in);
+bool tb_AreaOfInterest_in_dequeue(IMPACT__AreaOfInterest_i * tb_AreaOfInterest_in);
+bool tb_GroundVehicleState_in_dequeue(IMPACT__GroundVehicleState_i * tb_GroundVehicleState_in);
+bool tb_PointOfInterest_in_dequeue(IMPACT__PointOfInterest_i * tb_PointOfInterest_in);
+bool tb_AutomationResponse_in_dequeue(CMASI__AutomationResponse_i * tb_AutomationResponse_in);
+bool tb_Task_in_dequeue(CMASI__Task_i * tb_Task_in);
+bool tb_AirVehicleState_in_dequeue(CMASI__AirVehicleState_i * tb_AirVehicleState_in);
+bool tb_SurfaceVehicleState_in_dequeue(IMPACT__SurfaceVehicleState_i * tb_SurfaceVehicleState_in);
+bool tb_LineOfInterest_in_dequeue(IMPACT__LineOfInterest_i * tb_LineOfInterest_in);
+
+#endif // __tb_AADL_TaskTrackerService_types__H

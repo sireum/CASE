@@ -1,0 +1,4 @@
+#ifdef __tb_TaskTrackerService_AutomationResponse_in_Monitor_H__
+#define __tb_TaskTrackerService_AutomationResponse_in_Monitor_H__
+
+#endif // __tb_TaskTrackerService_AutomationResponse_in_Monitor_H__

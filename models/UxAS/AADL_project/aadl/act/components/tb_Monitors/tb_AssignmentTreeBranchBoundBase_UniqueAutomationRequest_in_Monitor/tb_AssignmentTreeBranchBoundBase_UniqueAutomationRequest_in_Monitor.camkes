@@ -1,6 +1,6 @@
+import tb_Monitor_UXTASK__UniqueAutomationRequest_i_1.idl4;
 
 component tb_AssignmentTreeBranchBoundBase_UniqueAutomationRequest_in_Monitor {
-  include tb_Monitor_UXTASK__UniqueAutomationRequest_i_1.idl4;
 
   provides tb_Monitor_UXTASK__UniqueAutomationRequest_i_1 mon;
   emits QueuedData monsig;

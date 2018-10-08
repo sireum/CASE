@@ -1,0 +1,4 @@
+procedure CMASI__AutomationResponse_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_CMASI__AutomationResponse_i(refin CMASI__AutomationResponse_i arg);
+};

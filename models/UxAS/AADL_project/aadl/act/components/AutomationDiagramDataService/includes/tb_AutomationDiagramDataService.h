@@ -1,0 +1,19 @@
+#ifndef __tb_AADL_AutomationDiagramDataService_types__H
+#define __tb_AADL_AutomationDiagramDataService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_KeepOutZone_in_dequeue(CMASI__KeepOutZone_i * tb_KeepOutZone_in);
+bool tb_UniqueAutomationResponse_in_dequeue(UXTASK__UniqueAutomationResponse_i * tb_UniqueAutomationResponse_in);
+bool tb_AreaOfInterest_in_dequeue(IMPACT__AreaOfInterest_i * tb_AreaOfInterest_in);
+bool tb_GroundVehicleState_in_dequeue(IMPACT__GroundVehicleState_i * tb_GroundVehicleState_in);
+bool tb_KeepInZone_in_dequeue(CMASI__KeepInZone_i * tb_KeepInZone_in);
+bool tb_PointOfInterest_in_dequeue(IMPACT__PointOfInterest_i * tb_PointOfInterest_in);
+bool tb_UniqueAutomationRequest_in_dequeue(UXTASK__UniqueAutomationRequest_i * tb_UniqueAutomationRequest_in);
+bool tb_OperatingRegion_in_dequeue(CMASI__OperatingRegion_i * tb_OperatingRegion_in);
+bool tb_Task_in_dequeue(CMASI__Task_i * tb_Task_in);
+bool tb_AirVehicleState_in_dequeue(CMASI__AirVehicleState_i * tb_AirVehicleState_in);
+bool tb_SurfaceVehicleState_in_dequeue(IMPACT__SurfaceVehicleState_i * tb_SurfaceVehicleState_in);
+bool tb_LineOfInterest_in_dequeue(IMPACT__LineOfInterest_i * tb_LineOfInterest_in);
+
+#endif // __tb_AADL_AutomationDiagramDataService_types__H

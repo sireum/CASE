@@ -1,0 +1,11 @@
+#ifndef __tb_AADL_SerialAutomationRequestTestService_types__H
+#define __tb_AADL_SerialAutomationRequestTestService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_ImpactAutomationResponse_in_dequeue(IMPACT__ImpactAutomationResponse_i * tb_ImpactAutomationResponse_in);
+bool tb_ImpactAutomationRequest_in_dequeue(IMPACT__ImpactAutomationRequest_i * tb_ImpactAutomationRequest_in);
+bool tb_AutomationResponse_in_dequeue(CMASI__AutomationResponse_i * tb_AutomationResponse_in);
+bool tb_AutomationRequest_in_dequeue(CMASI__AutomationRequest_i * tb_AutomationRequest_in);
+
+#endif // __tb_AADL_SerialAutomationRequestTestService_types__H

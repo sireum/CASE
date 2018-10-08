@@ -1,0 +1,4 @@
+#ifdef __tb_WaypointPlanManagerService_AutomationResponse_in_Monitor_H__
+#define __tb_WaypointPlanManagerService_AutomationResponse_in_Monitor_H__
+
+#endif // __tb_WaypointPlanManagerService_AutomationResponse_in_Monitor_H__

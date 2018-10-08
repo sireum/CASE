@@ -1,0 +1,27 @@
+#ifndef __tb_AADL_BatchSummaryService_types__H
+#define __tb_AADL_BatchSummaryService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_RadioTowerState_in_dequeue(IMPACT__RadioTowerState_i * tb_RadioTowerState_in);
+bool tb_GroundVehicleConfiguration_in_dequeue(IMPACT__GroundVehicleConfiguration_i * tb_GroundVehicleConfiguration_in);
+bool tb_EntityConfiguration_in_dequeue(CMASI__EntityConfiguration_i * tb_EntityConfiguration_in);
+bool tb_SurfaceVehicleConfiguration_in_dequeue(IMPACT__SurfaceVehicleConfiguration_i * tb_SurfaceVehicleConfiguration_in);
+bool tb_AirVehicleConfiguration_in_dequeue(CMASI__AirVehicleConfiguration_i * tb_AirVehicleConfiguration_in);
+bool tb_BatchSummaryRequest_in_dequeue(IMPACT__BatchSummaryRequest_i * tb_BatchSummaryRequest_in);
+bool tb_EntityState_in_dequeue(CMASI__EntityState_i * tb_EntityState_in);
+bool tb_GroundVehicleState_in_dequeue(IMPACT__GroundVehicleState_i * tb_GroundVehicleState_in);
+bool tb_PointOfInterest_in_dequeue(IMPACT__PointOfInterest_i * tb_PointOfInterest_in);
+bool tb_RadioTowerConfiguration_in_dequeue(IMPACT__RadioTowerConfiguration_i * tb_RadioTowerConfiguration_in);
+bool tb_Task_in_dequeue(CMASI__Task_i * tb_Task_in);
+bool tb_AirVehicleState_in_dequeue(CMASI__AirVehicleState_i * tb_AirVehicleState_in);
+bool tb_SurfaceVehicleState_in_dequeue(IMPACT__SurfaceVehicleState_i * tb_SurfaceVehicleState_in);
+bool tb_RoutePlanResponse_in_dequeue(ROUTE__RoutePlanResponse_i * tb_RoutePlanResponse_in);
+bool tb_AreaOfInterest_in_dequeue(IMPACT__AreaOfInterest_i * tb_AreaOfInterest_in);
+bool tb_EgressRouteResponse_in_dequeue(ROUTE__EgressRouteResponse_i * tb_EgressRouteResponse_in);
+bool tb_LineOfInterest_in_dequeue(IMPACT__LineOfInterest_i * tb_LineOfInterest_in);
+bool tb_EgressRouteRequest_out_enqueue(const ROUTE__EgressRouteRequest_i * tb_EgressRouteRequest_out);
+bool tb_RoutePlanRequest_out_enqueue(const ROUTE__RoutePlanRequest_i * tb_RoutePlanRequest_out);
+bool tb_BatchSummaryResponse_out_enqueue(const IMPACT__BatchSummaryResponse_i * tb_BatchSummaryResponse_out);
+
+#endif // __tb_AADL_BatchSummaryService_types__H

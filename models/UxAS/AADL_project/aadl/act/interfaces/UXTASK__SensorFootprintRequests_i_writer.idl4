@@ -1,0 +1,4 @@
+procedure UXTASK__SensorFootprintRequests_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_UXTASK__SensorFootprintRequests_i(refin UXTASK__SensorFootprintRequests_i arg);
+};

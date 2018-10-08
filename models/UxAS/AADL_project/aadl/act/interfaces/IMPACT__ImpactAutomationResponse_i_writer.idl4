@@ -1,0 +1,4 @@
+procedure IMPACT__ImpactAutomationResponse_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_IMPACT__ImpactAutomationResponse_i(refin IMPACT__ImpactAutomationResponse_i arg);
+};

@@ -1,5 +1,6 @@
 import tb_Monitor_UXTASK__TaskPlanOptions_i_1.idl4;
 import tb_Monitor_UXNATIVE__VideoRecord_i_1.idl4;
+
 component ImpactLineSearchTask {
   include <tb_uxas_processor_types.h>;
   control;

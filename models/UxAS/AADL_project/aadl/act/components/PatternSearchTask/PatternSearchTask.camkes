@@ -4,6 +4,7 @@ import tb_Monitor_ROUTE__RouteResponse_i_1.idl4;
 import tb_Monitor_UXTASK__SensorFootprintResponse_i_1.idl4;
 import tb_Monitor_UXNATIVE__VideoRecord_i_1.idl4;
 import tb_Monitor_UXTASK__SensorFootprintRequests_i_1.idl4;
+
 component PatternSearchTask {
   include <tb_uxas_processor_types.h>;
   control;

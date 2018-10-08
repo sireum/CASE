@@ -1,0 +1,4 @@
+procedure UXNATIVE__VideoRecord_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_UXNATIVE__VideoRecord_i(refin UXNATIVE__VideoRecord_i arg);
+};

@@ -1,0 +1,4 @@
+procedure ROUTE__RouteRequest_i_writer {
+  include <tb_uxas_processor_types.h>;
+  bool write_ROUTE__RouteRequest_i(refin ROUTE__RouteRequest_i arg);
+};

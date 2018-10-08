@@ -1,0 +1,19 @@
+#ifndef __tb_AADL_RoutePlannerVisibilityService_types__H
+#define __tb_AADL_RoutePlannerVisibilityService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_GroundVehicleConfiguration_in_dequeue(IMPACT__GroundVehicleConfiguration_i * tb_GroundVehicleConfiguration_in);
+bool tb_SurfaceVehicleConfiguration_in_dequeue(IMPACT__SurfaceVehicleConfiguration_i * tb_SurfaceVehicleConfiguration_in);
+bool tb_KeepOutZone_in_dequeue(CMASI__KeepOutZone_i * tb_KeepOutZone_in);
+bool tb_AirVehicleConfiguration_in_dequeue(CMASI__AirVehicleConfiguration_i * tb_AirVehicleConfiguration_in);
+bool tb_RoutePlanRequest_in_dequeue(ROUTE__RoutePlanRequest_i * tb_RoutePlanRequest_in);
+bool tb_RouteRequest_in_dequeue(ROUTE__RouteRequest_i * tb_RouteRequest_in);
+bool tb_GroundVehicleState_in_dequeue(IMPACT__GroundVehicleState_i * tb_GroundVehicleState_in);
+bool tb_KeepInZone_in_dequeue(CMASI__KeepInZone_i * tb_KeepInZone_in);
+bool tb_OperatingRegion_in_dequeue(CMASI__OperatingRegion_i * tb_OperatingRegion_in);
+bool tb_AirVehicleState_in_dequeue(CMASI__AirVehicleState_i * tb_AirVehicleState_in);
+bool tb_SurfaceVehicleState_in_dequeue(IMPACT__SurfaceVehicleState_i * tb_SurfaceVehicleState_in);
+bool tb_RoutePlanResponse_out_enqueue(const ROUTE__RoutePlanResponse_i * tb_RoutePlanResponse_out);
+
+#endif // __tb_AADL_RoutePlannerVisibilityService_types__H

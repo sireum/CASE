@@ -1,0 +1,13 @@
+#ifndef __tb_AADL_SensorManagerService_types__H
+#define __tb_AADL_SensorManagerService_types__H
+
+#include <tb_uxas_processor_types.h>
+
+bool tb_GroundVehicleConfiguration_in_dequeue(IMPACT__GroundVehicleConfiguration_i * tb_GroundVehicleConfiguration_in);
+bool tb_RemoveTasks_in_dequeue(CMASI__RemoveTasks_i * tb_RemoveTasks_in);
+bool tb_AirVehicleConfiguration_in_dequeue(CMASI__AirVehicleConfiguration_i * tb_AirVehicleConfiguration_in);
+bool tb_SurfaceVehicleConfiguration_in_dequeue(IMPACT__SurfaceVehicleConfiguration_i * tb_SurfaceVehicleConfiguration_in);
+bool tb_SensorFootprintRequests_in_dequeue(UXTASK__SensorFootprintRequests_i * tb_SensorFootprintRequests_in);
+bool tb_SensorFootprintResponse_out_enqueue(const UXTASK__SensorFootprintResponse_i * tb_SensorFootprintResponse_out);
+
+#endif // __tb_AADL_SensorManagerService_types__H

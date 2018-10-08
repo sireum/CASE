@@ -1,6 +1,6 @@
+import tb_Monitor_UXTASK__AssignmentCoordination_i_1.idl4;
 
 component tb_AssignmentCoordinatorTask_AssignmentCoordination_in_Monitor {
-  include tb_Monitor_UXTASK__AssignmentCoordination_i_1.idl4;
 
   provides tb_Monitor_UXTASK__AssignmentCoordination_i_1 mon;
   emits QueuedData monsig;
