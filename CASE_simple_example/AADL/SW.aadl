@@ -136,10 +136,10 @@ public
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
       TB_SYS::Sends_Events_To => "{{}}";			
-		--annex agree {**
-		--	guarantee "The Flight Planner shall receive an authenticated command from the Ground Station" : filter_out.HMAC = True;
-		--	guarantee "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(filter_out);
-		--**};
+		annex agree {**
+			guarantee "The Flight Planner shall receive an authenticated command from the Ground Station" : filter_out.HMAC = True;
+			guarantee "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(filter_out);
+		**};
 			
 	end Filter;
 	
@@ -157,15 +157,15 @@ public
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
       TB_SYS::Sends_Events_To => "{{}}";
-		--annex agree {**
-		--	assume "The Flight Planner shall receive an authenticated command from the Ground Station" : recv_map.HMAC = True;
-		--	assume "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(recv_map);
-		--	guarantee "The Flight Planner shall generate a valid mission" : SW.good_mission(flight_plan);
-		--**};
+		annex agree {**
+			assume "The Flight Planner shall receive an authenticated command from the Ground Station" : recv_map.HMAC = True;
+			assume "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(recv_map);
+			guarantee "The Flight Planner shall generate a valid mission" : SW.good_mission(flight_plan);
+		**};
 		
-		--annex Resolute {**
-		--	prove (well_formed(this))
-		--**};
+		annex Resolute {**
+			prove (well_formed(this))
+		**};
 			
 	end FlightPlanner;
 	
@@ -184,10 +184,10 @@ public
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
       TB_SYS::Sends_Events_To => "{{}}";  
-		--annex agree {**
-		--	assume "The Waypoint Manager shall receive a well-formed mission" : SW.good_mission(flight_plan);
-		--	guarantee "The Waypoint Manager shall output a well-formed mission window." : SW.good_mission_window(waypoint);
-		--**};
+		annex agree {**
+			assume "The Waypoint Manager shall receive a well-formed mission" : SW.good_mission(flight_plan);
+			guarantee "The Waypoint Manager shall output a well-formed mission window." : SW.good_mission_window(waypoint);
+		**};
 			
 	end WaypointManager;
 	
@@ -205,10 +205,10 @@ public
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
       TB_SYS::Sends_Events_To => "{{}}";  			
-		--annex agree {**
-		--	assume "Well-formed mission window" : SW.good_mission_window(waypoint_in);
-		--	guarantee "A CRC shall be appended to the message to determine message correctness" : waypoint_out.crc = True;
-		--**};
+		annex agree {**
+			assume "Well-formed mission window" : SW.good_mission_window(waypoint_in);
+			guarantee "A CRC shall be appended to the message to determine message correctness" : waypoint_out.crc = True;
+		**};
 			
 	end UARTDriver;
 
@@ -250,48 +250,48 @@ public
 	end MC_SW.Impl;
 	
 	
-	--annex agree {**
+	annex agree {**
 			
 		-- These functions check the well-formedness of message structures
-	--	fun good_coordinate(coord : SW::Coordinate.Impl) : bool =	coord.lat >= -90 and 
-	--																coord.lat <= 90 and 
-	--																coord.long >= -180 and 
-	--																coord.long <= 180 and 
-	--																coord.alt >= 0 and 
-	--																coord.alt <= 15000;
+		fun good_coordinate(coord : SW::Coordinate.Impl) : bool =	coord.lat >= -90 and 
+																	coord.lat <= 90 and 
+																	coord.long >= -180 and 
+																	coord.long <= 180 and 
+																	coord.alt >= 0 and 
+																	coord.alt <= 15000;
 																	
-	--	fun good_map(map : SW::Map.Impl) : bool =	good_coordinate(map.wp1) and 
-	--												good_coordinate(map.wp2) and 
-	--												good_coordinate(map.wp3) and 
-	--												good_coordinate(map.wp4);
+		fun good_map(map : SW::Map.Impl) : bool =	good_coordinate(map.wp1) and 
+													good_coordinate(map.wp2) and 
+													good_coordinate(map.wp3) and 
+													good_coordinate(map.wp4);
 													
-	--	fun good_pattern(pattern : SW::FlightPattern) : bool =	(pattern = enum(SW::FlightPattern, ZigZag)) or 
-	--															(pattern = enum(SW::FlightPattern, StraightLine)) or 
-	--															(pattern = enum(SW::FlightPattern, Perimeter));
+		fun good_pattern(pattern : SW::FlightPattern) : bool =	(pattern = enum(SW::FlightPattern, ZigZag)) or 
+																(pattern = enum(SW::FlightPattern, StraightLine)) or 
+																(pattern = enum(SW::FlightPattern, Perimeter));
 																
-	--	fun good_HMAC(hmac : bool) : bool = (hmac = True) or (hmac = False);
+		fun good_HMAC(hmac : bool) : bool = (hmac = True) or (hmac = False);
 		
-	--	fun good_gs_command(cmd : SW::Command.Impl) : bool =	good_map(cmd.Map) and 
-	--															good_pattern(cmd.Pattern) and 
-	--															good_HMAC(cmd.HMAC);
+		fun good_gs_command(cmd : SW::Command.Impl) : bool =	good_map(cmd.Map) and 
+																good_pattern(cmd.Pattern) and 
+																good_HMAC(cmd.HMAC);
 																
-	--	fun good_mission(mission : SW::Mission.Impl) : bool =	good_coordinate(mission.wp1) and 
-	--															good_coordinate(mission.wp2) and 
-	--															good_coordinate(mission.wp3) and 
-	--															good_coordinate(mission.wp4) and 
-	--															good_coordinate(mission.wp5) and 
-	--															good_coordinate(mission.wp6) and 
-	--															good_coordinate(mission.wp7) and 
-	--															good_coordinate(mission.wp8) and 
-	--															good_coordinate(mission.wp9) and 
-	--															good_coordinate(mission.wp10);
+		fun good_mission(mission : SW::Mission.Impl) : bool =	good_coordinate(mission.wp1) and 
+																good_coordinate(mission.wp2) and 
+																good_coordinate(mission.wp3) and 
+																good_coordinate(mission.wp4) and 
+																good_coordinate(mission.wp5) and 
+																good_coordinate(mission.wp6) and 
+																good_coordinate(mission.wp7) and 
+																good_coordinate(mission.wp8) and 
+																good_coordinate(mission.wp9) and 
+																good_coordinate(mission.wp10);
 																
-	--	fun good_mission_window(win : SW::MissionWindow.Impl) : bool =	good_coordinate(win.wp1) and 
-	--																	good_coordinate(win.wp2) and 
-	--																	good_coordinate(win.wp3) and 
-	--																	good_coordinate(win.wp4);
+		fun good_mission_window(win : SW::MissionWindow.Impl) : bool =	good_coordinate(win.wp1) and 
+																		good_coordinate(win.wp2) and 
+																		good_coordinate(win.wp3) and 
+																		good_coordinate(win.wp4);
 																										
-	--**};
+	**};
 
 
 	
