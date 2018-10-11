@@ -18,18 +18,18 @@ public
   
 	device Radio
 		features
-			--MCA: requires bus access MC_Bus;
-			--RFA: requires bus access UAS::RF;
+			MCA: requires bus access MC_Bus;
+			RFA: requires bus access UAS::RF;
 			recv_map_in: in event data port MISSING_TYPE.Impl;
 			recv_map_out: out event data port SW::Command.Impl;
 			send_status_in: in event data port SW::Coordinate.Impl;
-			send_status_out: out event data port;
+			send_status_out: out event data port MISSING_TYPE.Impl;
 	end Radio;
 
 	device UART
 		features
-			--MCA: requires bus access MC_Bus;
-			---UARTA: requires bus access UAV::Serial;
+			MCA: requires bus access MC_Bus;
+			UARTA: requires bus access UAV::Serial;
 			waypoint_in: in event data port SW::MissionWindow.Impl;
 			waypoint_out: out event data port MISSING_TYPE.Impl;
 			position_status_in: in event data port MISSING_TYPE.Impl;
@@ -37,8 +37,8 @@ public
 	end UART;
 
 	processor MC_Proc
-		--features
-		--	MCA: requires bus access MC_Bus;			
+		features
+			MCA: requires bus access MC_Bus;			
 	end MC_Proc;
 	
 	 processor implementation MC_Proc.Impl
@@ -49,8 +49,8 @@ public
   end MC_Proc.Impl;
   
 	memory MC_Mem
-		--features
-		--	MCA: requires bus access MC_Bus;		
+		features
+			MCA: requires bus access MC_Bus;		
 	end MC_Mem;
 	
 	bus MC_Bus
@@ -62,8 +62,8 @@ public
 			position_status: in event data port MISSING_TYPE.Impl;
 			waypoint: out event data port MISSING_TYPE.Impl;
 			send_status: out event data port MISSING_TYPE.Impl;
-			--UARTA: requires bus access UAV::Serial;
-			--RFA: requires bus access UAS::RF;
+			UARTA: requires bus access UAV::Serial;
+			RFA: requires bus access UAS::RF;
 
 	end MissionComputer;
 	
@@ -77,26 +77,26 @@ public
 			BUS_HW: bus MC_Bus;
 			PROC_SW: process SW::MC_SW.Impl;
 			
-		--connections
-			--bac1: bus access RADIO_HW.MCA <-> BUS_HW;
-			--bac2: bus access UART_HW.MCA <-> BUS_HW;
-			--bac3: bus access PROC_HW.MCA <-> BUS_HW;
-			--bac4: bus access MEM_HW.MCA <-> BUS_HW;
-			--bac5: bus access RADIO_HW.RFA <-> RFA;
-			--bac6: bus access UART_HW.UARTA <-> UARTA;
-			--c1: port recv_map -> RADIO_HW.recv_map_in;
-			--c2: port RADIO_HW.recv_map_out -> PROC_SW.recv_map;
-			--c3: port PROC_SW.send_status -> RADIO_HW.send_status_in;
-			--c4: port RADIO_HW.send_status_out -> send_status;
-			--c5: port PROC_SW.waypoint -> UART_HW.waypoint_in;
-			--c6: port UART_HW.waypoint_out -> waypoint;
-			--c7: port position_status -> UART_HW.position_status_in;
-			--c8: port UART_HW.position_status_out -> PROC_SW.position_status;
+		connections
+			bac1: bus access RADIO_HW.MCA <-> BUS_HW;
+			bac2: bus access UART_HW.MCA <-> BUS_HW;
+			bac3: bus access PROC_HW.MCA <-> BUS_HW;
+			bac4: bus access MEM_HW.MCA <-> BUS_HW;
+			bac5: bus access RADIO_HW.RFA <-> RFA;
+			bac6: bus access UART_HW.UARTA <-> UARTA;
+			c1: port recv_map -> RADIO_HW.recv_map_in;
+			c2: port RADIO_HW.recv_map_out -> PROC_SW.recv_map;
+			c3: port PROC_SW.send_status -> RADIO_HW.send_status_in;
+			c4: port RADIO_HW.send_status_out -> send_status;
+			c5: port PROC_SW.waypoint -> UART_HW.waypoint_in;
+			c6: port UART_HW.waypoint_out -> waypoint;
+			c7: port position_status -> UART_HW.position_status_in;
+			c8: port UART_HW.position_status_out -> PROC_SW.position_status;
 		
 		properties
 			Actual_Processor_Binding => (reference (PROC_HW)) applies to PROC_SW;
 			Actual_Memory_Binding => (reference (MEM_HW)) applies to PROC_SW;
-			--Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5 c8;
+			Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5, c8;
 		
 	end MissionComputer.Impl;
 	

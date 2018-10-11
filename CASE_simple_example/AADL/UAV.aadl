@@ -22,9 +22,9 @@ public
 			SBUS: bus Serial;
 			
 		connections
-			--bac1: bus access SBUS <-> MCMP.UARTA;
-			--bac2: bus access SBUS <-> FCTL.UARTA;
-			--bac3: bus access RFA -> MCMP.RFA;
+			bac1: bus access SBUS <-> MCMP.UARTA;
+			bac2: bus access SBUS <-> FCTL.UARTA;
+			bac3: bus access RFA -> MCMP.RFA;
 			c1: port recv_map -> MCMP.recv_map;
 			c2: port MCMP.send_status -> send_status;
 			c3: port MCMP.waypoint -> FCTL.waypoint;

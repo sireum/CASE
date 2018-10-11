@@ -19,6 +19,80 @@
           "type" : "FeatureEnd",
           "identifier" : {
             "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "UARTA"]
+          },
+          "direction" : {
+            "type" : "Direction",
+            "value" : "InOut"
+          },
+          "category" : {
+            "type" : "FeatureCategory",
+            "value" : "BusAccess"
+          },
+          "classifier" : {
+            "type" : "Some",
+            "value" : {
+              "type" : "Classifier",
+              "name" : "UAV::Serial"
+            }
+          },
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "AccessType"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ValueProp",
+                  "value" : "requires"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "FeatureEnd",
+          "identifier" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "RFA"]
+          },
+          "direction" : {
+            "type" : "Direction",
+            "value" : "InOut"
+          },
+          "category" : {
+            "type" : "FeatureCategory",
+            "value" : "BusAccess"
+          },
+          "classifier" : {
+            "type" : "Some",
+            "value" : {
+              "type" : "Classifier",
+              "name" : "UAS::RF"
+            }
+          },
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "AccessType"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ValueProp",
+                  "value" : "requires"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "FeatureEnd",
+          "identifier" : {
+            "type" : "Name",
             "name" : ["MissionComputer_Impl_Instance", "recv_map"]
           },
           "direction" : {
@@ -264,9 +338,87 @@
                 "value" : "EventDataPort"
               },
               "classifier" : {
-                "type" : "None"
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MC::MISSING_TYPE.Impl"
+                }
               },
               "properties" : [
+              ]
+            },
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "MCA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MC::MC_Bus"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "RFA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "UAS::RF"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
               ]
             }
           ],
@@ -410,6 +562,80 @@
               },
               "properties" : [
               ]
+            },
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "MCA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MC::MC_Bus"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "UART_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "UARTA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "UAV::Serial"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "UART_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "subComponents" : [
@@ -457,6 +683,43 @@
             }
           },
           "features" : [
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "MCA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MC::MC_Bus"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
+              ]
+            }
           ],
           "subComponents" : [
           ],
@@ -2312,6 +2575,270 @@
               "type" : "Connection",
               "name" : {
                 "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c1"]
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "recv_map"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_in"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_out -> PROC_SW", "RADIO", "recv_map_in"]
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c11"]
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "position_status"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "position_status_in"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_out -> PROC_SW", "UART", "position_status_in"]
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c2"]
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_out"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "send_status"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_out -> RADIO_HW", "send_status_in"]
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c10"]
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "waypoint_out"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "waypoint"]
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "waypoint_out -> UART_HW", "waypoint_in"]
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c3"]
               },
               "src" : [
@@ -3327,6 +3854,43 @@
             }
           },
           "features" : [
+            {
+              "type" : "FeatureEnd",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "MCA"]
+              },
+              "direction" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              },
+              "category" : {
+                "type" : "FeatureCategory",
+                "value" : "BusAccess"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MC::MC_Bus"
+                }
+              },
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "AccessType"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "requires"
+                    }
+                  ]
+                }
+              ]
+            }
           ],
           "subComponents" : [
           ],
@@ -3396,8 +3960,1978 @@
         }
       ],
       "connections" : [
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac6"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "UARTA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UARTA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UARTA <-> UART_HW", "UARTA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac5"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "RFA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RFA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RFA <-> RADIO_HW", "RFA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c1"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "recv_map"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_in"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "recv_map -> RADIO_HW", "recv_map_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c7"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "position_status"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_in"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "position_status -> UART_HW", "position_status_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac1"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "MCA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              },
+              "feature" : {
+                "type" : "None"
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> RADIO_HW", "MCA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac2"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "MCA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              },
+              "feature" : {
+                "type" : "None"
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> UART_HW", "MCA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac3"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "MCA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              },
+              "feature" : {
+                "type" : "None"
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> PROC_HW", "MCA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "bac4"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "MCA"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              },
+              "feature" : {
+                "type" : "None"
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "InOut"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "isBiDirectional" : true,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> MEM_HW", "MCA"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c2"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_out"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "recv_map"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_out -> PROC_SW", "RADIO", "recv_map_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c4"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "send_status_out"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "send_status"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "send_status_out -> send_status"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c6"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "waypoint_out"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "waypoint"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW", "waypoint_out -> waypoint"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c8"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_out"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "position_status"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_out -> PROC_SW", "UART", "position_status_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c3"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "send_status"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "send_status_in"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_out -> RADIO_HW", "send_status_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "Connection",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "c5"]
+          },
+          "src" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "waypoint"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "Out"
+                }
+              }
+            }
+          ],
+          "dst" : [
+            {
+              "type" : "EndPoint",
+              "component" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+              },
+              "feature" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Name",
+                  "name" : ["MissionComputer_Impl_Instance", "UART_HW", "waypoint_in"]
+                }
+              },
+              "direction" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Direction",
+                  "value" : "In"
+                }
+              }
+            }
+          ],
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "isBiDirectional" : false,
+          "connectionInstances" : [
+            {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "waypoint_out -> UART_HW", "waypoint_in"]
+            }
+          ],
+          "properties" : [
+          ]
+        }
       ],
       "connectionInstances" : [
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "UARTA <-> UART_HW.UARTA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UARTA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "UARTA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac6"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "RFA <-> RADIO_HW.RFA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RFA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "RFA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac5"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "recv_map -> RADIO_HW.recv_map_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "recv_map"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c1"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "position_status -> UART_HW.position_status_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "position_status"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c7"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> RADIO_HW.MCA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              }
+            },
+            "direction" : {
+              "type" : "None"
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "MCA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac1"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> UART_HW.MCA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              }
+            },
+            "direction" : {
+              "type" : "None"
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "MCA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac2"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> PROC_HW.MCA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              }
+            },
+            "direction" : {
+              "type" : "None"
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "MCA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac3"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "BUS_HW <-> MEM_HW.MCA"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+              }
+            },
+            "direction" : {
+              "type" : "None"
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "MCA"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "InOut"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Access"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "bac4"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "RADIO_HW.recv_map_out -> PROC_SW.RADIO.recv_map_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "recv_map_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c2"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            },
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c1"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "isParent" : false
+            }
+          ],
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW.recv_map_out -> PROC_SW.RADIO.recv_map_in", "Deployment_Properties::Actual_Connection_Binding"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ReferenceProp",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "RADIO_HW.send_status_out -> send_status"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "send_status_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "send_status"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c4"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "UART_HW.waypoint_out -> waypoint"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "waypoint_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "waypoint"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c6"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "UART_HW.position_status_out -> PROC_SW.UART.position_status_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "position_status_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "position_status_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c8"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            },
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c11"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "isParent" : false
+            }
+          ],
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW.position_status_out -> PROC_SW.UART.position_status_in", "Deployment_Properties::Actual_Connection_Binding"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ReferenceProp",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "PROC_SW.RADIO.send_status_out -> RADIO_HW.send_status_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "RADIO_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "send_status_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c2"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "isParent" : false
+            },
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c3"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW.RADIO.send_status_out -> RADIO_HW.send_status_in", "Deployment_Properties::Actual_Connection_Binding"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ReferenceProp",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "ConnectionInstance",
+          "name" : {
+            "type" : "Name",
+            "name" : ["MissionComputer_Impl_Instance", "PROC_SW.UART.waypoint_out -> UART_HW.waypoint_in"]
+          },
+          "src" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "waypoint_out"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "Out"
+              }
+            }
+          },
+          "dst" : {
+            "type" : "EndPoint",
+            "component" : {
+              "type" : "Name",
+              "name" : ["MissionComputer_Impl_Instance", "UART_HW"]
+            },
+            "feature" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "UART_HW", "waypoint_in"]
+              }
+            },
+            "direction" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Direction",
+                "value" : "In"
+              }
+            }
+          },
+          "kind" : {
+            "type" : "ConnectionKind",
+            "value" : "Port"
+          },
+          "connectionRefs" : [
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c10"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
+              },
+              "isParent" : false
+            },
+            {
+              "type" : "ConnectionReference",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "c5"]
+              },
+              "context" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance"]
+              },
+              "isParent" : true
+            }
+          ],
+          "properties" : [
+            {
+              "type" : "Property",
+              "name" : {
+                "type" : "Name",
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW.UART.waypoint_out -> UART_HW.waypoint_in", "Deployment_Properties::Actual_Connection_Binding"]
+              },
+              "propertyValues" : [
+                {
+                  "type" : "ReferenceProp",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "BUS_HW"]
+                  }
+                }
+              ]
+            }
+          ]
+        }
       ],
       "properties" : [
       ],
