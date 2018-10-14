@@ -1,5 +1,5 @@
-#include "../../../../include/tb_RADIO_send_status_in_Monitor.h"
-#include "../include/tb_PROC_HW_types.h"
+#include "../../../../includes/tb_PROC_HW_types.h"
+#include "../includes/tb_RADIO_send_status_in_Monitor.h"
 
 int mon_get_sender_id(void);
 int monsig_emit(void);

@@ -1,4 +1,4 @@
-import tb_Monitor_SW__MissionWindow_Impl_1.idl4;
+import "../../../interfaces/tb_Monitor_SW__MissionWindow_Impl_1.idl4";
 
 component tb_UART_waypoint_in_Monitor {
 

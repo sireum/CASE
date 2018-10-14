@@ -1,4 +1,4 @@
-import tb_Monitor_SW__Coordinate_Impl_1.idl4;
+import "../../../interfaces/tb_Monitor_SW__Coordinate_Impl_1.idl4";
 
 component tb_WPM_position_status_Monitor {
 

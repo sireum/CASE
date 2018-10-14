@@ -1,5 +1,5 @@
-#include "../../../../include/tb_FPLN_recv_map_Monitor.h"
-#include "../include/tb_PROC_HW_types.h"
+#include "../../../../includes/tb_PROC_HW_types.h"
+#include "../includes/tb_FPLN_recv_map_Monitor.h"
 
 int mon_get_sender_id(void);
 int monsig_emit(void);

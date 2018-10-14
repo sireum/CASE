@@ -1,5 +1,5 @@
-import tb_Monitor_SW__Coordinate_Impl_1.idl4;
-import tb_Monitor_SW__Command_Impl_1.idl4;
+import "../../interfaces/tb_Monitor_SW__Coordinate_Impl_1.idl4";
+import "../../interfaces/tb_Monitor_SW__Command_Impl_1.idl4";
 
 component RadioDriver {
   include <tb_PROC_HW_types.h>;

@@ -1,4 +1,4 @@
-import tb_Monitor_SW__Command_Impl_1.idl4;
+import "../../../interfaces/tb_Monitor_SW__Command_Impl_1.idl4";
 
 component tb_FLT_filter_in_Monitor {
 

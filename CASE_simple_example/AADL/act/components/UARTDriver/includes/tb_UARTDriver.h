@@ -1,7 +1,7 @@
 #ifndef __tb_AADL_UARTDriver_types__H
 #define __tb_AADL_UARTDriver_types__H
 
-#include <tb_PROC_HW_types.h>
+#include "../../../includes/tb_PROC_HW_types.h"
 
 bool tb_position_status_in_dequeue(SW__Coordinate_Impl * tb_position_status_in);
 bool tb_waypoint_out_enqueue(const SW__MissionWindow_Impl * tb_waypoint_out);

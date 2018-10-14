@@ -1,4 +1,4 @@
-import tb_Monitor_SW__Mission_Impl.idl4;
+import "../../../interfaces/tb_Monitor_SW__Mission_Impl.idl4";
 
 component tb_WPM_flight_plan_Monitor {
 
