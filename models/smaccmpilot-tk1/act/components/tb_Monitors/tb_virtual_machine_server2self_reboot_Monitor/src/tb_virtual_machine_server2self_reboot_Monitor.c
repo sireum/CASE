@@ -1,5 +1,5 @@
-#include "../../../../include/tb_virtual_machine_server2self_reboot_Monitor.h"
-#include "../include/tb_smaccmpilot_tk1_types.h"
+#include "../../../../includes/tb_smaccmpilot_tk1_types.h"
+#include "../includes/tb_virtual_machine_server2self_reboot_Monitor.h"
 
 int mon_get_sender_id(void);
 int monsig_emit(void);

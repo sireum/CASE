@@ -1,10 +1,10 @@
-#include "../../../../include/tb_server_decrypt2self_Monitor.h"
-#include "../include/tb_smaccmpilot_tk1_types.h"
+#include "../../../../includes/tb_smaccmpilot_tk1_types.h"
+#include "../includes/tb_server_decrypt2self_Monitor.h"
 
 int mon_get_sender_id(void);
 int monsig_emit(void);
 
-SMACCM_DATA__GIDL contents[1];
+tb_SMACCM_DATA__GIDL_container contents[1];
 static uint32_t front = 0;
 static uint32_t length = 0;
 
@@ -16,7 +16,7 @@ static bool is_empty(void) {
   return length == 0;
 }
 
-bool mon_dequeue(SMACCM_DATA__GIDL * m) {
+bool mon_dequeue(tb_SMACCM_DATA__GIDL_container * m) {
   if (mon_get_sender_id() != TB_MONITOR_READ_ACCESS) {
     return false;
   } else if (is_empty()) {
@@ -29,7 +29,7 @@ bool mon_dequeue(SMACCM_DATA__GIDL * m) {
   }
 }
 
-bool mon_enqueue(const SMACCM_DATA__GIDL * m) {
+bool mon_enqueue(const tb_SMACCM_DATA__GIDL_container * m) {
   if (mon_get_sender_id() != TB_MONITOR_WRITE_ACCESS) {
     return false;
   } else if (is_full()) {

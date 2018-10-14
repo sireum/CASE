@@ -41,6 +41,144 @@
               "type" : "Component",
               "identifier" : {
                 "type" : "Name",
+                "name" : ["top_i_Instance", "software", "gen_fwd"]
+              },
+              "category" : {
+                "type" : "ComponentCategory",
+                "value" : "SubprogramGroup"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MissionSoftware::gen_fwd_inf"
+                }
+              },
+              "features" : [
+              ],
+              "subComponents" : [
+              ],
+              "connections" : [
+              ],
+              "connectionInstances" : [
+              ],
+              "properties" : [
+              ],
+              "flows" : [
+              ],
+              "modes" : [
+              ],
+              "annexes" : [
+                {
+                  "type" : "Annex",
+                  "name" : "Emv2",
+                  "clause" : {
+                    "type" : "Emv2Clause",
+                    "libraries" : [],
+                    "propagations" : [
+                    ],
+                    "flows" : [
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type" : "Component",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["top_i_Instance", "software", "clkcar"]
+              },
+              "category" : {
+                "type" : "ComponentCategory",
+                "value" : "SubprogramGroup"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MissionSoftware::clkcar_inf"
+                }
+              },
+              "features" : [
+              ],
+              "subComponents" : [
+              ],
+              "connections" : [
+              ],
+              "connectionInstances" : [
+              ],
+              "properties" : [
+              ],
+              "flows" : [
+              ],
+              "modes" : [
+              ],
+              "annexes" : [
+                {
+                  "type" : "Annex",
+                  "name" : "Emv2",
+                  "clause" : {
+                    "type" : "Emv2Clause",
+                    "libraries" : [],
+                    "propagations" : [
+                    ],
+                    "flows" : [
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type" : "Component",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["top_i_Instance", "software", "gpio"]
+              },
+              "category" : {
+                "type" : "ComponentCategory",
+                "value" : "SubprogramGroup"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "MissionSoftware::gpio_inf"
+                }
+              },
+              "features" : [
+              ],
+              "subComponents" : [
+              ],
+              "connections" : [
+              ],
+              "connectionInstances" : [
+              ],
+              "properties" : [
+              ],
+              "flows" : [
+              ],
+              "modes" : [
+              ],
+              "annexes" : [
+                {
+                  "type" : "Annex",
+                  "name" : "Emv2",
+                  "clause" : {
+                    "type" : "Emv2Clause",
+                    "libraries" : [],
+                    "propagations" : [
+                    ],
+                    "flows" : [
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type" : "Component",
+              "identifier" : {
+                "type" : "Name",
                 "name" : ["top_i_Instance", "software", "clock_driver"]
               },
               "category" : {
@@ -81,19 +219,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "clock_driver", "clkcar", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "clkcar.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "clock_driver", "AccessType"]
                       },
                       "propertyValues" : [
@@ -127,19 +252,6 @@
                     }
                   },
                   "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "clock_driver", "clkcarfwd", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gen_fwd.idl4"
-                        }
-                      ]
-                    },
                     {
                       "type" : "Property",
                       "name" : {
@@ -366,19 +478,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "gpio_driver", "gpio_spi_can1_cs", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gpio.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "gpio_driver", "AccessType"]
                       },
                       "propertyValues" : [
@@ -412,19 +511,6 @@
                     }
                   },
                   "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "gpio_driver", "gpio_usb_vbus_en1", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gpio.idl4"
-                        }
-                      ]
-                    },
                     {
                       "type" : "Property",
                       "name" : {
@@ -712,19 +798,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "uart_driver", "uartfwd", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gen_fwd.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "uart_driver", "AccessType"]
                       },
                       "propertyValues" : [
@@ -758,19 +831,6 @@
                     }
                   },
                   "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "uart_driver", "clkcar", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "clkcar.idl4"
-                        }
-                      ]
-                    },
                     {
                       "type" : "Property",
                       "name" : {
@@ -2706,19 +2766,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "can_driver", "gpio_spi_can1_cs", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gpio.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "can_driver", "AccessType"]
                       },
                       "propertyValues" : [
@@ -2752,19 +2799,6 @@
                     }
                   },
                   "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "can_driver", "clkcar", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "clkcar.idl4"
-                        }
-                      ]
-                    },
                     {
                       "type" : "Property",
                       "name" : {
@@ -3025,19 +3059,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "virtual_machine", "clkcarfwd", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gen_fwd.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "virtual_machine", "AccessType"]
                       },
                       "propertyValues" : [
@@ -3075,19 +3096,6 @@
                       "type" : "Property",
                       "name" : {
                         "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "virtual_machine", "uartfwd", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gen_fwd.idl4"
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
                         "name" : ["top_i_Instance", "software", "virtual_machine", "AccessType"]
                       },
                       "propertyValues" : [
@@ -3121,19 +3129,6 @@
                     }
                   },
                   "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["top_i_Instance", "software", "virtual_machine", "gpio_usb_vbus_en1", "TB_SYS::CommPrim_Source_Header"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "gpio.idl4"
-                        }
-                      ]
-                    },
                     {
                       "type" : "Property",
                       "name" : {

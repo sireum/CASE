@@ -1,4 +1,5 @@
-
+import "../../interfaces/clkcar_inf.idl4";
+import "../../interfaces/gen_fwd_inf.idl4";
 
 component Clock_Driver {
   include <tb_smaccmpilot_tk1_types.h>;

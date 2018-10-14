@@ -1,4 +1,4 @@
-import tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i.idl4;
+import "../../../interfaces/tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i.idl4";
 
 component tb_server_vm2self_Monitor {
 

@@ -1,4 +1,4 @@
-import tb_Monitor_SMACCM_DATA__GIDL_1.idl4;
+import "../../../interfaces/tb_Monitor_SMACCM_DATA__GIDL_1.idl4";
 
 component tb_server_decrypt2self_Monitor {
 

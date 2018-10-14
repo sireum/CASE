@@ -1,6 +1,8 @@
-import tb_Monitor_SMACCM_DATA__UART_Packet_i_100.idl4;
-import tb_Monitor_SMACCM_DATA__UART_Packet_i_5.idl4;
-import tb_Monitor_bool_1.idl4;
+import "../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_100.idl4";
+import "../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_5.idl4";
+import "../../interfaces/tb_Monitor_bool_1.idl4";
+import "../../interfaces/gen_fwd_inf.idl4";
+import "../../interfaces/clkcar_inf.idl4";
 
 component UART_Driver {
   include <tb_smaccmpilot_tk1_types.h>;

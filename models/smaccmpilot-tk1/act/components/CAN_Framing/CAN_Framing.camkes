@@ -1,7 +1,7 @@
-import tb_Monitor_SMACCM_DATA__GIDL_1.idl4;
-import tb_Monitor_SMACCM_DATA__CAN_Frame_i_10.idl4;
-import tb_Monitor_bool_1.idl4;
-import tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4;
+import "../../interfaces/tb_Monitor_SMACCM_DATA__GIDL_1.idl4";
+import "../../interfaces/tb_Monitor_SMACCM_DATA__CAN_Frame_i_10.idl4";
+import "../../interfaces/tb_Monitor_bool_1.idl4";
+import "../../interfaces/tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4";
 
 component CAN_Framing {
   include <tb_smaccmpilot_tk1_types.h>;

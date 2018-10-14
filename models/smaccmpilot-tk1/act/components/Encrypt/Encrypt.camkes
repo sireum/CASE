@@ -1,6 +1,6 @@
-import tb_Monitor_SMACCM_DATA__GIDL_1.idl4;
-import tb_Monitor_SMACCM_DATA__UART_Packet_i_5.idl4;
-import tb_Monitor_bool_1.idl4;
+import "../../interfaces/tb_Monitor_SMACCM_DATA__GIDL_1.idl4";
+import "../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_5.idl4";
+import "../../interfaces/tb_Monitor_bool_1.idl4";
 
 component Encrypt {
   include <tb_smaccmpilot_tk1_types.h>;

@@ -1,4 +1,4 @@
-import tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4;
+import "../../../interfaces/tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4";
 
 component tb_can_driver_framing2self_Monitor {
 

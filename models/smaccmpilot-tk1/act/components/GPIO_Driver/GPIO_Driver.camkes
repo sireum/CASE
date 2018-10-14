@@ -1,4 +1,4 @@
-
+import "../../interfaces/gpio_inf.idl4";
 
 component GPIO_Driver {
   include <tb_smaccmpilot_tk1_types.h>;

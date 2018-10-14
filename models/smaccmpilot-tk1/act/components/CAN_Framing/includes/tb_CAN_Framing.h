@@ -1,7 +1,7 @@
 #ifndef __tb_AADL_CAN_Framing_types__H
 #define __tb_AADL_CAN_Framing_types__H
 
-#include <tb_smaccmpilot_tk1_types.h>
+#include "../../../includes/tb_smaccmpilot_tk1_types.h"
 
 bool tb_server2self_dequeue(tb_SMACCM_DATA__GIDL_container * tb_server2self);
 bool tb_self2server_enqueue(const SMACCM_DATA__GIDL * tb_self2server);

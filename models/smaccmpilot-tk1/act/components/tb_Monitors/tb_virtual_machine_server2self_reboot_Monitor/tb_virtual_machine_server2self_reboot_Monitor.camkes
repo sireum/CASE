@@ -1,4 +1,4 @@
-import tb_Monitor_bool_1.idl4;
+import "../../../interfaces/tb_Monitor_bool_1.idl4";
 
 component tb_virtual_machine_server2self_reboot_Monitor {
 

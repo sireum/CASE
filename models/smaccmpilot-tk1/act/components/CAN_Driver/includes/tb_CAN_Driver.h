@@ -1,7 +1,7 @@
 #ifndef __tb_AADL_CAN_Driver_types__H
 #define __tb_AADL_CAN_Driver_types__H
 
-#include <tb_smaccmpilot_tk1_types.h>
+#include "../../../includes/tb_smaccmpilot_tk1_types.h"
 
 bool tb_framing2self_dequeue(SMACCM_DATA__CAN_Frame_i * tb_framing2self);
 bool tb_self2framing_status_enqueue(const bool * tb_self2framing_status);

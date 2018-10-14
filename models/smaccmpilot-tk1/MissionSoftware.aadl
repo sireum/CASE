@@ -40,6 +40,12 @@ public
 			can_driver: thread CAN_Driver;
 			virtual_machine: thread Virtual_Machine;
 
+      -- jab: adding subprogram groups so that they show up in the 
+      --      instance model
+      gen_fwd: subprogram group gen_fwd_inf;
+      clkcar: subprogram group clkcar_inf;
+      gpio: subprogram group gpio_inf;
+      
 		connections
 			uart2decrypt: port uart_driver.self2decrypt -> decrypt.uart2self;
 			uart2encrypt: port uart_driver.self2encrypt -> encrypt.uart2self;

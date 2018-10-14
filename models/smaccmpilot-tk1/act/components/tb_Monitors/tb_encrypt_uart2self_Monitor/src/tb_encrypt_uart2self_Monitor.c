@@ -1,5 +1,5 @@
-#include "../../../../include/tb_encrypt_uart2self_Monitor.h"
-#include "../include/tb_smaccmpilot_tk1_types.h"
+#include "../../../../includes/tb_smaccmpilot_tk1_types.h"
+#include "../includes/tb_encrypt_uart2self_Monitor.h"
 
 int mon_get_sender_id(void);
 int monsig_emit(void);
