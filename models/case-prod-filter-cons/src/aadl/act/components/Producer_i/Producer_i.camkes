@@ -1,4 +1,4 @@
-
+import "../../interfaces/TransferString_i.idl4";
 
 component Producer_i {
   include <tb_proc_HW_types.h>;
