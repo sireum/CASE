@@ -39,7 +39,7 @@ AADL thread implementation GPIO_Driver.
 import <Timer.idl4>;
 // Idl files for RPCs
 
-import <gpio.idl4>;
+import <gpio_inf.idl4>;
 
 
 

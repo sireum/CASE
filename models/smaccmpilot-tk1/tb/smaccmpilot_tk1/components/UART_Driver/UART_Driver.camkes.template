@@ -46,8 +46,8 @@ import <tb_Monitor_bool_1.idl4>;
 
 // Idl files for RPCs
 
-import <clkcar.idl4>;
-import <gen_fwd.idl4>;
+import <clkcar_inf.idl4>;
+import <gen_fwd_inf.idl4>;
 
 
 import <bool_writer.idl4>;

@@ -42,9 +42,9 @@ import <tb_Monitor_SMACCM_DATA__UART_Packet_i_100.idl4>;
 import <tb_Monitor_SMACCM_DATA__GIDL_1.idl4>;
 
 
-import <SMACCM_DATA__UART_Packet_i_writer.idl4>;
-
 import <SMACCM_DATA__GIDL_writer.idl4>;
+
+import <SMACCM_DATA__UART_Packet_i_writer.idl4>;
 
 
 

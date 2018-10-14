@@ -151,21 +151,14 @@ assembly {
 
         // Port connections for active threads
 
+        connection seL4RPCCall conn3 (from UART_Driver_inst.tb_self2decrypt0, to tb_decrypt_uart2self_monitor.mon);
 
-        // uart2encrypt
-        connection seL4RPCCall conn6 (from UART_Driver_inst.tb_self2encrypt0, to tb_encrypt_uart2self_monitor.mon);
-        connection seL4RPCCall conn13 (from Encrypt_inst.tb_uart2self, to tb_encrypt_uart2self_monitor.mon);
-        connection seL4Notification conn14 (from tb_encrypt_uart2self_monitor.monsig, to Encrypt_inst.tb_uart2self_notification);
-
-        // encrypt2uart
-        connection seL4RPCCall conn12 (from Encrypt_inst.tb_self2uart0, to tb_uart_driver_encrypt2self_monitor.mon);
         connection seL4RPCCall conn4 (from UART_Driver_inst.tb_encrypt2self, to tb_uart_driver_encrypt2self_monitor.mon);
         connection seL4Notification conn5 (from tb_uart_driver_encrypt2self_monitor.monsig, to UART_Driver_inst.tb_encrypt2self_notification);
 
-        
-        
-        connection seL4RPCCall conn3 (from UART_Driver_inst.tb_self2decrypt0, to tb_decrypt_uart2self_monitor.mon);
-        
+        connection seL4RPCCall conn6 (from UART_Driver_inst.tb_self2encrypt0, to tb_encrypt_uart2self_monitor.mon);
+
+
         connection seL4RPCCall conn7 (from Decrypt_inst.tb_uart2self, to tb_decrypt_uart2self_monitor.mon);
         connection seL4Notification conn8 (from tb_decrypt_uart2self_monitor.monsig, to Decrypt_inst.tb_uart2self_notification);
 
@@ -175,10 +168,10 @@ assembly {
         connection seL4RPCCall conn10 (from Encrypt_inst.tb_server2self, to tb_encrypt_server2self_monitor.mon);
         connection seL4Notification conn11 (from tb_encrypt_server2self_monitor.monsig, to Encrypt_inst.tb_server2self_notification);
 
+        connection seL4RPCCall conn12 (from Encrypt_inst.tb_self2uart0, to tb_uart_driver_encrypt2self_monitor.mon);
 
-
-
-        
+        connection seL4RPCCall conn13 (from Encrypt_inst.tb_uart2self, to tb_encrypt_uart2self_monitor.mon);
+        connection seL4Notification conn14 (from tb_encrypt_uart2self_monitor.monsig, to Encrypt_inst.tb_uart2self_notification);
 
 
         connection seL4RPCCall conn15 (from Server_inst.tb_vm2self, to tb_server_vm2self_monitor.mon);

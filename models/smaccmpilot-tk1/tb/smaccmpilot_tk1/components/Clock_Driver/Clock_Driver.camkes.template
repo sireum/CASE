@@ -39,8 +39,8 @@ AADL thread implementation Clock_Driver.
 import <Timer.idl4>;
 // Idl files for RPCs
 
-import <clkcar.idl4>;
-import <gen_fwd.idl4>;
+import <clkcar_inf.idl4>;
+import <gen_fwd_inf.idl4>;
 
 
 

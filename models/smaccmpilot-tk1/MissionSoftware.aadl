@@ -217,21 +217,21 @@ public
 	end CAN_Driver;
 	
 	subprogram group gen_fwd_inf
-		properties
-			TB_SYS::Is_External => true;
-			TB_SYS::CommPrim_Source_Header => "gen_fwd.idl4";
+		--properties
+		--	TB_SYS::Is_External => true;
+		--	TB_SYS::CommPrim_Source_Header => "gen_fwd.idl4";
 	end gen_fwd_inf;
 	
 	subprogram group clkcar_inf
-		properties
-			TB_SYS::Is_External => true;
-			TB_SYS::CommPrim_Source_Header => "clkcar.idl4";
+		--properties
+		--	TB_SYS::Is_External => true;
+		--	TB_SYS::CommPrim_Source_Header => "clkcar.idl4";
 	end clkcar_inf;
 
 	subprogram group gpio_inf
-		properties
-			TB_SYS::Is_External => true;
-			TB_SYS::CommPrim_Source_Header => "gpio.idl4";
+		--properties
+		--	TB_SYS::Is_External => true;
+		--	TB_SYS::CommPrim_Source_Header => "gpio.idl4";
 	end gpio_inf;
 
 	thread Virtual_Machine
