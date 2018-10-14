@@ -17,7 +17,7 @@ public
 	data implementation Coordinate.Impl
 		subcomponents
 			lat : data Base_Types::Integer_32;
-			long : data Base_Types::Integer_32;
+			longitude : data Base_Types::Integer_32;
 			alt : data Base_Types::Integer_32;
 	end Coordinate.Impl;
 	
@@ -255,8 +255,8 @@ public
 		-- These functions check the well-formedness of message structures
 		fun good_coordinate(coord : SW::Coordinate.Impl) : bool =	coord.lat >= -90 and 
 																	coord.lat <= 90 and 
-																	coord.long >= -180 and 
-																	coord.long <= 180 and 
+																	coord.longitude >= -180 and 
+																	coord.longitude <= 180 and 
 																	coord.alt >= 0 and 
 																	coord.alt <= 15000;
 																	
