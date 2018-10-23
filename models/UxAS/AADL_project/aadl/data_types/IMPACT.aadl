@@ -24,12 +24,12 @@ end RadioConfiguration;
 data implementation RadioConfiguration.i extends PayloadConfiguration.i
     subcomponents
         --The range of the radio
-        FIXMERange: data real32.i;
+        FIXMERange: data Base_Types::Float_32;
         --The vehicle's rally point
         RallyPoint: data Location3D.i;
         --Time after loss of communications the vehicle should return to its
         --rally point
-        Timeout: data int64.i;
+        Timeout: data Base_Types::Integer_64;
 end RadioConfiguration.i;
 
 data RadioTowerConfiguration extends EntityConfiguration
@@ -41,9 +41,9 @@ data implementation RadioTowerConfiguration.i extends EntityConfiguration.i
         --The position of the tower
         Position: data Location3D.i;
         --The range of the radio
-        FIXMERange: data real32.i;
+        FIXMERange: data Base_Types::Float_32;
         --Whether the radio is enabled
-        Enabled: data bool.i;
+        Enabled: data Base_Types::Boolean;
 end RadioTowerConfiguration.i;
 
 data RadioState extends PayloadState
@@ -53,9 +53,9 @@ end RadioState;
 data implementation RadioState.i extends PayloadState.i
     subcomponents
         --Whether the radio is enabled
-        Enabled: data bool.i;
+        Enabled: data Base_Types::Boolean;
         --Whether the vehicle is in communications range
-        InRange: data bool.i;
+        InRange: data Base_Types::Boolean;
 end RadioState.i;
 
 data RadioTowerState extends EntityState
@@ -65,7 +65,7 @@ end RadioTowerState;
 data implementation RadioTowerState.i extends EntityState.i
     subcomponents
         --Whether the radio is enabled
-        Enabled: data bool.i;
+        Enabled: data Base_Types::Boolean;
 end RadioTowerState.i;
 
 data ImpactPayloadConfiguration extends PayloadConfiguration
@@ -85,12 +85,12 @@ end DeployImpactPayload;
 data implementation DeployImpactPayload.i extends CMASI::VehicleAction.i
     subcomponents
         --IMPACT vehicle from which to deploy payload
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Payload to deploy
         DeployedPayload: data ImpactPayloadType.i;
         --Entity to which the payload will be deployed. If zero, then payload
         --is assumed deployed at the current position of the deploying vehicle.
-        TargetEntityID: data int64.i;
+        TargetEntityID: data Base_Types::Integer_64;
 end DeployImpactPayload.i;
 
 data PowerPlantState extends PayloadState
@@ -111,20 +111,20 @@ end BatchRoutePlanRequest;
 data implementation BatchRoutePlanRequest.i
     subcomponents
         --Request ID for correlating with response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --An array of vehicles (by ID) to consider when planning
-        Vehicles: data int64.i {Data_Model::Data_Representation => Array;};
+        Vehicles: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --List of task IDs to be planned to
-        TaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        TaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Operating region to be considered during planning
-        OperatingRegion: data int64.i;
+        OperatingRegion: data Base_Types::Integer_64;
         --Flag to report timing between tasks
-        ComputeTaskToTaskTiming: data bool.i;
+        ComputeTaskToTaskTiming: data Base_Types::Boolean;
         --Flag to report timing between incremental progress on task and
         --subsequent tasks
-        ComputeInterTaskToTaskTiming: data bool.i;
+        ComputeInterTaskToTaskTiming: data Base_Types::Boolean;
         --List of task percentages along task to plan from
-        InterTaskPercentage: data real32.i {Data_Model::Data_Representation => Array;};
+        InterTaskPercentage: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
 end BatchRoutePlanRequest.i;
 
 data BatchRoutePlanResponse
@@ -134,7 +134,7 @@ end BatchRoutePlanResponse;
 data implementation BatchRoutePlanResponse.i
     subcomponents
         --Response ID matching request from ({@link BatchRoutePlanRequest})
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Set of task-to-task timings for each requested vehicle
         VehicleTiming: data TaskTimingPair.i {Data_Model::Data_Representation => Array;};
 end BatchRoutePlanResponse.i;
@@ -147,18 +147,18 @@ end TaskTimingPair;
 data implementation TaskTimingPair.i
     subcomponents
         --Corresponding Vehicle ID
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Initial task ID (if zero, corresponds to current vehicle location)
-        InitialTaskID: data int64.i;
+        InitialTaskID: data Base_Types::Integer_64;
         --Normalized progress along initial task (0.0 .. 1.0)
-        InitialTaskPercentage: data real32.i;
+        InitialTaskPercentage: data Base_Types::Float_32;
         --Destination task ID
-        DestinationTaskID: data int64.i;
+        DestinationTaskID: data Base_Types::Integer_64;
         --Timing corresponding to travel between tasks. If time is less than
         --zero, no feasible path exists between tasks. If 'DestinationTaskID' is
         --equal to 'InitialTaskID' then 'TimeToGo' is the time to complete the
         --task when performed by 'VehicleID'
-        TimeToGo: data int64.i;
+        TimeToGo: data Base_Types::Integer_64;
 end TaskTimingPair.i;
 
 data BatchSummaryRequest
@@ -169,15 +169,15 @@ end BatchSummaryRequest;
 data implementation BatchSummaryRequest.i
     subcomponents
         --Request ID for correlating with response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --An array of vehicles (by ID) to consider when planning
-        Vehicles: data int64.i {Data_Model::Data_Representation => Array;};
+        Vehicles: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --List of task IDs to be planned to
-        TaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        TaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --List of task percentages along task to plan from
-        InterTaskPercentage: data real32.i {Data_Model::Data_Representation => Array;};
+        InterTaskPercentage: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
         --Operating region to be considered during planning
-        OperatingRegion: data int64.i;
+        OperatingRegion: data Base_Types::Integer_64;
 end BatchSummaryRequest.i;
 
 data BatchSummaryResponse
@@ -187,7 +187,7 @@ end BatchSummaryResponse;
 data implementation BatchSummaryResponse.i
     subcomponents
         --Response ID matching request from ({@link BatchSummaryRequest})
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Set of vehicle-to-task and task-to-task summaries including timing,
         --communication, and remaining energy
         Summaries: data TaskSummary.i {Data_Model::Data_Representation => Array;};
@@ -205,7 +205,7 @@ end TaskSummary;
 data implementation TaskSummary.i
     subcomponents
         --ID of task in consideration
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Summary of information for each vehicle used simultaneously to
         --complete this task. If there are zero performing vehicles, then
         --'TaskID' cannot be completed with any set of available vehicles in the
@@ -213,7 +213,7 @@ data implementation TaskSummary.i
         PerformingVehicles: data VehicleSummary.i {Data_Model::Data_Representation => Array;};
         --Task cannot be completed as specified and is using best effort.
         --Estimated percent achieved while using best effort strategy.
-        BestEffort: data real32.i;
+        BestEffort: data Base_Types::Float_32;
 end TaskSummary.i;
 
 data VehicleSummary
@@ -223,27 +223,27 @@ end VehicleSummary;
 data implementation VehicleSummary.i
     subcomponents
         --ID of vehicle considered to complete 'DestinationTaskID'
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --ID of task for which 'VehicleID' is considered to perform
-        DestinationTaskID: data int64.i;
+        DestinationTaskID: data Base_Types::Integer_64;
         --ID of task from which 'VehicleID' is considered leave from. If zero,
         --from current position of vehicle
-        InitialTaskID: data int64.i;
+        InitialTaskID: data Base_Types::Integer_64;
         --Percentage along initial task that vehicle should plan from
-        InitialTaskPercentage: data real32.i;
+        InitialTaskPercentage: data Base_Types::Float_32;
         --Estimated time from start of task to task-percentage location
-        EstimateTimeToTaskPercentage: data int64.i;
+        EstimateTimeToTaskPercentage: data Base_Types::Integer_64;
         --Travel time from the current vehicle location to the start of the
         --task.
-        TimeToArrive: data int64.i;
+        TimeToArrive: data Base_Types::Integer_64;
         --Time for this task to be completed by the specified vehicle
-        TimeOnTask: data int64.i;
+        TimeOnTask: data Base_Types::Integer_64;
         --Energy remaining for vehicle after task has been completed,
         --expressed in terms of the percentage of maximum capacity
-        EnergyRemaining: data real32.i;
+        EnergyRemaining: data Base_Types::Float_32;
         --Flag for indicating that the vehicle will leave communication range
         --either enroute or during the task
-        BeyondCommRange: data bool.i;
+        BeyondCommRange: data Base_Types::Boolean;
 end VehicleSummary.i;
 
 data ImpactHeartbeat
@@ -253,10 +253,10 @@ end ImpactHeartbeat;
 data implementation ImpactHeartbeat.i
     subcomponents
         --Label of system component sending heartbeat
-        ComponentLabel: data string.i;
+        ComponentLabel: data Base_Types::Integer_32;
         --Time at which this heatbeat was sent (milliseconds since 1 Jan 1970
         --00:00 GMT)
-        HeartbeatTime: data int64.i;
+        HeartbeatTime: data Base_Types::Integer_64;
 end ImpactHeartbeat.i;
 
 data ImpactComponentJoin
@@ -266,7 +266,7 @@ end ImpactComponentJoin;
 data implementation ImpactComponentJoin.i
     subcomponents
         --Label of component joining network
-        ComponentLabel: data string.i;
+        ComponentLabel: data Base_Types::Integer_32;
 end ImpactComponentJoin.i;
 
 data ImpactComponentLeave
@@ -276,7 +276,7 @@ end ImpactComponentLeave;
 data implementation ImpactComponentLeave.i
     subcomponents
         --Label of component leaving network
-        ComponentLabel: data string.i;
+        ComponentLabel: data Base_Types::Integer_32;
 end ImpactComponentLeave.i;
 
 data SpeedAltPair
@@ -287,11 +287,11 @@ end SpeedAltPair;
 data implementation SpeedAltPair.i
     subcomponents
         --ID of vehicle for which altitude and speed is attached
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --The speed attached to this vehicle
-        Speed: data real32.i;
+        Speed: data Base_Types::Float_32;
         --Altitude attached to this vehicle
-        Altitude: data real32.i;
+        Altitude: data Base_Types::Float_32;
         --Altitude type for specified altitude
         AltitudeType: data CMASI::AltitudeType.i;
 end SpeedAltPair.i;
@@ -304,18 +304,18 @@ end ImpactAutomationRequest;
 data implementation ImpactAutomationRequest.i
     subcomponents
         --Request ID for correlating with response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --Standard CMASI Automation request
         TrialRequest: data AutomationRequest.i;
         --Override nominal speed/alt. If a vehicle is not in list, its nominal
         --speed/alt is used
         OverridePlanningConditions: data SpeedAltPair.i {Data_Model::Data_Representation => Array;};
         --Associated play ID
-        PlayID: data int64.i;
+        PlayID: data Base_Types::Integer_64;
         --Associated solution ID
-        SolutionID: data int64.i;
+        SolutionID: data Base_Types::Integer_64;
         --Flag indicating 'sandbox', i.e. not to be implemented
-        Sandbox: data bool.i;
+        Sandbox: data Base_Types::Boolean;
 end ImpactAutomationRequest.i;
 
 data ImpactAutomationResponse
@@ -325,15 +325,15 @@ end ImpactAutomationResponse;
 data implementation ImpactAutomationResponse.i
     subcomponents
         --Response ID matching request from ({@link ImpactAutomationRequest})
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Automation response from the request
         TrialResponse: data AutomationResponse.i;
         --Associated play ID
-        PlayID: data int64.i;
+        PlayID: data Base_Types::Integer_64;
         --Associated solution ID
-        SolutionID: data int64.i;
+        SolutionID: data Base_Types::Integer_64;
         --Flag indicating 'sandbox', i.e. not to be implemented
-        Sandbox: data bool.i;
+        Sandbox: data Base_Types::Boolean;
         --Set of vehicle-to-task summaries that will be implemented by this
         --automation response. Including timing, communication, and remaining
         --energy
@@ -347,7 +347,7 @@ end PointOfInterest;
 data implementation PointOfInterest.i
     subcomponents
         --ID for points of interest
-        PointID: data int64.i;
+        PointID: data Base_Types::Integer_64;
         --Point of interest location
         Location: data Location3D.i;
 end PointOfInterest.i;
@@ -359,7 +359,7 @@ end LineOfInterest;
 data implementation LineOfInterest.i
     subcomponents
         --ID for lines of interest
-        LineID: data int64.i;
+        LineID: data Base_Types::Integer_64;
         --List of points to search
         Line: data Location3D.i {Data_Model::Data_Representation => Array;};
 end LineOfInterest.i;
@@ -371,7 +371,7 @@ end AreaOfInterest;
 data implementation AreaOfInterest.i
     subcomponents
         --ID for area of interest
-        AreaID: data int64.i;
+        AreaID: data Base_Types::Integer_64;
         --Geometry describing the area
         Area: data AbstractGeometry.i;
 end AreaOfInterest.i;
@@ -384,12 +384,12 @@ data implementation ImpactPointSearchTask.i extends SearchTask.i
     subcomponents
         --Point to search (from available points of interest). Only valid if
         --ID is non-zero
-        SearchLocationID: data int64.i;
+        SearchLocationID: data Base_Types::Integer_64;
         --If search location ID is zero, then use direct coordinates
         SearchLocation: data Location3D.i;
         --Minimum distance that an aircraft must maintain from the point of
         --interest.
-        StandoffDistance: data real32.i;
+        StandoffDistance: data Base_Types::Float_32;
         --A list of acceptable look-angles for this task. Each wedge is
         --defined relative to true North. To be a valid look angle, a sensor
         --must be looking from a direction within the bounds of the wedge.
@@ -408,13 +408,13 @@ data implementation PatternSearchTask.i extends SearchTask.i
     subcomponents
         --Point at which to search is centered (from available points of
         --interest)
-        SearchLocationID: data int64.i;
+        SearchLocationID: data Base_Types::Integer_64;
         --If search search location ID is zero, then use direct coordinates
         SearchLocation: data Location3D.i;
         --Search pattern to use
         Pattern: data AreaSearchPattern.i;
         --Pattern extent
-        Extent: data real32.i;
+        Extent: data Base_Types::Float_32;
 end PatternSearchTask.i;
 
 data AngledAreaSearchTask extends SearchTask
@@ -424,9 +424,9 @@ end AngledAreaSearchTask;
 data implementation AngledAreaSearchTask.i extends SearchTask.i
     subcomponents
         --Area to search (from available areas of interest)
-        SearchAreaID: data int64.i;
+        SearchAreaID: data Base_Types::Integer_64;
         --Sweep angle defined from true North in clockwise manner
-        SweepAngle: data real32.i;
+        SweepAngle: data Base_Types::Float_32;
         --Start point for this search
         StartPoint: data Location3D.i;
 end AngledAreaSearchTask.i;
@@ -445,13 +445,13 @@ end ImpactLineSearchTask;
 data implementation ImpactLineSearchTask.i extends SearchTask.i
     subcomponents
         --ID of line to search (from available lines of interest)
-        LineID: data int64.i;
+        LineID: data Base_Types::Integer_64;
         --Defines a list of acceptable look-angles for this task. See the
         --documentation above for details.
         ViewAngleList: data Wedge.i {Data_Model::Data_Representation => Array;};
         --If true, the ViewAngleList specifies inertial (North-East) angles.
         --See documentation above.
-        UseInertialViewAngles: data bool.i;
+        UseInertialViewAngles: data Base_Types::Boolean;
 end ImpactLineSearchTask.i;
 
 data WatchTask extends SearchTask
@@ -461,7 +461,7 @@ end WatchTask;
 data implementation WatchTask.i extends SearchTask.i
     subcomponents
         --Entity ID to follow and watch
-        WatchedEntityID: data int64.i;
+        WatchedEntityID: data Base_Types::Integer_64;
 end WatchTask.i;
 
 data MultiVehicleWatchTask extends SearchTask
@@ -471,9 +471,9 @@ end MultiVehicleWatchTask;
 data implementation MultiVehicleWatchTask.i extends SearchTask.i
     subcomponents
         --Entity ID to follow and watch
-        WatchedEntityID: data int64.i;
+        WatchedEntityID: data Base_Types::Integer_64;
         --Number of vehicles to simultaneously overwatch the target
-        NumberVehicles: data byte.i;
+        NumberVehicles: data Base_Types::Integer_8;
 end MultiVehicleWatchTask.i;
 
 data CommRelayTask extends Task
@@ -483,12 +483,12 @@ end CommRelayTask;
 data implementation CommRelayTask.i extends Task.i
     subcomponents
         --ID of entity which requires comm relay support
-        SupportedEntityID: data int64.i;
+        SupportedEntityID: data Base_Types::Integer_64;
         --Destination location for supported entity
         DestinationLocation: data CMASI::Location3D.i;
         --ID of entity to which communication will be delivered (i.e. Tower
         --ID)
-        TowerID: data int64.i;
+        TowerID: data Base_Types::Integer_64;
 end CommRelayTask.i;
 
 data CordonTask extends Task
@@ -505,7 +505,7 @@ data implementation CordonTask.i extends Task.i
         --Block road access to this location
         CordonLocation: data CMASI::Location3D.i;
         --Distance away from 'CordonLocation' that access should be blocked
-        StandoffDistance: data real32.i;
+        StandoffDistance: data Base_Types::Float_32;
 end CordonTask.i;
 
 data BlockadeTask extends Task
@@ -516,12 +516,12 @@ end BlockadeTask;
 data implementation BlockadeTask.i extends Task.i
     subcomponents
         --Entity to surround and deny access
-        BlockedEntityID: data int64.i;
+        BlockedEntityID: data Base_Types::Integer_64;
         --When in blocking formation, the distance that vehicles should stand
         --off.
-        StandoffDistance: data real32.i;
+        StandoffDistance: data Base_Types::Float_32;
         --Number of vehicles to simultaneously block the target
-        NumberVehicles: data byte.i;
+        NumberVehicles: data Base_Types::Integer_8;
         --Biases the blockade so that more vehicles are between enemy and
         --protected location. If no location is given, then blockade attempts to
         --block in direction of enemy travel
@@ -538,21 +538,21 @@ data implementation EscortTask.i extends SearchTask.i
         --ID of entity which will provide the basis for the escort. Tasked
         --vehicle will attempt to stay 'StandoffDistance' ahead of this entity
         --on its route.
-        SupportedEntityID: data int64.i;
+        SupportedEntityID: data Base_Types::Integer_64;
         --ID of line which describes the route that the 'SupportedEntityID' is
         --following. If the 'SupportedEntityID' is one of the controlled
         --entities, such as a taskable ground vehicle, then 'RouteID' can be
         --zero and this task will use current, known route for that vehicle.
         --Otherwise, 'RouteID' must be an ID for a previously described '{@link
         --LineOfInterest}'.
-        RouteID: data int64.i;
+        RouteID: data Base_Types::Integer_64;
         --Waypoints that the supported entity is presumed to be following if
         --'RouteID' is zero
         PrescribedWaypoints: data CMASI::Waypoint.i {Data_Model::Data_Representation => Array;};
         --Distance ahead (positive) or behind (negative) that the vehicle will
         --provide surveillance relative to 'SupportedEntityID's location on
         --route 'RouteID'
-        StandoffDistance: data real32.i;
+        StandoffDistance: data Base_Types::Float_32;
 end EscortTask.i;
 
 data ConfigurationRequest
@@ -564,7 +564,7 @@ data implementation ConfigurationRequest.i
         --Vehicle IDs for which the corresponding configuration should be
         --sent. If the list is empty, all available configurations should be
         --sent in response.
-        VehicleID: data int64.i {Data_Model::Data_Representation => Array;};
+        VehicleID: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end ConfigurationRequest.i;
 
 data GroundVehicleConfiguration extends CMASI::EntityConfiguration
@@ -575,14 +575,14 @@ data implementation GroundVehicleConfiguration.i extends CMASI::EntityConfigurat
     subcomponents
         --Valid operational road network. UGV adheres to positions defined in
         --this graph. Indicated by previously sent GraphRegion's ID
-        RoadGraphID: data int64.i;
+        RoadGraphID: data Base_Types::Integer_64;
         --The minimum speed that should be commanded for this vehicle
-        MinimumSpeed: data real32.i;
+        MinimumSpeed: data Base_Types::Float_32;
         --The maximum speed that should be commanded for this vehicle
-        MaximumSpeed: data real32.i;
+        MaximumSpeed: data Base_Types::Float_32;
         --The consumption rate of available energy at nominal speed, expressed
         --in terms of the percentage of maximum capacity used per second.
-        EnergyRate: data real32.i;
+        EnergyRate: data Base_Types::Float_32;
 end GroundVehicleConfiguration.i;
 
 data GroundVehicleState extends CMASI::EntityState
@@ -591,6 +591,8 @@ end GroundVehicleState;
 --Provides basic state information regarding entity position,
 --orientation, and velocity.
 data implementation GroundVehicleState.i extends CMASI::EntityState.i
+	subcomponents
+		dummy : data Base_Types::Integer_32;
 end GroundVehicleState.i;
 
 data WaterReport
@@ -604,14 +606,14 @@ data implementation WaterReport.i
         --Area for which this report is valid
         Area: data AbstractGeometry.i;
         --Speed of the current, e.g. due to tides or river flow
-        CurrentSpeed: data real32.i;
+        CurrentSpeed: data Base_Types::Float_32;
         --Direction of the current
-        CurrentDirection: data real32.i;
+        CurrentDirection: data Base_Types::Float_32;
         --Wave direction of travel. Generally in the direction of the wind,
         --except near sea coasts
-        WaveDirection: data real32.i;
+        WaveDirection: data Base_Types::Float_32;
         --Average wave height
-        WaveHeight: data real32.i;
+        WaveHeight: data Base_Types::Float_32;
 end WaterReport.i;
 
 data WaterZone extends CMASI::AbstractZone
@@ -620,7 +622,8 @@ end WaterZone;
 --Region that defines water areas navigable for surface vehicles.
 --Ground vehicles should not enter this zone.
 data implementation WaterZone.i extends CMASI::AbstractZone.i
-    
+  subcomponents
+    dummy: data Base_Types::Integer_32;
 end WaterZone.i;
 
 data SurfaceVehicleConfiguration extends CMASI::EntityConfiguration
@@ -630,18 +633,18 @@ end SurfaceVehicleConfiguration;
 data implementation SurfaceVehicleConfiguration.i extends CMASI::EntityConfiguration.i
     subcomponents
         --Valid operational water zone (by ID). USV adheres to this area
-        WaterArea: data int64.i;
+        WaterArea: data Base_Types::Integer_64;
         --The minimum speed that should be commanded for this vehicle
-        MinimumSpeed: data real32.i;
+        MinimumSpeed: data Base_Types::Float_32;
         --The maximum speed that should be commanded for this vehicle
-        MaximumSpeed: data real32.i;
+        MaximumSpeed: data Base_Types::Float_32;
         --The consumption rate of available energy at nominal speed, expressed
         --in terms of the percentage of maximum capacity used per second.
-        EnergyRate: data real32.i;
+        EnergyRate: data Base_Types::Float_32;
         --The maximum angle that this vehicle will bank
-        MaxBankAngle: data real32.i;
+        MaxBankAngle: data Base_Types::Float_32;
         --The maximum angular rate that this vehicle will bank
-        MaxBankRate: data real32.i;
+        MaxBankRate: data Base_Types::Float_32;
 end SurfaceVehicleConfiguration.i;
 
 data SurfaceVehicleState extends CMASI::EntityState
@@ -652,89 +655,95 @@ end SurfaceVehicleState;
 data implementation SurfaceVehicleState.i extends CMASI::EntityState.i
     subcomponents
         --Current bank angle of the surface vehicle
-        BankAngle: data real32.i;
+        BankAngle: data Base_Types::Float_32;
         --Forward speed of the vehicle relative to the mass of water
-        Speed: data real32.i;
+        Speed: data Base_Types::Float_32;
 end SurfaceVehicleState.i;
 
 data AreaSearchPattern extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --Sweep
-            "Spiral",
+    --        "Spiral",
             --Sweep
-            "Sector",
+    --        "Sector",
             --Sweep
-            "Sweep");
+    --        "Sweep");
 end AreaSearchPattern;
 
 data implementation AreaSearchPattern.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end AreaSearchPattern.i;
 
 data PowerPlant extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+   --     Data_Model::Enumerators => (
             --Hybrid electric/gasoline
-            "Gasoline",
+   --         "Gasoline",
             --Hybrid electric/gasoline
-            "JP5",
+    --        "JP5",
+    --        --Hybrid electric/gasoline
+   --         "JP8",
             --Hybrid electric/gasoline
-            "JP8",
+   --         "FuelCell",
             --Hybrid electric/gasoline
-            "FuelCell",
-            --Hybrid electric/gasoline
-            "Hybrid");
+   --         "Hybrid");
 end PowerPlant;
 
 data implementation PowerPlant.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end PowerPlant.i;
 
 data ImpactPayloadType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+   --     Data_Model::Enumerators => (
             --Laser Designator
-            "Unknown",
+   --         "Unknown",
             --Laser Designator
-            "EO",
+   --         "EO",
             --Laser Designator
-            "FLIR",
+   --         "FLIR",
             --Laser Designator
-            "MWIR",
+   --         "MWIR",
             --Laser Designator
-            "LFIR",
+   --         "LFIR",
             --Laser Designator
-            "Track",
+    --        "Track",
             --Laser Designator
-            "Tag",
+    --        "Tag",
             --Laser Designator
-            "Megaphone",
+    --        "Megaphone",
             --Laser Designator
-            "Siren",
+    --        "Siren",
             --Laser Designator
-            "SearchLight",
+    --        "SearchLight",
             --Laser Designator
-            "FiftyCal",
+    --        "FiftyCal",
             --Laser Designator
-            "M240B",
+    --        "M240B",
             --Laser Designator
-            "Flashbang",
+    --        "Flashbang",
             --Laser Designator
-            "TearGas",
+    --        "TearGas",
             --Laser Designator
-            "Taser",
+    --        "Taser",
             --Laser Designator
-            "HeatBeam",
+    --        "HeatBeam",
             --Laser Designator
-            "SEGM",
+    --        "SEGM",
             --Laser Designator
-            "CommRelay",
+   --         "CommRelay",
             --Laser Designator
-            "GMTI",
+   --         "GMTI",
             --Laser Designator
-            "LaserDesignator");
+   --         "LaserDesignator");
 end ImpactPayloadType;
 
 data implementation ImpactPayloadType.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end ImpactPayloadType.i;
 
 end IMPACT;

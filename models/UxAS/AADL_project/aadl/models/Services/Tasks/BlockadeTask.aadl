@@ -2,8 +2,14 @@ package BlockadeTask_Package
 public
     -- Included
     with TaskServiceBase_Package;
-    
+    with TB_SYS;
     thread BlockadeTask extends TaskServiceBase_Package::TaskServiceBase
+        properties
+            Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;       
     end BlockadeTask;
     
 end BlockadeTask_Package;

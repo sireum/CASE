@@ -14,7 +14,7 @@ end VideoRecord;
 data implementation VideoRecord.i
     subcomponents
         --Start [true] or stop [false] video recording
-        FIXMERecord: data bool.i;
+        FIXMERecord: data Base_Types::Boolean;
 end VideoRecord.i;
 
 data StartupComplete
@@ -22,6 +22,8 @@ end StartupComplete;
 
 --Message sent when all services have been started
 data implementation StartupComplete.i
+	subcomponents
+		dummy: data Base_Types::Integer_32;
 end StartupComplete.i;
 
 data CreateNewService
@@ -33,9 +35,9 @@ data implementation CreateNewService.i
         --Globally unique ID for this service. Negative ServiceIDs are
         --invalid. If ServiceID == 0, then a unique service ID will be
         --generated.
-        ServiceID: data int64.i;
+        ServiceID: data Base_Types::Integer_64;
         --XML configuration for this service
-        XmlConfiguration: data string.i {Data_Model::Data_Representation => Array;};
+        XmlConfiguration: data Base_Types::Integer_32 {Data_Model::Data_Representation => Array;};
 end CreateNewService.i;
 
 data KillService
@@ -47,7 +49,7 @@ data implementation KillService.i
         --Globally unique ID for the service to be removed. If ServiceID == 0,
         --then no service will be killed. ServiceID == -1 causes all services to
         --be killed and UxAS to be shutdown.
-        ServiceID: data int64.i;
+        ServiceID: data Base_Types::Integer_64;
 end KillService.i;
 
 data IncrementWaypoint
@@ -58,7 +60,7 @@ end IncrementWaypoint;
 data implementation IncrementWaypoint.i
     subcomponents
         --ID of vehicle which should move to the next waypoint in its list
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
 end IncrementWaypoint.i;
 
 data EntityLocation
@@ -68,11 +70,11 @@ end EntityLocation;
 data implementation EntityLocation.i
     subcomponents
         --Entity ID
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --Current location of entity
         Position: data CMASI::Location3D.i;
         --Corresponding time in milli-seconds since 1 Jan 1970
-        Time: data int64.i;
+        Time: data Base_Types::Integer_64;
 end EntityLocation.i;
 
 data BandwidthTest extends EntityLocation
@@ -82,9 +84,9 @@ end BandwidthTest;
 data implementation BandwidthTest.i extends EntityLocation.i
     subcomponents
         --Message ID to track message loss
-        MessageID: data int64.i;
+        MessageID: data Base_Types::Integer_64;
         --Data payload for creating arbitrarily sized messages
-        Payload: data string.i;
+        Payload: data Base_Types::Integer_32;
 end BandwidthTest.i;
 
 data BandwidthReceiveReport
@@ -99,7 +101,7 @@ data implementation BandwidthReceiveReport.i
         --Entity which received the message
         EntityReceiver: data EntityLocation.i;
         --Size of the message that was received
-        TransferPayloadSize: data uint32.i;
+        TransferPayloadSize: data Base_Types::Unsigned_32;
 end BandwidthReceiveReport.i;
 
 data SubTaskExecution
@@ -114,7 +116,7 @@ data implementation SubTaskExecution.i
         --List of tasks that current entity should complete
         SubTasks: data CMASI::Task.i {Data_Model::Data_Representation => Array;};
         --Enable strict ordering
-        StrictOrder: data bool.i;
+        StrictOrder: data Base_Types::Boolean;
 end SubTaskExecution.i;
 
 data SubTaskAssignment
@@ -138,12 +140,12 @@ end AutopilotKeepAlive;
 data implementation AutopilotKeepAlive.i
     subcomponents
         --Enable communications between UxAS and the autopilot
-        AutopilotEnabled: data bool.i;
+        AutopilotEnabled: data Base_Types::Boolean;
         --Enable communications between UxAS and the Gimbal. Note: this does
         --not effect the video stream.
-        GimbalEnabled: data bool.i;
+        GimbalEnabled: data Base_Types::Boolean;
         --Time that this message was sent
-        TimeSent: data int64.i;
+        TimeSent: data Base_Types::Integer_64;
 end AutopilotKeepAlive.i;
 
 data OnboardProcessorIsAlive
@@ -153,9 +155,9 @@ end OnboardProcessorIsAlive;
 data implementation OnboardProcessorIsAlive.i
     subcomponents
         --ID of vehicle with onboard processor
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Time that this message was sent
-        TimeSent: data int64.i;
+        TimeSent: data Base_Types::Integer_64;
 end OnboardProcessorIsAlive.i;
 
 data EntityJoin
@@ -165,9 +167,9 @@ end EntityJoin;
 data implementation EntityJoin.i
     subcomponents
         --ID of entity joining network
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --Label of entity joining network
-        Label: data string.i;
+        Label: data Base_Types::Integer_32;
 end EntityJoin.i;
 
 data EntityExit
@@ -177,9 +179,9 @@ end EntityExit;
 data implementation EntityExit.i
     subcomponents
         --ID of entity exiting network
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --Label of entity exiting network
-        Label: data string.i;
+        Label: data Base_Types::Integer_32;
 end EntityExit.i;
 
 end UXNATIVE;

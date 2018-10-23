@@ -5,18 +5,19 @@ public
     
     -- Included
     with TaskServiceBase_Package;
-    
+    with TB_SYS;
     thread AngledAreaSearchTask extends TaskServiceBase_Package::TaskServiceBase
         features
             SensorFootprintResponse_in: refined to in event data port uxtask::SensorFootprintResponse.i;
             SensorFootprintRequests_out: refined to out event data port uxtask::SensorFootprintRequests.i;
         properties
             Dispatch_Protocol => Sporadic;
-            
-        -- NOTE: Have to copy/paste base component contracts in each task
---        annex{**
---            
---        **}
+
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
+
     end AngledAreaSearchTask;
     
 end AngledAreaSearchTask_Package;

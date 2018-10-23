@@ -2,15 +2,20 @@ package ImpactPointSearchTask_Package
 public
     -- Data_types Packages
     with CMASI;
+    with TaskServiceBase_Package;
     
     -- Included
     with TaskServiceBase_Package;
-    
+    with TB_SYS;
     thread ImpactPointSearchTask extends TaskServiceBase_Package::TaskServiceBase
         features
             VehicleActionCommand_out: refined to out event data port cmasi::VehicleActionCommand.i;
         properties
             Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end ImpactPointSearchTask;
     
 end ImpactPointSearchTask_Package;

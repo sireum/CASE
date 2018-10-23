@@ -1,8 +1,15 @@
 package MessageLoggerDataService_Pkg
 public
     -- no includes
+    with TB_SYS;
     
     thread MessageLoggerDataService
+         properties
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          Dispatch_Protocol => Sporadic;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us; 
     end MessageLoggerDataService;
     
 end MessageLoggerDataService_Pkg;

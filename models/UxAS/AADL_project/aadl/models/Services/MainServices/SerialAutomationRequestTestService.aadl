@@ -6,13 +6,19 @@ public
     
     -- Included
     with ServiceBase_Pkg;
-    
+    with TB_SYS;
     thread SerialAutomationRequestTestService extends ServiceBase_Pkg::ServiceBase
         features
             ImpactAutomationResponse_in: in event data port impact::ImpactAutomationResponse.i;
             ImpactAutomationRequest_in: in event data port impact::ImpactAutomationRequest.i;
             AutomationResponse_in: in event data port cmasi::AutomationResponse.i;
             AutomationRequest_in: in event data port cmasi::AutomationRequest.i;
+        properties
+            Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end SerialAutomationRequestTestService; 
     
 end SerialAutomationRequestTestService_Pkg;

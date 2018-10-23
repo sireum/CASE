@@ -1,12 +1,16 @@
 package SendMessagesService_Pkg
 public
     with UXNATIVE;
-    
+    with TB_Sys;
     thread SendMessagesService
         features
             StartupComplete_in: in event data port uxnative::StartupComplete.i;
         properties
             Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end SendMessagesService;
     
 end SendMessagesService_Pkg;

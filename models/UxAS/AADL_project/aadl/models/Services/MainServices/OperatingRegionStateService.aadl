@@ -6,12 +6,20 @@ public
     -- Included
     with ServiceBase_Pkg;
     
+    with TB_SYS;
+    
     thread OperatingRegionStateService extends ServiceBase_Pkg::ServiceBase 
         features
             KeepInZone_in: in event data port cmasi::KeepInZone.i;
             RemoveZones_in: in event data port cmasi::RemoveZones.i;
             KeepOutZone_in: in event data port cmasi::KeepOutZone.i;
             OperatingRegion_out: out event data port cmasi::OperatingRegion.i;
+         properties
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          Dispatch_Protocol => Sporadic;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end OperatingRegionStateService;
     
 end OperatingRegionStateService_Pkg;

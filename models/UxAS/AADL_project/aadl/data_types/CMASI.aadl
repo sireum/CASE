@@ -9,19 +9,23 @@ data AbstractGeometry
 end AbstractGeometry;
 
 data AltitudeType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --Height above WGS84 ellipsoid, mean sea level
-            "AGL",
+    --        "AGL",
             --Height above WGS84 ellipsoid, mean sea level
-            "MSL");
+    --        "MSL");
 end AltitudeType;
 
 data implementation AltitudeType.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end AltitudeType.i;
 
 --Base class for geometry types
 data implementation AbstractGeometry.i
+    subcomponents
+      dummy : data Base_Types::Integer_32;
 end AbstractGeometry.i;
 
 data KeyValuePair
@@ -32,9 +36,9 @@ end KeyValuePair;
 data implementation KeyValuePair.i
     subcomponents
         --A key (name) for the property
-        Key: data string.i;
+        Key: data Base_Types::Integer_32; --Base_Types::Integer_32;
         --A value for the property
-        Value: data string.i;
+        Value: data Base_Types::Integer_32;
 end KeyValuePair.i;
 
 data Location3D
@@ -45,11 +49,11 @@ end Location3D;
 data implementation Location3D.i
     subcomponents
         --Latitude
-        Latitude: data real64.i;
+        Latitude: data Base_Types::Float_64;
         --Longitude
-        Longitude: data real64.i;
+        Longitude: data Base_Types::Float_64;
         --Altitude for this waypoint
-        Altitude: data real32.i;
+        Altitude: data Base_Types::Float_32;
         --Altitude type for specified altitude
         AltitudeType: data AltitudeType.i;
 end Location3D.i;
@@ -61,7 +65,7 @@ end PayloadAction;
 data implementation PayloadAction.i extends VehicleAction.i
     subcomponents
         --A unique id for this payload item.
-        PayloadID: data int64.i;
+        PayloadID: data Base_Types::Integer_64;
 end PayloadAction.i;
 
 data PayloadConfiguration
@@ -71,10 +75,10 @@ end PayloadConfiguration;
 data implementation PayloadConfiguration.i
     subcomponents
         --The unique id for this payload item.
-        PayloadID: data int64.i;
+        PayloadID: data Base_Types::Integer_64;
         --A string uniquely identifying the kind of payload item (primarily to
         --be used for debugging purposes).
-        PayloadKind: data string.i;
+        PayloadKind: data Base_Types::Integer_32;
         --Optional parameters associated with payload configuration
         Parameters: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
 end PayloadConfiguration.i;
@@ -86,7 +90,7 @@ end PayloadState;
 data implementation PayloadState.i
     subcomponents
         --The unique id for this payload item.
-        PayloadID: data int64.i;
+        PayloadID: data Base_Types::Integer_64;
         --Optional parameters associated with payload state
         Parameters: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
 end PayloadState.i;
@@ -104,7 +108,7 @@ data implementation VehicleAction.i
         --zero denotes no associated tasks. This field is for analysis purposes.
         --The automation service should associate a list of tasks with each
         --action to enable analysis of the allocation of tasks to vehicles.<br/>
-        AssociatedTaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        AssociatedTaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end VehicleAction.i;
 
 data Task
@@ -117,17 +121,17 @@ end Task;
 data implementation Task.i
     subcomponents
         --A unique identifier for this task.
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --An optional text string for the task. This is not necesarily unique,
         --and is included for information only. TaskID should be used to
         --uniquely identify tasks.
-        Label: data string.i;
+        Label: data Base_Types::Integer_32;
         --A list of entity IDs that are eligible to accomplish this task. If
         --the list is empty, then it is assumed all entities are eligible.
-        EligibleEntities: data int64.i {Data_Model::Data_Representation => Array;};
+        EligibleEntities: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --If a task is to be repeatedly done, this field indicates how often.
         --A value of zero means the task is complete on the first pass.
-        RevisitRate: data real32.i;
+        RevisitRate: data Base_Types::Float_32;
         --An optional text string for automation service task parameters.
         Parameters: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
         --The priority value for this task. Priority is a relative value of
@@ -135,10 +139,10 @@ data implementation Task.i
         --be limited to the range[0..100], 100 being the highest level of
         --priority. The exact interpretation priority may vary depending on
         --algorithm implementation.
-        Priority: data byte.i;
+        Priority: data Base_Types::Integer_8;
         --Indicates whether this task <i><b>must</b></i> be executed as part
         --of a mission plan.
-        Required: data bool.i;
+        Required: data Base_Types::Boolean;
 end Task.i;
 
 data SearchTask extends Task
@@ -152,9 +156,9 @@ data implementation SearchTask.i extends Task.i
         DesiredWavelengthBands: data WavelengthBand.i {Data_Model::Data_Representation => Array;};
         --Minimum time that a sensor must look at any given point in this
         --search task.
-        DwellTime: data int64.i;
+        DwellTime: data Base_Types::Integer_64;
         --Average ground sample distance for locations in search area
-        GroundSampleDistance: data real32.i;
+        GroundSampleDistance: data Base_Types::Float_32;
 end SearchTask.i;
 
 data AbstractZone
@@ -164,30 +168,30 @@ end AbstractZone;
 data implementation AbstractZone.i
     subcomponents
         --A globally unique reference number for this zone
-        ZoneID: data int64.i;
+        ZoneID: data Base_Types::Integer_64;
         --Lower altitude bound for the zone
-        MinAltitude: data real32.i;
+        MinAltitude: data Base_Types::Float_32;
         --Altitude type for min altitude
         MinAltitudeType: data AltitudeType.i;
         --Maximum altitude for operations
-        MaxAltitude: data real32.i;
+        MaxAltitude: data Base_Types::Float_32;
         --Altitude type for max altitude
         MaxAltitudeType: data AltitudeType.i;
         --A list of aircraft IDs that this zone applies to. If the list is
         --empty, then it is assumed that the boundary applies to all aircraft.
-        AffectedAircraft: data int64.i {Data_Model::Data_Representation => Array;};
+        AffectedAircraft: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Time at which this zone becomes active. Time datum is defined by the
         --application, but unless otherwise specified is milliseconds since 1
         --Jan 1970
-        StartTime: data int64.i;
+        StartTime: data Base_Types::Integer_64;
         --Time at which this zone becomes inactive. Time datum is defined by
         --the application, but unless otherwise specified is milliseconds since
         --1 Jan 1970
-        EndTime: data int64.i;
+        EndTime: data Base_Types::Integer_64;
         --Buffer to add/subtract around the border of the zone
-        Padding: data real32.i;
+        Padding: data Base_Types::Float_32;
         --Optional label for this zone
-        Label: data string.i;
+        Label: data Base_Types::Integer_32;
         --Geometry object describing the boundary. This boundary is
         --2-dimensional. The zone boundary is defined as an extrusion of this
         --boundary from MinAltitude to MaxAltitude.
@@ -201,25 +205,25 @@ end EntityConfiguration;
 data implementation EntityConfiguration.i
     subcomponents
         --A unique id for this entity
-        ID: data int64.i;
+        ID: data Base_Types::Integer_64;
         --the team or "side" that an entity belongs to. This can be a name of
         --a country, a "friend" or "foe" designation, or a team name (e.g. "red
         --team").
-        Affiliation: data string.i;
+        Affiliation: data Base_Types::Integer_32;
         --The type of this entity. The content of this field is dependent on
         --the session. The value of this field is not specifically defined, so
         --it is up to the simulation/session components to define a type system.
         --For a common entity definition, see MIL STD 2525 or use DIS
         --enumerations.
-        EntityType: data string.i;
+        EntityType: data Base_Types::Integer_32;
         --An optional text string for the vehicle. This is not necessarily
         --unique, and is included for information only. ID should be used to
         --uniquely identify entities.
-        Label: data string.i;
+        Label: data Base_Types::Integer_32;
         --The speed that is typically commanded for this entity
-        NominalSpeed: data real32.i;
+        NominalSpeed: data Base_Types::Float_32;
         --The altitude that is typically commanded for this entity
-        NominalAltitude: data real32.i;
+        NominalAltitude: data Base_Types::Float_32;
         --Altitude type for nominal altitude
         NominalAltitudeType: data AltitudeType.i;
         --A list of all payload configurations for this vehicle. Examples of
@@ -242,19 +246,19 @@ end FlightProfile;
 data implementation FlightProfile.i
     subcomponents
         --The unique name for this configuration
-        Name: data string.i;
+        Name: data Base_Types::Integer_32;
         --True Airspeed
-        Airspeed: data real32.i;
+        Airspeed: data Base_Types::Float_32;
         --The pitch angle of the aircraft in this flight condition(assuming
         --zero bank)
-        PitchAngle: data real32.i;
+        PitchAngle: data Base_Types::Float_32;
         --Vertical speed (positive upwards) of the vehicle
-        VerticalSpeed: data real32.i;
+        VerticalSpeed: data Base_Types::Float_32;
         --The maximum angle that this vehicle will bank
-        MaxBankAngle: data real32.i;
+        MaxBankAngle: data Base_Types::Float_32;
         --The consumption rate of available energy, expressed in terms of the
         --percentage of maximum capacity used per second.
-        EnergyRate: data real32.i;
+        EnergyRate: data Base_Types::Float_32;
 end FlightProfile.i;
 
 data AirVehicleConfiguration extends EntityConfiguration
@@ -264,9 +268,9 @@ end AirVehicleConfiguration;
 data implementation AirVehicleConfiguration.i extends EntityConfiguration.i
     subcomponents
         --The minimum true airspeed that should be commanded for this aircraft
-        MinimumSpeed: data real32.i;
+        MinimumSpeed: data Base_Types::Float_32;
         --The maximum true airspeed that should be commanded for this aircraft
-        MaximumSpeed: data real32.i;
+        MaximumSpeed: data Base_Types::Float_32;
         --Describes the preferred operating mode for most planning purposes.
         --This can be a max range or endurance speed profile, or any other
         --operating point chosen by a user. This field may not be null.
@@ -283,13 +287,13 @@ data implementation AirVehicleConfiguration.i extends EntityConfiguration.i
         --Minimum MSL altitude that this aircraft is allowed to fly. This
         --value should be treated as a regulatory or safety-of-flight parameter
         --and therefore takes precedence over other requests.
-        MinimumAltitude: data real32.i;
+        MinimumAltitude: data Base_Types::Float_32;
         --Altitude type for min altitude
         MinAltitudeType: data AltitudeType.i;
         --Maximum MSL altitude that this aircraft is allowed to fly. This
         --value should be treated as a regulatory or safety-of-flight parameter
         --and therefore takes precedence over other requests.
-        MaximumAltitude: data real32.i;
+        MaximumAltitude: data Base_Types::Float_32;
         --Altitude type for max altitude
         MaxAltitudeType: data AltitudeType.i;
 end AirVehicleConfiguration.i;
@@ -301,57 +305,57 @@ end EntityState;
 data implementation EntityState.i
     subcomponents
         --A unique ID for this entity. IDs should be greater than zero
-        ID: data int64.i;
+        ID: data Base_Types::Integer_64;
         --Velocity in the body x-direction (postive out nose)
-        u: data real32.i;
+        u: data Base_Types::Float_32;
         --Velocity in the body y-direction (positive out right wing)
-        v: data real32.i;
+        v: data Base_Types::Float_32;
         --Velocity in the body z-direction (positve downward)
-        w: data real32.i;
+        w: data Base_Types::Float_32;
         --Acceleration in the body x-direction (postive out nose)
-        udot: data real32.i;
+        udot: data Base_Types::Float_32;
         --Acceleration in the body y-direction (positive out right wing)
-        vdot: data real32.i;
+        vdot: data Base_Types::Float_32;
         --Acceleration in the body z-direction (positve downward)
-        wdot: data real32.i;
+        wdot: data Base_Types::Float_32;
         --Angle between true North and the projection of the body x-axis in
         --the North-East plane.
-        Heading: data real32.i;
+        Heading: data Base_Types::Float_32;
         --Pitch of vehicle around body y-axis (positive upwards)
-        Pitch: data real32.i;
+        Pitch: data Base_Types::Float_32;
         --Roll angle of the vehicle around body x-axis (positive right wing
         --down)
-        Roll: data real32.i;
+        Roll: data Base_Types::Float_32;
         --roll-rate of vehicle (angular velocity around body x-axis). Positive
         --right-wing down.
-        p: data real32.i;
+        p: data Base_Types::Float_32;
         --pitch rate of the vehicle (angular velocity around body y-axis).
         --Positive nose-up.
-        q: data real32.i;
+        q: data Base_Types::Float_32;
         --yaw rate of the vehicle (angular velocity around body z-axis).
         --Positive nose right.
-        r: data real32.i;
+        r: data Base_Types::Float_32;
         --Course/Groundtrack angle of the entity referenced to true North
-        Course: data real32.i;
+        Course: data Base_Types::Float_32;
         --Current entity ground speed
-        Groundspeed: data real32.i;
+        Groundspeed: data Base_Types::Float_32;
         --The perceived entity location
         Location: data Location3D.i;
         --The available energy remaining, expressed in terms of the percentage
         --of maximum capacity
-        EnergyAvailable: data real32.i;
+        EnergyAvailable: data Base_Types::Float_32;
         --The consumption rate of available energy, expressed in terms of the
         --percentage of maximum capacity used per second.
-        ActualEnergyRate: data real32.i;
+        ActualEnergyRate: data Base_Types::Float_32;
         --A list of states for any onboard payloads
         PayloadStateList: data PayloadState.i {Data_Model::Data_Representation => Array;};
         --The ID of the current waypoint. Only valid if the vehicle is in
         --waypoint following mode.
-        CurrentWaypoint: data int64.i;
+        CurrentWaypoint: data Base_Types::Integer_64;
         --Current command (VehicleActionCommand or MissionCommand) being
         --executed. A value of zero denotes no command being executed, or that a
         --command without an set identifier (CommandID) is being executed.
-        CurrentCommand: data int64.i;
+        CurrentCommand: data Base_Types::Integer_64;
         --The current mode for this vehicle.
         FIXMEMode: data NavigationMode.i;
         --Tasks that this entity is currently executing. An empty list
@@ -359,10 +363,10 @@ data implementation EntityState.i
         --the task number in the task request. For instance, if a waypoint is
         --associated with a search task, then the task number associated with
         --that search should be included in this list.
-        AssociatedTasks: data int64.i {Data_Model::Data_Representation => Array;};
+        AssociatedTasks: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --time stamp of this data. Time datum is defined by the application,
         --but unless otherwise specified is milliseconds since 1 Jan 1970
-        Time: data int64.i;
+        Time: data Base_Types::Integer_64;
         --A list that maps keys to values for the inclusion of extra, custom
         --information about this entity
         Info: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
@@ -389,14 +393,14 @@ end AirVehicleState;
 data implementation AirVehicleState.i extends EntityState.i
     subcomponents
         --vehicle true airspeed
-        Airspeed: data real32.i;
+        Airspeed: data Base_Types::Float_32;
         --Vertical speed (positive upwards) of the vehicle in the inertial
         --frame (rate of change of altitude)
-        VerticalSpeed: data real32.i;
+        VerticalSpeed: data Base_Types::Float_32;
         --Wind speed as detected or computed by the vehicle
-        WindSpeed: data real32.i;
+        WindSpeed: data Base_Types::Float_32;
         --Wind source direction (true) as detected or computed by the vehicle
-        WindDirection: data real32.i;
+        WindDirection: data Base_Types::Float_32;
 end AirVehicleState.i;
 
 data Wedge
@@ -411,17 +415,17 @@ end Wedge;
 data implementation Wedge.i
     subcomponents
         --Azimuthal centerline of the wedge.
-        AzimuthCenterline: data real32.i;
+        AzimuthCenterline: data Base_Types::Float_32;
         --Vertical centerline of the wedge.
-        VerticalCenterline: data real32.i;
+        VerticalCenterline: data Base_Types::Float_32;
         --Azimuthal angular extent of the wedge. The extent is centered around
         --the centerline. A value of zero denotes that this wedge is defined as
         --a single angle.
-        AzimuthExtent: data real32.i;
+        AzimuthExtent: data Base_Types::Float_32;
         --Vertical angular extent of the wedge. The extent is centered around
         --the centerline. A value of zero denotes that this wedge is defined as
         --a single angle.
-        VerticalExtent: data real32.i;
+        VerticalExtent: data Base_Types::Float_32;
 end Wedge.i;
 
 data AreaSearchTask extends SearchTask
@@ -445,7 +449,7 @@ end CameraAction;
 data implementation CameraAction.i extends PayloadAction.i
     subcomponents
         --The commanded horizontal (azimuth) field of view.
-        HorizontalFieldOfView: data real32.i;
+        HorizontalFieldOfView: data Base_Types::Float_32;
         --Associated payload actions that should be performed simultaneously
         --with the change in field of view. A frequent use case would be a
         --gimbal pointing action. If payload ID is zero, then the gimbal on
@@ -477,19 +481,19 @@ data implementation CameraConfiguration.i extends PayloadConfiguration.i
         FieldOfViewMode: data FOVOperationMode.i;
         --The minimum horizontal field of view of the sensor. Only used if
         --FieldOfViewMode is Continuous.
-        MinHorizontalFieldOfView: data real32.i;
+        MinHorizontalFieldOfView: data Base_Types::Float_32;
         --The maximum horizontal field of view of the sensor. Only used if
         --FieldOfViewMode is Continuous.
-        MaxHorizontalFieldOfView: data real32.i;
+        MaxHorizontalFieldOfView: data Base_Types::Float_32;
         --The horizontal field of views supported by the sensor. Only used if
         --FieldOfViewMode is Discrete.
-        DiscreteHorizontalFieldOfViewList: data real32.i {Data_Model::Data_Representation => Array;};
+        DiscreteHorizontalFieldOfViewList: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
         --The number of horizontal pixels in the output live-motion video
         --stream.
-        VideoStreamHorizontalResolution: data uint32.i;
+        VideoStreamHorizontalResolution: data Base_Types::Unsigned_32;
         --The number of vertical pixels in the output live-motion video
         --stream.
-        VideoStreamVerticalResolution: data uint32.i;
+        VideoStreamVerticalResolution: data Base_Types::Unsigned_32;
 end CameraConfiguration.i;
 
 data GimballedPayloadState extends PayloadState
@@ -503,13 +507,13 @@ data implementation GimballedPayloadState.i extends PayloadState.i
         PointingMode: data GimbalPointingMode.i;
         --Current azimuth angle of the gimbal boresight (positive from vehicle
         --x-axis).
-        Azimuth: data real32.i;
+        Azimuth: data Base_Types::Float_32;
         --Current elevation angle of the gimbal boresight (positive from
         --vehicle x-y plane).
-        Elevation: data real32.i;
+        Elevation: data Base_Types::Float_32;
         --Current rotation angle of the gimbal boresight (0 degrees aligned
         --with aircraft normal, positive clockwise).
-        Rotation: data real32.i;
+        Rotation: data Base_Types::Float_32;
 end GimballedPayloadState.i;
 
 data CameraState extends GimballedPayloadState
@@ -519,9 +523,9 @@ end CameraState;
 data implementation CameraState.i extends GimballedPayloadState.i
     subcomponents
         --The current horizontal field of view (in sensor axis).
-        HorizontalFieldOfView: data real32.i;
+        HorizontalFieldOfView: data Base_Types::Float_32;
         --The current vertical field of view (in sensor axis).
-        VerticalFieldOfView: data real32.i;
+        VerticalFieldOfView: data Base_Types::Float_32;
         --The current sensor footprint of the camera represented as a polygon
         --with n-vertices. If this field contains zero items then the footprint
         --is unavailable or was not calculated.
@@ -541,7 +545,7 @@ data implementation Circle.i extends AbstractGeometry.i
         --Center point of the circle
         CenterPoint: data Location3D.i;
         --Radius of the circle
-        Radius: data real32.i;
+        Radius: data Base_Types::Float_32;
 end Circle.i;
 
 data GimbalAngleAction extends PayloadAction
@@ -558,13 +562,13 @@ data implementation GimbalAngleAction.i extends PayloadAction.i
     subcomponents
         --The commanded azimuth angle (0 degrees out of nose, positive
         --clockwise).
-        Azimuth: data real32.i;
+        Azimuth: data Base_Types::Float_32;
         --The commanded elevation angle (0 degrees horizontal, positive
         --upwards).
-        Elevation: data real32.i;
+        Elevation: data Base_Types::Float_32;
         --The commanded rotation angle (0 degrees aligned with aircraft
         --normal, positive clockwise).
-        Rotation: data real32.i;
+        Rotation: data Base_Types::Float_32;
 end GimbalAngleAction.i;
 
 data GimbalConfiguration extends PayloadConfiguration
@@ -586,52 +590,52 @@ data implementation GimbalConfiguration.i extends PayloadConfiguration.i
         --Minimum azimuth that this sensor can slew in body axis (0 degrees
         --out of nose, positive clockwise). If this is a fixed-azimuth sensor,
         --then this should be set to the fixed azimuth value.
-        MinAzimuth: data real32.i;
+        MinAzimuth: data Base_Types::Float_32;
         --Maximum azimuth that this sensor can slew in body axis (0 degrees
         --out of nose, positive clockwise). If this is a fixed-azimuth sensor,
         --then this should be set to the fixed azimuth value.
-        MaxAzimuth: data real32.i;
+        MaxAzimuth: data Base_Types::Float_32;
         --Determines whether there are any limits on the azimuth of the
         --gimbal. If this is set to false, then MinAzimuth and MaxAzimuth are
         --not used, and the gimbal is capable of continuously spinning in a 360
         --degree circle without hitting any stops.
-        IsAzimuthClamped: data bool.i;
+        IsAzimuthClamped: data Base_Types::Boolean;
         --Minimum elevation that this sensor can slew in body axis (0 degrees
         --horizontal, positive upwards). If this is a fixed-elevation sensor,
         --then this should be set to the fixed elevation value.
-        MinElevation: data real32.i;
+        MinElevation: data Base_Types::Float_32;
         --Maximum elevation that this sensor can slew in body axis (0 degrees
         --horizontal, positive upwards). If this is a fixed-elevation sensor,
         --then this should be set to the fixed elevation value.
-        MaxElevation: data real32.i;
+        MaxElevation: data Base_Types::Float_32;
         --Determines whether there are any limits on the elevation of the
         --gimbal. If this is set to false, then MinElevation and MaxElevation
         --are not used, and the gimbal is capable of continuously spinning in a
         --360 degree circle without hitting any stops.
-        IsElevationClamped: data bool.i;
+        IsElevationClamped: data Base_Types::Boolean;
         --Minimum rotation that this sensor can slew in body axis (0 degrees
         --aligned with aircraft normal, positive clockwise). If this is a fixed-
         --rotation sensor, then this should be set to the fixed rotation value.
-        MinRotation: data real32.i;
+        MinRotation: data Base_Types::Float_32;
         --Maximum rotation that this sensor can slew in body axis (0 degrees
         --aligned with aircraft normal, positive clockwise). If this is a fixed-
         --rotation sensor, then this should be set to the fixed rotation value.
-        MaxRotation: data real32.i;
+        MaxRotation: data Base_Types::Float_32;
         --Determines whether there are any limits on the rotation of the
         --gimbal. If this is set to false, then MinRotation and MaxRotation are
         --not used, and the gimbal is capable of continuously rotating in a 360
         --degree circle without hitting any stops.
-        IsRotationClamped: data bool.i;
+        IsRotationClamped: data Base_Types::Boolean;
         --Rate of maximum horizontal slew for this gimbal.
-        MaxAzimuthSlewRate: data real32.i;
+        MaxAzimuthSlewRate: data Base_Types::Float_32;
         --Rate of maximum vertical slew for this gimbal.
-        MaxElevationSlewRate: data real32.i;
+        MaxElevationSlewRate: data Base_Types::Float_32;
         --Rate of maximum rotation for this gimbal.
-        MaxRotationRate: data real32.i;
+        MaxRotationRate: data Base_Types::Float_32;
         --Lists the PayloadID of each sensor physically located within the
         --gimbal and that shares the same gimbal angles. It is assumed that all
         --sensors are boresighted.
-        ContainedPayloadList: data int64.i {Data_Model::Data_Representation => Array;};
+        ContainedPayloadList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end GimbalConfiguration.i;
 
 data GimbalScanAction extends PayloadAction
@@ -648,26 +652,26 @@ data implementation GimbalScanAction.i extends PayloadAction.i
         --sets the time-to-scan in the azimuthal direction. This is the time
         --to complete one sweep through the the length of EndAzimuth -
         --StartAzimuth.
-        AzimuthSlewRate: data real32.i;
+        AzimuthSlewRate: data Base_Types::Float_32;
         --sets the time-to-scan in the elevation direction. This is the time
         --to complete one sweep through the the length of EndElevation -
         --StartElevation.
-        ElevationSlewRate: data real32.i;
+        ElevationSlewRate: data Base_Types::Float_32;
         --The starting azimuth for the sensor scan (boresight angle right of
         --aircraft long axis)
-        StartAzimuth: data real32.i;
+        StartAzimuth: data Base_Types::Float_32;
         --The ending azimuth for the sensor scan (boresight angle right of
         --aircraft long axis)
-        EndAzimuth: data real32.i;
+        EndAzimuth: data Base_Types::Float_32;
         --The starting elevation for the sensor scan (boresight angle positive
         --from aircraft x-y plane)
-        StartElevation: data real32.i;
+        StartElevation: data Base_Types::Float_32;
         --The ending elevation for the sensor scan (boresight angle positive
         --from aircraft x-y plane)
-        EndElevation: data real32.i;
+        EndElevation: data Base_Types::Float_32;
         --Number of sensor sweeps to perform. A zero value denotes indefinite
         --number of sweeps.
-        Cycles: data uint32.i;
+        Cycles: data Base_Types::Unsigned_32;
 end GimbalScanAction.i;
 
 data GimbalStareAction extends PayloadAction
@@ -683,7 +687,7 @@ data implementation GimbalStareAction.i extends PayloadAction.i
         Starepoint: data Location3D.i;
         --Duration for the stare operation. Zero denotes an indefinate stare
         --time
-        Duration: data int64.i;
+        Duration: data Base_Types::Integer_64;
 end GimbalStareAction.i;
 
 data GimbalState extends PayloadState
@@ -697,13 +701,13 @@ data implementation GimbalState.i extends PayloadState.i
         PointingMode: data GimbalPointingMode.i;
         --Current azimuth angle of the gimbal boresight (positive from vehicle
         --x-axis).
-        Azimuth: data real32.i;
+        Azimuth: data Base_Types::Float_32;
         --Current elevation angle of the gimbal boresight (positive from
         --vehicle x-y plane).
-        Elevation: data real32.i;
+        Elevation: data Base_Types::Float_32;
         --Current rotation angle of the gimbal boresight (0 degrees aligned
         --with aircraft normal, positive clockwise).
-        Rotation: data real32.i;
+        Rotation: data Base_Types::Float_32;
 end GimbalState.i;
 
 data GoToWaypointAction extends NavigationAction
@@ -718,7 +722,7 @@ end GoToWaypointAction;
 data implementation GoToWaypointAction.i extends NavigationAction.i
     subcomponents
         --Waypoint number to which the aircraft should fly.
-        WaypointNumber: data int64.i;
+        WaypointNumber: data Base_Types::Integer_64;
 end GoToWaypointAction.i;
 
 data KeepInZone extends AbstractZone
@@ -727,6 +731,8 @@ end KeepInZone;
 --Describes the outer boundary of operations for the entire UAV team
 --or a subset of the vehicle team.
 data implementation KeepInZone.i extends AbstractZone.i
+  subcomponents
+    dummy: data Base_Types::Integer_32;
 end KeepInZone.i;
 
 data KeepOutZone extends AbstractZone
@@ -764,7 +770,7 @@ data implementation LineSearchTask.i extends SearchTask.i
         ViewAngleList: data Wedge.i {Data_Model::Data_Representation => Array;};
         --If true, the ViewAngleList specifies inertial (North-East) angles.
         --See documentation above.
-        UseInertialViewAngles: data bool.i;
+        UseInertialViewAngles: data Base_Types::Boolean;
 end LineSearchTask.i;
 
 data NavigationAction extends VehicleAction
@@ -786,25 +792,25 @@ data implementation LoiterAction.i extends NavigationAction.i
         LoiterType: data LoiterType.i;
         --The radius for the loiter. May be used for any curvature parameter
         --of the vehicle specific hold pattern.
-        Radius: data real32.i;
+        Radius: data Base_Types::Float_32;
         --Direction of the major axis of the vehicle specific hold pattern.
         --For Racetracks and Figure-Eights, this is the direction of the long
         --axis. Hovering loiters, this is direction the aircraft should face in
         --the loiter.
-        Axis: data real32.i;
+        Axis: data Base_Types::Float_32;
         --Used in racetrack and figure-eight loiters. For figure-eight
         --loiters, this is the length between the focii of the turn circles. For
         --racetracks, this is the length of the straight-away. Both types have a
         --total length of Length + 2 * Radius. For figure-eight loiters, if
         --Length is less than 2 * radius, then this field is ignored.
-        Length: data real32.i;
+        Length: data Base_Types::Float_32;
         --Direction of travel.
         Direction: data LoiterDirection.i;
         --The time to loiter at this point before continuing. A negative time
         --value denotes perpetual orbit.
-        Duration: data int64.i;
+        Duration: data Base_Types::Integer_64;
         --Commanded True Airspeed
-        Airspeed: data real32.i;
+        Airspeed: data Base_Types::Float_32;
         --The geometric center point of the loiter.
         Location: data Location3D.i;
 end LoiterAction.i;
@@ -826,19 +832,19 @@ end Waypoint;
 data implementation Waypoint.i extends Location3D.i
     subcomponents
         --A unique waypoint number
-        Number: data int64.i;
+        Number: data Base_Types::Integer_64;
         --The index of the next waypoint in the list. Consecutively numbered
         --waypoints are <b>not</b> considered linked, the link must be
         --explicitly stated in this field.
-        NextWaypoint: data int64.i;
+        NextWaypoint: data Base_Types::Integer_64;
         --Commanded speed for this waypoint. See SpeedType for defintion of
         --this field.
-        Speed: data real32.i;
+        Speed: data Base_Types::Float_32;
         --Type of commanded speed
         SpeedType: data SpeedType.i;
         --The commanded climb rate. Positive values upwards. For surface
         --(ground and sea) entities, this value is ignored.
-        ClimbRate: data real32.i;
+        ClimbRate: data Base_Types::Float_32;
         --The type of turn to execute
         TurnType: data TurnType.i;
         --A list of actions to perform at this waypoint
@@ -846,16 +852,16 @@ data implementation Waypoint.i extends Location3D.i
         --A waypoint for contingency (e.g. lost-comm, alternate mission)
         --operations. A value of zero denotes that no contingency point is
         --specified.
-        ContingencyWaypointA: data int64.i;
+        ContingencyWaypointA: data Base_Types::Integer_64;
         --A waypoint for contingency (e.g. lost-comm, alternate mission)
         --operations. A value of zero denotes that no contingency point is
         --specified.
-        ContingencyWaypointB: data int64.i;
+        ContingencyWaypointB: data Base_Types::Integer_64;
         --A list of tasks that are associated with this waypoint. A length of
         --zero denotes no associated tasks. This field is for analysis purposes.
         --The automation service should associate a list of tasks with each
         --waypoint to enable analysis of the allocation of tasks to vehicles.
-        AssociatedTasks: data int64.i {Data_Model::Data_Representation => Array;};
+        AssociatedTasks: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end Waypoint.i;
 
 data MissionCommand extends VehicleActionCommand
@@ -882,7 +888,7 @@ data implementation MissionCommand.i extends VehicleActionCommand.i
         --waypoint list. Waypoints are not necessarily ordered in the list.
         WaypointList: data Waypoint.i {Data_Model::Data_Representation => Array;};
         --ID of the first waypoint to follow.
-        FirstWaypoint: data int64.i;
+        FirstWaypoint: data Base_Types::Integer_64;
 end MissionCommand.i;
 
 data MustFlyTask extends Task
@@ -896,7 +902,7 @@ data implementation MustFlyTask.i extends Task.i
         --Denotes whether altitude should be used in this MustFlyTask. If
         --false, the aircraft should maintain altitude according to previous
         --commands.
-        UseAltitude: data bool.i;
+        UseAltitude: data Base_Types::Boolean;
 end MustFlyTask.i;
 
 data OperatorSignal
@@ -917,11 +923,11 @@ end OperatingRegion;
 data implementation OperatingRegion.i
     subcomponents
         --Operating region ID
-        ID: data int64.i;
+        ID: data Base_Types::Integer_64;
         --Abstract Zone IDs in which the entity must remain during operation
-        KeepInAreas: data int64.i {Data_Model::Data_Representation => Array;};
+        KeepInAreas: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Keep Out Zone IDs that an entity must remain out of during operation
-        KeepOutAreas: data int64.i {Data_Model::Data_Representation => Array;};
+        KeepOutAreas: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end OperatingRegion.i;
 
 data AutomationRequest
@@ -939,29 +945,29 @@ end AutomationRequest;
 data implementation AutomationRequest.i
     subcomponents
         --List of entities to consider when planning.
-        EntityList: data int64.i {Data_Model::Data_Representation => Array;};
+        EntityList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --list of task IDs (defined by {@link Task} messages) to be planned
         --for by the automation service
-        TaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        TaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         
         -- ADDED: BDR (20170808)
 		-- Size of the TaskList (not necessary if AGREE can get array size)		
-        TaskListSize : data int64.i;
+        TaskListSize : data Base_Types::Integer_64;
         
         --string containing the relationship between requested tasks. If
         --empty, all tasks are to be completed in any order. The format of the
         --string is specific to the automation service. This relationship string
         --is the mechanism for incorporating task precedence, priority, timing,
         --etc.
-        TaskRelationships: data string.i;
+        TaskRelationships: data Base_Types::Integer_32;
         --Operating region ID to be considered during planning
-        OperatingRegion: data int64.i;
+        OperatingRegion: data Base_Types::Integer_64;
         --Denotes that that the planner should restart any tasks that have
         --been performed or are currently being performed. This is useful in
         --situations when a task request contains tasks that have been requested
         --previously, and the operator wishes to restart the mission plans from
         --the beginning.
-        RedoAllTasks: data bool.i;
+        RedoAllTasks: data Base_Types::Boolean;
 end AutomationRequest.i;
 
 data PointSearchTask extends SearchTask
@@ -974,7 +980,7 @@ data implementation PointSearchTask.i extends SearchTask.i
         SearchLocation: data Location3D.i;
         --Minimum distance that an aircraft must maintain from the point of
         --interest.
-        StandoffDistance: data real32.i;
+        StandoffDistance: data Base_Types::Float_32;
         --A list of acceptable look-angles for this task. Each wedge is
         --defined relative to true North. To be a valid look angle, a sensor
         --must be looking from a direction within the bounds of the wedge.
@@ -1002,12 +1008,12 @@ data implementation Rectangle.i extends AbstractGeometry.i
         --Center point of the rectangle. Altitude value is ignored
         CenterPoint: data Location3D.i;
         --Width of the rectangle
-        Width: data real32.i;
+        Width: data Base_Types::Float_32;
         --Height of the rectangle
-        Height: data real32.i;
+        Height: data Base_Types::Float_32;
         --Rotation of the rectangle around the center point (positive from
         --north axis towards east)
-        Rotation: data real32.i;
+        Rotation: data Base_Types::Float_32;
 end Rectangle.i;
 
 data RemoveTasks
@@ -1025,7 +1031,7 @@ data implementation RemoveTasks.i
         --replaced an old task with a new one, or has deleted a task
         --permanently. This is an optional message that automation services can
         --ignore, depending on how they manage tasks.
-        TaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        TaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end RemoveTasks.i;
 
 data ServiceStatus
@@ -1039,7 +1045,7 @@ end ServiceStatus;
 data implementation ServiceStatus.i
     subcomponents
         --The estimated percentage completed for an automation process.
-        PercentComplete: data real32.i;
+        PercentComplete: data Base_Types::Float_32;
         --Status from the automation service to the simulation regarding
         --errors or conditions.
         Info: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
@@ -1063,15 +1069,15 @@ data implementation SessionStatus.i
         --zero, then no start time is specfied and each sim component is to use
         --the first receipt of this Struct with a SimStatus of "Running" as the
         --start time.
-        StartTime: data int64.i;
+        StartTime: data Base_Types::Integer_64;
         --The current time in scenario time . This is the internal time for
         --the simulation, not the absolute time since epoch, as in "StartTime".
         --The internal simualation time is based on the start time and the real-
         --time muiltiple, which can change throughout the simulation.
-        ScenarioTime: data int64.i;
+        ScenarioTime: data Base_Types::Integer_64;
         --The ratio of simulation time to real time. Values greater than 1.0
         --denote faster than real-time. Values less than 0.0 have no meaning.
-        RealTimeMultiple: data real32.i;
+        RealTimeMultiple: data Base_Types::Float_32;
         --A field to store command-line style parameters used to initialize or
         --modify an execution.
         Parameters: data KeyValuePair.i {Data_Model::Data_Representation => Array;};
@@ -1087,9 +1093,9 @@ data implementation VehicleActionCommand.i
     subcomponents
         --A unique id for this command. automation services should issue new
         --ids with every new command
-        CommandID: data int64.i;
+        CommandID: data Base_Types::Integer_64;
         --The id of the vehicle for this command.
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --a set of actions to be performed immediately by the vehicle.
         VehicleActionList: data VehicleAction.i {Data_Model::Data_Representation => Array;};
         --Denotes the current execution status of this command.
@@ -1104,10 +1110,10 @@ end VideoStreamAction;
 data implementation VideoStreamAction.i extends VehicleAction.i
     subcomponents
         --A unique id for the video stream.
-        VideoStreamID: data int32.i;
+        VideoStreamID: data Base_Types::Integer_32;
         --The PayloadID of the sensor which should be activated on this video
         --stream.
-        ActiveSensor: data int32.i;
+        ActiveSensor: data Base_Types::Integer_32;
 end VideoStreamAction.i;
 
 data VideoStreamConfiguration extends PayloadConfiguration
@@ -1121,7 +1127,7 @@ data implementation VideoStreamConfiguration.i extends PayloadConfiguration.i
         --List the PayloadID of each sensor that is multiplexed into this
         --stream. The {@link VideoStreamAction} message selects which of these
         --sensors is currently active on the stream.
-        AvailableSensorList: data int64.i {Data_Model::Data_Representation => Array;};
+        AvailableSensorList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end VideoStreamConfiguration.i;
 
 data VideoStreamState extends PayloadState
@@ -1131,7 +1137,7 @@ end VideoStreamState;
 data implementation VideoStreamState.i extends PayloadState.i
     subcomponents
         --The PayloadID of the sensor which is active on this video stream..
-        ActiveSensor: data int64.i;
+        ActiveSensor: data Base_Types::Integer_64;
 end VideoStreamState.i;
 
 data AutomationResponse
@@ -1161,7 +1167,7 @@ end RemoveZones;
 data implementation RemoveZones.i
     subcomponents
         --List of zones to remove
-        ZoneList: data int64.i {Data_Model::Data_Representation => Array;};
+        ZoneList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end RemoveZones.i;
 
 data RemoveEntities
@@ -1172,7 +1178,7 @@ end RemoveEntities;
 data implementation RemoveEntities.i
     subcomponents
         --List of entities to remove
-        EntityList: data int64.i {Data_Model::Data_Representation => Array;};
+        EntityList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end RemoveEntities.i;
 
 data FlightDirectorAction extends NavigationAction
@@ -1184,17 +1190,17 @@ end FlightDirectorAction;
 data implementation FlightDirectorAction.i extends NavigationAction.i
     subcomponents
         --Speed to fly
-        Speed: data real32.i;
+        Speed: data Base_Types::Float_32;
         --type of speed to fly
         SpeedType: data SpeedType.i;
         --True heading to fly
-        Heading: data real32.i;
+        Heading: data Base_Types::Float_32;
         --Altitude to maintain.
-        Altitude: data real32.i;
+        Altitude: data Base_Types::Float_32;
         --Altitude type for specified altitude
         AltitudeType: data AltitudeType.i;
         --target climb/descent rate for changing altitude
-        ClimbRate: data real32.i;
+        ClimbRate: data Base_Types::Float_32;
 end FlightDirectorAction.i;
 
 data WeatherReport
@@ -1212,20 +1218,20 @@ data implementation WeatherReport.i
         --report pertains to the entire area.
         Area: data AbstractZone.i;
         --Windspeed value for this area
-        WindSpeed: data real32.i;
+        WindSpeed: data Base_Types::Float_32;
         --Wind direction. Direction is the true heading from which the wind is
         --blowing.
-        WindDirection: data real32.i;
+        WindDirection: data Base_Types::Float_32;
         --Visibility, according to the <a
         --href="http://en.wikipedia.org/wiki/Visibility">ICAO definition</a>.
-        Visibility: data real32.i;
+        Visibility: data Base_Types::Float_32;
         --Height of the bottom of a cloud layer, in MSL altitude. If there is
         --more than one cloud layer, create WeatherReports for each zone that
         --contains a cloud layer. A value of "0" denotes free-of-clouds
-        CloudCeiling: data real32.i;
+        CloudCeiling: data Base_Types::Float_32;
         --Amount of cloud coverage for the given cloud layer. Values should be
         --0..1, 0 denoting free-of-clouds, and 1 denoting overcast.
-        CloudCoverage: data real32.i;
+        CloudCoverage: data Base_Types::Float_32;
 end WeatherReport.i;
 
 data FollowPathCommand extends VehicleActionCommand
@@ -1238,16 +1244,16 @@ data implementation FollowPathCommand.i extends VehicleActionCommand.i
         --The first waypoint to follow. This should correspond to the number
         --of a waypoint in the waypoint list. If this is zero, no waypoint will
         --be followed.
-        FirstWaypoint: data int64.i;
+        FirstWaypoint: data Base_Types::Integer_64;
         --A list of waypoints to follow
         WaypointList: data PathWaypoint.i {Data_Model::Data_Representation => Array;};
         --Describes the start time for this action, in scenario time. If this
         --field is zero, the action is completed immediately.
-        StartTime: data int64.i;
+        StartTime: data Base_Types::Integer_64;
         --Describes the end time for this action, in scenario time. If this
         --field is zero, it should be ignored, otherwise The entity will travel
         --until the stop time is reached.
-        StopTime: data int64.i;
+        StopTime: data Base_Types::Integer_64;
         --Describes how the entity should treat the end-of-path. Entities can
         --complete the path once, or continuously.
         RepeatMode: data TravelMode.i;
@@ -1261,7 +1267,7 @@ data implementation PathWaypoint.i extends Waypoint.i
     subcomponents
         --The amount of time that an entity should pause before moving to the
         --next waypoint.
-        PauseTime: data int64.i;
+        PauseTime: data Base_Types::Integer_64;
 end PathWaypoint.i;
 
 data StopMovementAction extends VehicleAction
@@ -1285,7 +1291,7 @@ end WaypointTransfer;
 data implementation WaypointTransfer.i
     subcomponents
         --ID of the entity assoicated with the waypoints
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --A list of wayppoints to transfer. This may be empty if the transfer
         --type is "RequestWaypoints" or "ClearWaypoints"
         Waypoints: data Waypoint.i {Data_Model::Data_Representation => Array;};
@@ -1300,247 +1306,275 @@ end PayloadStowAction;
 data implementation PayloadStowAction.i
     subcomponents
         --payload to stow
-        PayloadID: data int64.i;
+        PayloadID: data Base_Types::Integer_64;
 end PayloadStowAction.i;
 
 data WavelengthBand extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --Other or undefined wavelength band
-            "AllAny",
+    --        "AllAny",
             --Other or undefined wavelength band
-            "EO",
+    --        "EO",
             --Other or undefined wavelength band
-            "LWIR",
+    --        "LWIR",
             --Other or undefined wavelength band
-            "SWIR",
+    --        "SWIR",
             --Other or undefined wavelength band
-            "MWIR",
+    --        "MWIR",
             --Other or undefined wavelength band
-            "Other");
+    --        "Other");
 end WavelengthBand;
 
 data implementation WavelengthBand.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end WavelengthBand.i;
 
 data NavigationMode extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "Waypoint",
+    --        "Waypoint",
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "Loiter",
+    --        "Loiter",
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "FlightDirector",
+     --       "FlightDirector",
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "TargetTrack",
+     --       "TargetTrack",
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "FollowLeader",
+     --       "FollowLeader",
             --lost comm, vehicle is out of comm range and should be executing
             --lost-comm behavior
-            "LostComm");
+     --       "LostComm");
 end NavigationMode;
 
 data implementation NavigationMode.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end NavigationMode.i;
 
 data FOVOperationMode extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --field of view can only be set to certian, discrete values
-            "Continuous",
+    --        "Continuous",
             --field of view can only be set to certian, discrete values
-            "Discrete");
+    --        "Discrete");
 end FOVOperationMode;
 
 data implementation FOVOperationMode.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end FOVOperationMode.i;
 
 data GimbalPointingMode extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --indicates that the gimbal is stowed
-            "Unknown",
+    --        "Unknown",
             --indicates that the gimbal is stowed
-            "AirVehicleRelativeAngle",
+    --        "AirVehicleRelativeAngle",
             --indicates that the gimbal is stowed
-            "AirVehicleRelativeSlewRate",
+    --        "AirVehicleRelativeSlewRate",
             --indicates that the gimbal is stowed
-            "LatLonSlaved",
+    --        "LatLonSlaved",
             --indicates that the gimbal is stowed
-            "InertialRelativeSlewRate",
+    --        "InertialRelativeSlewRate",
             --indicates that the gimbal is stowed
-            "Scan",
+    --        "Scan",
             --indicates that the gimbal is stowed
-            "Stowed");
+     --       "Stowed");
 end GimbalPointingMode;
 
 data implementation GimbalPointingMode.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end GimbalPointingMode.i;
 
 data ZoneAvoidanceType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --zone defines an area that is sensitive to visual detection. The
             --threshold of visual detection is not defined by this standard.
-            "Physical",
+    --        "Physical",
             --zone defines an area that is sensitive to visual detection. The
             --threshold of visual detection is not defined by this standard.
-            "Regulatory",
+    --        "Regulatory",
             --zone defines an area that is sensitive to visual detection. The
             --threshold of visual detection is not defined by this standard.
-            "Acoustic",
+    --        "Acoustic",
             --zone defines an area that is sensitive to visual detection. The
             --threshold of visual detection is not defined by this standard.
-            "Threat",
+    --        "Threat",
             --zone defines an area that is sensitive to visual detection. The
             --threshold of visual detection is not defined by this standard.
-            "Visual");
+    --        "Visual");
 end ZoneAvoidanceType;
 
 data implementation ZoneAvoidanceType.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end ZoneAvoidanceType.i;
 
 data LoiterType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+    --    Data_Model::Enumerators => (
             --Hovering.
-            "VehicleDefault",
+    --        "VehicleDefault",
             --Hovering.
-            "Circular",
+     --       "Circular",
             --Hovering.
-            "Racetrack",
+    --        "Racetrack",
             --Hovering.
-            "FigureEight",
+     --       "FigureEight",
             --Hovering.
-            "Hover");
+    --          "Hover");
 end LoiterType;
 
 data implementation LoiterType.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end LoiterType.i;
 
 data LoiterDirection extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --clockwise
-            "VehicleDefault",
+    --        "VehicleDefault",
             --clockwise
-            "CounterClockwise",
+     --       "CounterClockwise",
             --clockwise
-            "Clockwise");
+    --        "Clockwise");
 end LoiterDirection;
 
 data implementation LoiterDirection.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end LoiterDirection.i;
 
 data ServiceStatusType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --error from automation service
-            "Information",
+    --        "Information",
             --error from automation service
-            "Warning",
+   --         "Warning",
             --error from automation service
-            "Error");
+   --         "Error");
 end ServiceStatusType;
 
 data implementation ServiceStatusType.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end ServiceStatusType.i;
 
 data SimulationStatusType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --simulation is reset
-            "Stopped",
+    --        "Stopped",
             --simulation is reset
-            "Running",
+    --        "Running",
             --simulation is reset
-            "Paused",
+    --        "Paused",
             --simulation is reset
-            "Reset");
+    --        "Reset");
 end SimulationStatusType;
 
 data implementation SimulationStatusType.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end SimulationStatusType.i;
 
 data SpeedType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+   --     Data_Model::Enumerators => (
             --groundspeed
-            "Airspeed",
+   --         "Airspeed",
             --groundspeed
-            "Groundspeed");
+   --         "Groundspeed");
 end SpeedType;
 
 data implementation SpeedType.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end SpeedType.i;
 
 data TurnType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+    --    Data_Model::Enumerators => (
             --fly over, return to track
-            "TurnShort",
+    --        "TurnShort",
             --fly over, return to track
-            "FlyOver");
+    --        "FlyOver");
 end TurnType;
 
 data implementation TurnType.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end TurnType.i;
 
 data CommandStatusType extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+   --     Data_Model::Enumerators => (
             --Cancelled by an operator, aircraft, or other entity
-            "Pending",
+    --        "Pending",
             --Cancelled by an operator, aircraft, or other entity
-            "Approved",
+    --        "Approved",
             --Cancelled by an operator, aircraft, or other entity
-            "InProcess",
+    --        "InProcess",
             --Cancelled by an operator, aircraft, or other entity
-            "Executed",
+    --        "Executed",
             --Cancelled by an operator, aircraft, or other entity
-            "Cancelled");
+    --        "Cancelled");
 end CommandStatusType;
 
 data implementation CommandStatusType.i
+  subcomponents
+      enumAsInt : data Base_Types::Integer_32;  
 end CommandStatusType.i;
 
 data TravelMode extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+   -- properties
+   --     Data_Model::Enumerators => (
             --Upon reaching the end of a route, the entity travels to the first
             --point and repeats the route.
-            "SinglePass",
+   --         "SinglePass",
             --Upon reaching the end of a route, the entity travels to the first
             --point and repeats the route.
-            "ReverseCourse",
+   --         "ReverseCourse",
             --Upon reaching the end of a route, the entity travels to the first
             --point and repeats the route.
-            "Loop");
+   --         "Loop");
 end TravelMode;
 
 data implementation TravelMode.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end TravelMode.i;
 
 data WaypointTransferMode extends Base_Types::Integer
-    properties
-        Data_Model::Enumerators => (
+    --properties
+   --     Data_Model::Enumerators => (
             --Reports waypoints that are curretly in the aircraft computer
-            "RequestWaypoints",
+    --        "RequestWaypoints",
             --Reports waypoints that are curretly in the aircraft computer
-            "AddWaypoints",
+    --        "AddWaypoints",
             --Reports waypoints that are curretly in the aircraft computer
-            "ClearWaypoints",
+   --         "ClearWaypoints",
             --Reports waypoints that are curretly in the aircraft computer
-            "ReportWaypoints");
+    --        "ReportWaypoints");
 end WaypointTransferMode;
 
 data implementation WaypointTransferMode.i
+    subcomponents
+      enumAsInt : data Base_Types::Integer_32;
 end WaypointTransferMode.i;
 
 end CMASI;

@@ -2,7 +2,7 @@ package TaskTrackerService_Pkg
 public
     with CMASI;
     with IMPACT;
-    
+    with TB_SYS;
     thread TaskTrackerService
         features
             MissionCommand_in: in event data port cmasi::MissionCommand.i;
@@ -16,6 +16,11 @@ public
             LineOfInterest_in: in event data port impact::LineOfInterest.i;
         properties
             Dispatch_Protocol => Sporadic;
+
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end TaskTrackerService;
     
 end TaskTrackerService_Pkg;

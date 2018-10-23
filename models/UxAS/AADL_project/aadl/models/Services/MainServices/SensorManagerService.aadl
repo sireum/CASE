@@ -7,7 +7,7 @@ public
     
     -- Included
     with ServiceBase_Pkg;
-    
+    with TB_SYS;
     thread SensorManagerService extends ServiceBase_Pkg::ServiceBase
         features
             GroundVehicleConfiguration_in: in event data port impact::GroundVehicleConfiguration.i;
@@ -16,10 +16,12 @@ public
             SurfaceVehicleConfiguration_in: in event data port impact::SurfaceVehicleConfiguration.i;
             SensorFootprintRequests_in: in event data port uxtask::SensorFootprintRequests.i;
             SensorFootprintResponse_out: out event data port uxtask::SensorFootprintResponse.i;
-        annex agree {**
-        guarantee "footporint response" : true ->
-          pre(event(SensorFootprintRequests_in)) = event(SensorFootprintResponse_out);
-    **};
+        properties
+            Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us; 
     end SensorManagerService;
     
 end SensorManagerService_Pkg;

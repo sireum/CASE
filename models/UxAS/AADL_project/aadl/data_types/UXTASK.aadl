@@ -29,11 +29,11 @@ end PlanningState;
 data implementation PlanningState.i
     subcomponents
         --Identifier of the entitiy
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --Initial position of this entity for the plan
         PlanningPosition: data CMASI::Location3D.i;
         --Initial heading of this entity for the plan
-        PlanningHeading: data real32.i;
+        PlanningHeading: data Base_Types::Float_32;
 end PlanningState.i;
 
 data AssignmentCoordination
@@ -47,7 +47,7 @@ end AssignmentCoordination;
 data implementation AssignmentCoordination.i
     subcomponents
         --Identifier of the associated CoordinatedAutomationRequest
-        CoordinatedAutomationRequestID: data int64.i;
+        CoordinatedAutomationRequestID: data Base_Types::Integer_64;
         --The state of the entity that will used for planning/assignment of
         --the given automation request.
         PlanningState: data PlanningState.i;
@@ -63,7 +63,7 @@ end CoordinatedAutomationRequest;
 data implementation CoordinatedAutomationRequest.i
     subcomponents
         --Identifier for tracking requests and coordination
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --This is the maximum time to wait for {@link AssignmentCoordination}
         --messages from the other eligible entities, before proceeding with the
         --assignment. Note: the value of -1 indicates that there is no limit. If
@@ -74,7 +74,7 @@ data implementation CoordinatedAutomationRequest.i
         --assignment. Note: if there are no eligble entities and the {@link
         --MaximumResponseTime} is -1, then the {@link AssignmentCoordination}
         --proceeds with the assignment immediately.
-        MaximumResponseTime: data int64.i;
+        MaximumResponseTime: data Base_Types::Integer_64;
         --Original automation request without a unique identifier
         OriginalRequest: data CMASI::AutomationRequest.i;
         --The initial states of entities used in planning. Note: if an
@@ -90,14 +90,14 @@ end TaskAutomationRequest;
 data implementation TaskAutomationRequest.i
     subcomponents
         --Identifier for tracking requests and responses
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --Original automation request without a unique identifier
         OriginalRequest: data CMASI::AutomationRequest.i;
         --If this boolean is true, then the resulting plans based on this
         --automation request will not be directly implemented, for example,
         --tasks should not expect the waypoints generated for this request to be
         --active
-        SandBoxRequest: data bool.i;
+        SandBoxRequest: data Base_Types::Boolean;
         --The initial states of entities used in planning. Note: if an
         --eligible entity does not have a PlanningState, then it's most recent
         --EntityState is used for plannning.
@@ -113,7 +113,7 @@ data implementation TaskAutomationResponse.i
     subcomponents
         --Identifier for tracking requests and responses. Must match RequestID
         --from corresponding TaskAutomationRequest
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Original automation request without a unique identifier
         OriginalResponse: data CMASI::AutomationResponse.i;
 end TaskAutomationResponse.i;
@@ -125,14 +125,14 @@ end UniqueAutomationRequest;
 data implementation UniqueAutomationRequest.i
     subcomponents
         --Identifier for tracking requests and responses
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --Original automation request without a unique identifier
         OriginalRequest: data CMASI::AutomationRequest.i;
         --If this boolean is true, then the resulting plans based on this
         --automation request will not be directly implemented, for example,
         --tasks should not expect the waypoints generated for this request to be
         --active
-        SandBoxRequest: data bool.i;
+        SandBoxRequest: data Base_Types::Boolean;
         --The initial states of entities used in planning. Note: if an
         --eligible entity does not have a PlanningState, then it's most recent
         --EntityState is used for plannning.
@@ -147,7 +147,7 @@ data implementation UniqueAutomationResponse.i
     subcomponents
         --Identifier for tracking requests and responses. Must match RequestID
         --from corresponding UniqueAutomationRequest
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Original automation request without a unique identifier
         OriginalResponse: data CMASI::AutomationResponse.i;
 end UniqueAutomationResponse.i;
@@ -160,7 +160,7 @@ end SensorFootprintRequests;
 data implementation SensorFootprintRequests.i
     subcomponents
         --Request ID for correlating to response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --Request ID for correlating to response
         Footprints: data FootprintRequest.i {Data_Model::Data_Representation => Array;};
 end SensorFootprintRequests.i;
@@ -174,23 +174,23 @@ end FootprintRequest;
 data implementation FootprintRequest.i
     subcomponents
         --ID corresponding to this specific footprint request
-        FootprintRequestID: data int64.i;
+        FootprintRequestID: data Base_Types::Integer_64;
         --Single vehicle to be considered for sensor request.
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Camera wavelength to be considered. If list is empty, planner should
         --plan for all available sensors on each entity
         EligibleWavelengths: data CMASI::WavelengthBand.i {Data_Model::Data_Representation => Array;};
         --Desired ground sample distance for an eligible sensor. If list is
         --empty, then footprint calculation uses the max ground sample distance
         --for the specified altitude.
-        GroundSampleDistances: data real32.i {Data_Model::Data_Representation => Array;};
+        GroundSampleDistances: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
         --AGL Altitude to consider during sensor information calculation. If
         --'AglAltitudes' list is empty, sensor planner should use nominal
         --altitude from entity configurations
-        AglAltitudes: data real32.i {Data_Model::Data_Representation => Array;};
+        AglAltitudes: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
         --Desired camera elevation angles. If list is empty, then uses an
         --optimal elevation angle for achieving max GSD
-        ElevationAngles: data real32.i {Data_Model::Data_Representation => Array;};
+        ElevationAngles: data Base_Types::Float_32 {Data_Model::Data_Representation => Array;};
 end FootprintRequest.i;
 
 data SensorFootprint
@@ -203,41 +203,41 @@ data implementation SensorFootprint.i
         --multiple responses may be generated from a single request (such as
         --multiple cameras which all meet the specification). Each response must
         --contain the matching request ID in it's FootprintResponseID field.
-        FootprintResponseID: data int64.i;
+        FootprintResponseID: data Base_Types::Integer_64;
         --Vehicle for which the footprint calculation applies
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Camera from which settings (such as zoom and field of view) were
         --used in the footprint calculation
-        CameraID: data int64.i;
+        CameraID: data Base_Types::Integer_64;
         --Gimbal from which parameters such as allowable steering angles were
         --used in the footprint calculation
-        GimbalID: data int64.i;
+        GimbalID: data Base_Types::Integer_64;
         --The selected horizontal field of view of the camera necessary to get
         --the reported footprint (equivalent to zoom)
-        HorizontalFOV: data real32.i;
+        HorizontalFOV: data Base_Types::Float_32;
         --Altitude above ground level for which the footprint was calculated
-        AglAltitude: data real32.i;
+        AglAltitude: data Base_Types::Float_32;
         --Commanded gimbal elevation to achieve sensor footprint
-        GimbalElevation: data real32.i;
+        GimbalElevation: data Base_Types::Float_32;
         --Aspect ratio (width/height) of the camera image used for footprint
         --calculation. Note: combine with horizontal field of view to determine
         --camera vertical field of view.
-        AspectRatio: data real32.i;
+        AspectRatio: data Base_Types::Float_32;
         --Ground sample distance obtained with this sensor footprint
-        AchievedGSD: data real32.i;
+        AchievedGSD: data Base_Types::Float_32;
         --Sensor wavelength used applicable to this footprint calculation
         CameraWavelength: data CMASI::WavelengthBand.i;
         --Distance out front of the entity to the leading edge
-        HorizontalToLeadingEdge: data real32.i;
+        HorizontalToLeadingEdge: data Base_Types::Float_32;
         --Distance out front of the entity to the trailing edge
-        HorizontalToTrailingEdge: data real32.i;
+        HorizontalToTrailingEdge: data Base_Types::Float_32;
         --Distance out front of the entity to the center of the footprint
-        HorizontalToCenter: data real32.i;
+        HorizontalToCenter: data Base_Types::Float_32;
         --Width of the footprint at the vertical center
-        WidthCenter: data real32.i;
+        WidthCenter: data Base_Types::Float_32;
         --At the prescribed settings (e.g. altitude, elevation angle, etc) the
         --distance from the camera to the center of the footprint
-        SlantRangeToCenter: data real32.i;
+        SlantRangeToCenter: data Base_Types::Float_32;
 end SensorFootprint.i;
 
 data SensorFootprintResponse
@@ -248,7 +248,7 @@ end SensorFootprintResponse;
 data implementation SensorFootprintResponse.i
     subcomponents
         --ID matching initial request ID
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --All sensor footprints calculated during request
         Footprints: data SensorFootprint.i {Data_Model::Data_Representation => Array;};
 end SensorFootprintResponse.i;
@@ -264,33 +264,33 @@ end TaskImplementationRequest;
 data implementation TaskImplementationRequest.i
     subcomponents
         --Request ID for correlating to matching response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         
         --NOTE: new, Derek told me so
-        CorrespondingAutomationRequestID: data int64.i;
+        CorrespondingAutomationRequestID: data Base_Types::Integer_64;
         
         --Starting waypoint ID that task must use when building response. Note
         --that Plan Builder reserves all values greater than 1,000,000,000.
         --Therefore all *internal* task waypoints must be less than 1e9 and can
         --be obtained from the reported waypoint number by
         --"waypoint->getNumber()%1e9" .
-        StartingWaypointID: data int64.i;
+        StartingWaypointID: data Base_Types::Integer_64;
         --Assigned vehicle ID
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Initial position of entity before task
         StartPosition: data CMASI::Location3D.i;
         --Initial heading of entity before task
-        StartHeading: data real32.i;
+        StartHeading: data Base_Types::Float_32;
         --Time when vehicle is at the starting location
-        StartTime: data int64.i;
+        StartTime: data Base_Types::Integer_64;
         --ID for full region in which entity should plan
-        RegionID: data int64.i;
+        RegionID: data Base_Types::Integer_64;
         --Task ID to be completed
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Using option ID to complete this task
-        OptionID: data int64.i;
+        OptionID: data Base_Types::Integer_64;
         --Time before which this task cannot begin
-        TimeThreshold: data int64.i;
+        TimeThreshold: data Base_Types::Integer_64;
 end TaskImplementationRequest.i;
 
 data TaskImplementationResponse
@@ -306,25 +306,25 @@ end TaskImplementationResponse;
 data implementation TaskImplementationResponse.i
     subcomponents
         --Response ID that matches the initial request
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         
         --NOTE: new, Derek told me so
-        CorrespondingAutomationRequestID: data int64.i;
+        CorrespondingAutomationRequestID: data Base_Types::Integer_64;
         
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Option ID that was selected for this task
-        OptionID: data int64.i;
+        OptionID: data Base_Types::Integer_64;
         --Vehicle ID
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Waypoints that implement this task for the indicated vehicle
         TaskWaypoints: data CMASI::Waypoint.i {Data_Model::Data_Representation => Array;};
         --Vehicle location when this task is complete
         FinalLocation: data CMASI::Location3D.i;
         --Vehicle heading when this task is complete
-        FinalHeading: data real32.i;
+        FinalHeading: data Base_Types::Float_32;
         --Time when vehicle is at the final location
-        FinalTime: data int64.i;
+        FinalTime: data Base_Types::Integer_64;
 end TaskImplementationResponse.i;
 
 data AssignmentCostMatrix
@@ -337,14 +337,14 @@ data implementation AssignmentCostMatrix.i
     subcomponents
         --ID that matches this cost matrix with the appropriate unique
         --automation request
-        CorrespondingAutomationRequestID: data int64.i;
+        CorrespondingAutomationRequestID: data Base_Types::Integer_64;
         --Over-arching task relationship description (directly from automation
         --request). A process algebra string with only task IDs.
-        TaskLevelRelationship: data string.i;
+        TaskLevelRelationship: data Base_Types::Integer_32;
         --List of all tasks that this cost matrix includes
-        TaskList: data int64.i {Data_Model::Data_Representation => Array;};
+        TaskList: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Operating region that was used during matrix calculation
-        OperatingRegion: data int64.i;
+        OperatingRegion: data Base_Types::Integer_64;
         --Set of task-to-task timings for each requested vehicle
         CostMatrix: data TaskOptionCost.i {Data_Model::Data_Representation => Array;};
 end AssignmentCostMatrix.i;
@@ -356,20 +356,20 @@ end TaskOptionCost;
 data implementation TaskOptionCost.i
     subcomponents
         --Corresponding Vehicle ID
-        VehicleID: data int64.i;
+        VehicleID: data Base_Types::Integer_64;
         --Initial task ID (if zero, corresponds to current vehicle location)
-        IntialTaskID: data int64.i;
+        IntialTaskID: data Base_Types::Integer_64;
         --Initial task option
-        IntialTaskOption: data int64.i;
+        IntialTaskOption: data Base_Types::Integer_64;
         --Destination task ID
-        DestinationTaskID: data int64.i;
+        DestinationTaskID: data Base_Types::Integer_64;
         --Destination task option
-        DestinationTaskOption: data int64.i;
+        DestinationTaskOption: data Base_Types::Integer_64;
         --Timing corresponding to travel between ('InitialTask' using
         --'InitialTaskOption') and ('DestinationTask' using
         --'DestinationTaskOption'). If time is less than zero, no feasible path
         --exists between tasks.
-        TimeToGo: data int64.i;
+        TimeToGo: data Base_Types::Integer_64;
 end TaskOptionCost.i;
 
 data TaskAssignment
@@ -379,15 +379,15 @@ end TaskAssignment;
 data implementation TaskAssignment.i
     subcomponents
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Option ID that was selected for this task
-        OptionID: data int64.i;
+        OptionID: data Base_Types::Integer_64;
         --Vehicle that is assigned to this task
-        AssignedVehicle: data int64.i;
+        AssignedVehicle: data Base_Types::Integer_64;
         --Time before which this task cannot begin
-        TimeThreshold: data int64.i;
+        TimeThreshold: data Base_Types::Integer_64;
         --Time that this task is assigned to be completed.
-        TimeTaskCompleted: data int64.i;
+        TimeTaskCompleted: data Base_Types::Integer_64;
 end TaskAssignment.i;
 
 data TaskAssignmentSummary
@@ -398,14 +398,14 @@ data implementation TaskAssignmentSummary.i
     subcomponents
         --ID that matches this summary with the appropriate unique automation
         --request
-        CorrespondingAutomationRequestID: data int64.i;
+        CorrespondingAutomationRequestID: data Base_Types::Integer_64;
         --Operating region which was considered during this assignment
-        OperatingRegion: data int64.i;
+        OperatingRegion: data Base_Types::Integer_64;
         --Ordered list of tasks to be completed
         TaskList: data TaskAssignment.i {Data_Model::Data_Representation => Array;};
         -- ADDED: BDR (20170808)
         -- Size of the TaskList (not necessary if AGREE can get array size)
-        TaskListSize : data int64.i;
+        TaskListSize : data Base_Types::Integer_64;
 end TaskAssignmentSummary.i;
 
 data TaskOption
@@ -416,23 +416,23 @@ end TaskOption;
 data implementation TaskOption.i
     subcomponents
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --ID for this option
-        OptionID: data int64.i;
+        OptionID: data Base_Types::Integer_64;
         --Eligible entities for completing this option with identical cost to
         --complete. If list is empty, then all vehicles are assumed to be
         --eligible.
-        EligibleEntities: data int64.i {Data_Model::Data_Representation => Array;};
+        EligibleEntities: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Cost to complete option in terms of time (given in milliseconds)
-        Cost: data int64.i;
+        Cost: data Base_Types::Integer_64;
         --Start location entering the option
         StartLocation: data CMASI::Location3D.i;
         --Start heading entering the option
-        StartHeading: data real32.i;
+        StartHeading: data Base_Types::Float_32;
         --Ending location for this option
         EndLocation: data CMASI::Location3D.i;
         --Ending heading for this option
-        EndHeading: data real32.i;
+        EndHeading: data Base_Types::Float_32;
 end TaskOption.i;
 
 data TaskPlanOptions
@@ -443,11 +443,11 @@ data implementation TaskPlanOptions.i
     subcomponents
         --ID that matches this message with the appropriate unique automation
         --request
-        CorrespondingAutomationRequestID: data int64.i;
+        CorrespondingAutomationRequestID: data Base_Types::Integer_64;
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Process algebra string encoding all of the different options
-        Composition: data string.i;
+        Composition: data Base_Types::Integer_32;
         --List of options
         Options: data TaskOption.i {Data_Model::Data_Representation => Array;};
 end TaskPlanOptions.i;
@@ -460,7 +460,7 @@ end TaskPause;
 data implementation TaskPause.i
     subcomponents
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
 end TaskPause.i;
 
 data TaskResume
@@ -470,10 +470,10 @@ end TaskResume;
 data implementation TaskResume.i
     subcomponents
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Instead of resuming from paused task state, re-start the complete
         --task
-        RestartCompletely: data bool.i;
+        RestartCompletely: data Base_Types::Boolean;
         --Instead of resuming from paused task state with the previously
         --assigned entities, resume task with new assignment options
         ReAssign: data TaskAssignment.i;
@@ -486,13 +486,13 @@ end TaskProgress;
 data implementation TaskProgress.i
     subcomponents
         --Response ID that matches the task progress request
-        ResponseID: data int64.i;
+        ResponseID: data Base_Types::Integer_64;
         --Task ID
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Percentage of progress on task
-        PercentComplete: data real32.i;
+        PercentComplete: data Base_Types::Float_32;
         --Entities that are working this task
-        EntitiesEngaged: data int64.i {Data_Model::Data_Representation => Array;};
+        EntitiesEngaged: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end TaskProgress.i;
 
 data TaskProgressRequest
@@ -503,9 +503,9 @@ data implementation TaskProgressRequest.i
     subcomponents
         --Task progress request ID for properly matching corresponding
         --response
-        RequestID: data int64.i;
+        RequestID: data Base_Types::Integer_64;
         --Task ID to report current progress
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
 end TaskProgressRequest.i;
 
 data TaskInitialized
@@ -516,7 +516,7 @@ end TaskInitialized;
 data implementation TaskInitialized.i
     subcomponents
         --Task ID is initialized and ready for use in automation requests
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
 end TaskInitialized.i;
 
 data TaskActive
@@ -526,11 +526,11 @@ end TaskActive;
 data implementation TaskActive.i
     subcomponents
         --Task ID that was just activated
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Entity ID that activated the task
-        EntityID: data int64.i;
+        EntityID: data Base_Types::Integer_64;
         --Time that this task was activated.
-        TimeTaskActivated: data int64.i;
+        TimeTaskActivated: data Base_Types::Integer_64;
 end TaskActive.i;
 
 data TaskComplete
@@ -540,11 +540,11 @@ end TaskComplete;
 data implementation TaskComplete.i
     subcomponents
         --Task ID that was just completed
-        TaskID: data int64.i;
+        TaskID: data Base_Types::Integer_64;
         --Entity IDs that completed the task
-        EntitiesInvolved: data int64.i {Data_Model::Data_Representation => Array;};
+        EntitiesInvolved: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Time that this task was completed.
-        TimeTaskCompleted: data int64.i;
+        TimeTaskCompleted: data Base_Types::Integer_64;
 end TaskComplete.i;
 
 data CancelTask
@@ -555,10 +555,10 @@ data implementation CancelTask.i
     subcomponents
         --List of vehicle IDs that are directed to cancel tasks. If empty, all
         --vehicles currently on a listed task will be directed to cancel.
-        Vehicles: data int64.i {Data_Model::Data_Representation => Array;};
+        Vehicles: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
         --Task ID(s) to be removed from task lists of indicated vehicles. If
         --empty, then only the current task is removed.
-        CanceledTasks: data int64.i {Data_Model::Data_Representation => Array;};
+        CanceledTasks: data Base_Types::Integer_64 {Data_Model::Data_Representation => Array;};
 end CancelTask.i;
 
 end UXTASK;

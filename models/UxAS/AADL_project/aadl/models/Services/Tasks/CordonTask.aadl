@@ -5,13 +5,18 @@ public
     
     -- Included
     with TaskServiceBase_Package;
-    
+    with TB_SYS;
     thread CordonTask extends TaskServiceBase_Package::TaskServiceBase
         features
             EgressRouteResponse_in: in event data port route::EgressRouteResponse.i;
             EgressRouteRequest_out: out event data port route::EgressRouteRequest.i;
         properties
             Dispatch_Protocol => Sporadic;
+
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end CordonTask;
     
 end CordonTask_Package;

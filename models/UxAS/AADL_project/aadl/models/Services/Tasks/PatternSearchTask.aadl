@@ -7,7 +7,7 @@ public
 
     -- Included
     with TaskServiceBase_Package;
-
+    with TB_SYS;
     thread PatternSearchTask extends TaskServiceBase_Package::TaskServiceBase
         features
             SensorFootprintResponse_in: refined to in event data port uxtask::SensorFootprintResponse.i;
@@ -16,6 +16,11 @@ public
             SensorFootprintRequests_out: refined to out event data port uxtask::SensorFootprintRequests.i;
         properties
             Dispatch_Protocol => Sporadic;
+
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us; 
     end PatternSearchTask;
     
 end PatternSearchTask_Package;

@@ -46,49 +46,49 @@ public
             AirVehicleConfiguration_in: in event data port cmasi::AirVehicleConfiguration.i;
             AutomationRequest_in: in event data port CMASI::AutomationRequest.i;
     		AutomationResponse_out: out event data port cmasi::AutomationResponse.i;
-        annex agree {**
+        --annex agree {**
         
        		--Note: We do not accept a new request until the previous request has been responded to.    		
-    		assume "A new AutomationRequest is not made until 
-    			an AutomationResponse has been sent to the previous request.":
-    		UxAS_Node_Lib.one_request_at_a_time(event(AutomationResponse_out), event(AutomationRequest_in));
+    		--assume "A new AutomationRequest is not made until 
+    	--		an AutomationResponse has been sent to the previous request.":
+    		--UxAS_Node_Lib.one_request_at_a_time(event(AutomationResponse_out), event(AutomationRequest_in));
     		
-    		eq NUM_STEPS : int = 30;
+    		--eq NUM_STEPS : int = 30;
     					
     		--Note: The UxAS_Node_Lib.responds_exactly_once_within node ignores requests received 
     		--  while processing, and does not allow "spurious" responses.
     		--Currently invalid
-    		guarantee "(UxAS responds) Upon receiving an AutomationRequest_in, UxAS responds exactly once with an AutomationResponse_out within NUM_STEPS steps.":
-    			UxAS_Node_Lib.responds_exactly_once_within(
-    				event(AutomationResponse_out), 
-    				event(AutomationRequest_in), 
-    				NUM_STEPS
-    			); 
+    		--guarantee "(UxAS responds) Upon receiving an AutomationRequest_in, UxAS responds exactly once with an AutomationResponse_out within NUM_STEPS steps.":
+    		--	UxAS_Node_Lib.responds_exactly_once_within(
+    		--		event(AutomationResponse_out), 
+    		--		event(AutomationRequest_in), 
+    		--		NUM_STEPS
+    		--	); 
     		
     		----------------------------------------------
-    		eq UniqueAutomationRequest : uxtask::UniqueAutomationRequest.i;
-    		eq event_UniqueAutomationRequest : bool;
-    		eq UniqueAutomationRequestID : int = -1 -> if event_UniqueAutomationRequest
-    												then UniqueAutomationRequest.RequestID
-    												else pre(UniqueAutomationRequest.RequestID);
+    		--eq UniqueAutomationRequest : uxtask::UniqueAutomationRequest.i;
+    		--eq event_UniqueAutomationRequest : bool;
+    		--eq UniqueAutomationRequestID : int = -1 -> if event_UniqueAutomationRequest
+    		--										then UniqueAutomationRequest.RequestID
+    		--										else pre(UniqueAutomationRequest.RequestID);
     												
-    		eq pre_UniqueAutomationRequestID : int = -2 -> if event_UniqueAutomationRequest
-    												then pre(UniqueAutomationRequestID)
-    												else pre(pre_UniqueAutomationRequestID);
+    		--eq pre_UniqueAutomationRequestID : int = -2 -> if event_UniqueAutomationRequest
+    		--										then pre(UniqueAutomationRequestID)
+    		--										else pre(pre_UniqueAutomationRequestID);
     		
     		--Currently invalid
-    		guarantee "(Unique IDs) Message IDs shall be unique system-wide throughout a mission":
-    			UniqueAutomationRequestID <> pre_UniqueAutomationRequestID;
+    		--guarantee "(Unique IDs) Message IDs shall be unique system-wide throughout a mission":
+    		--	UniqueAutomationRequestID <> pre_UniqueAutomationRequestID;
     		------------------------------------------------
     		
-    		eq event_RoutePlannerAirVehicleConfig : bool;
-    		eq event_RoutePlanRequest : bool;
+    		--eq event_RoutePlannerAirVehicleConfig : bool;
+    		--eq event_RoutePlanRequest : bool;
     		
     		--Currently invalid
-    		guarantee "(Configure route planner before use) Route planner shall be configured with vehicle configuration data before a route plan request is sent":
-    			event_RoutePlanRequest => PLTL.Once(event_RoutePlannerAirVehicleConfig);
+    		--guarantee "(Configure route planner before use) Route planner shall be configured with vehicle configuration data before a route plan request is sent":
+    		--	event_RoutePlanRequest => PLTL.Once(event_RoutePlannerAirVehicleConfig);
     		
-        **};
+        --**};
     end waterways;
 
     process implementation waterways.i
@@ -330,22 +330,22 @@ public
             
     	properties
     		UxAS_Props::OS => Linux;
-        annex resolute {**
+        --annex resolute {**
         	--TODO: can we have resolute provide a complete enuemration of everything that is and is not verifiable. 
-        	prove rate_monotonic_schedulable()
-            prove isolation(this) 
+        --	prove rate_monotonic_schedulable()
+        --    prove isolation(this) 
   
-        **};
-        annex agree {**
+        --**};
+        --annex agree {**
 
-      	lemma "Observe event(AutomationResponse_out)": 
-    			not event(AutomationResponse_out);
+      	--lemma "Observe event(AutomationResponse_out)": 
+    		--	not event(AutomationResponse_out);
     			
-    		assign UniqueAutomationRequest = AutomationRequestValidatorService.UniqueAutomationRequest_out;
-    		assign event_UniqueAutomationRequest = event(AutomationRequestValidatorService.UniqueAutomationRequest_out);
+    		--assign UniqueAutomationRequest = AutomationRequestValidatorService.UniqueAutomationRequest_out;
+    		--assign event_UniqueAutomationRequest = event(AutomationRequestValidatorService.UniqueAutomationRequest_out);
     		
-    		assign event_RoutePlannerAirVehicleConfig = event(RoutePlannerVisibilityService.AirVehicleConfiguration_in); 
-    		assign event_RoutePlanRequest = event(RoutePlannerVisibilityService.RouteRequest_in);
+    		--assign event_RoutePlannerAirVehicleConfig = event(RoutePlannerVisibilityService.AirVehicleConfiguration_in); 
+    		--assign event_RoutePlanRequest = event(RoutePlannerVisibilityService.RouteRequest_in);
   
         	
  --       	lemma "Trace" : pre(PLTL.Once(event(UniqueAutomationRequest_in))) => not event(AutomationRequest_in);
@@ -402,7 +402,7 @@ public
 --            connection conn82: true;
 --            connection conn83: true;
 			
-        **};
+        --**};
             
     end waterways.i;
 

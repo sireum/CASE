@@ -8,6 +8,8 @@ public
     -- Includes
 	with ServiceBase_Pkg;    
     
+    with TB_SYS;
+    
     thread BatchSummaryService extends ServiceBase_Pkg::ServiceBase
         features
             RadioTowerState_in: in event data port impact::RadioTowerState.i;
@@ -30,6 +32,13 @@ public
             EgressRouteRequest_out: out event data port route::EgressRouteRequest.i;
             RoutePlanRequest_out: out event data port route::RoutePlanRequest.i;
             BatchSummaryResponse_out: out event data port impact::BatchSummaryResponse.i;
+         properties
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          Dispatch_Protocol => Sporadic;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us; 
+            
     end BatchSummaryService;
 
     

@@ -54,12 +54,19 @@ public
     with MessageLoggerDataService_Pkg;
     with SendMessagesService_Pkg;    
     
+    with TB_SYS;
 
     -- This was an example item built for the exercise. Will not be split out into its own package.
     thread Challenge_TelemetryReceiver
         features
             VideoRecord_in: in event data port uxnative::VideoRecord.i;
             AirVehicleState_in: in event data port cmasi::AirVehicleState.i;
+        properties
+            Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end Challenge_TelemetryReceiver;
 
   
@@ -79,33 +86,16 @@ public
     end uxas_proc;
     
     processor implementation uxas_proc.i
+		properties
+	      TB_SYS::OS => CAmkES;
+	      TB_SYS::HW => TK1;
+	      TB_SYS::Add_Dummy_Arg_To_Void_Fns => True;
     end uxas_proc.i;
     
     process uxas
         features
             AirVehicleState_in: in event data port cmasi::AirVehicleState.i;
-        annex agree {**
-            guarantee "Dummy guarantee so AGREE will run off the top level.": true;
-            
-            -- Note: Many of these guarantees may be generally applicable to 
-            --  all missions, and the developer should consider copying and 
-            --  re-proving these guarantees for each new configuration of UxAS.
-         	
-         	--This is a guarantee I would like to express but cannot currently. 
-         	-- If I had arrays (or even data implementations mimicking arrays), 
-         	--   I could express this as well as the suppporting component-level guarantees
-         	--   in RoutePlannerVisibilityService and RouteAggregatorService.
-         	-- For RoutePlannerVisibilityService, the guarantee would be 
-         	--	"The first and last waypoints of each route plan in the route plan response
-         	--	match the requested start and end locations in the corresponding route constraint 
-         	--	in the route request."
-         	-- For RouteAggregatorService, the guarantee would be "Routes are passed on from the route planners 
-         	--		without changing them."
---			guarantee "The first and last waypoints in each route plan in each route 
--- 							in a route response	match the start and end locations in the corresponding
---							route constraint of the corresponding route request."
- 
-        **};
+      
     end uxas;
 
     process implementation uxas.i
@@ -308,140 +298,5 @@ public
             
             conn118: port RouteAggregatorService.AssignmentCostMatrix_out -> AssignmentTreeBranchBoundBase.AssignmentCostMatrix_in;
             
-        annex agree {**
-            -- We use AGREE connections to assert true for the cases where an 
-            --  input port is fed by multiple sources.
-            -- Note: AGREE will assume arbitrary values for the input ports on 
-            --  these connections. Refinements may be needed to prove system-level 
-            --  guarantees involving these ports.
-            
-            -- We don't have any of these currently because we only need them when
-            -- both the source and destination components for multiple fan-in have 
-            -- AGREE contracts.
-            
-            -- Implementing blocks of AGREE connections that will remain commented out
-            -- until both sides get contracts
-            
-            -- Many to One connection block
-            -- Target Port: Challenge_TelemetryReceiver.VideoRecord_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn0: true;
---            connection conn1: true;
---            connection conn2: true;
---            connection conn3: true;
-
-            -- Many to One connection block
-            -- Target Port: BatchSummaryService.RoutePlanResponse_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn5: true;
---            connection conn8: true;
---            connection conn11: true;
-            
-            -- Many to One connection block
-            -- Target Port: BatchSummaryService.RoutePlanResponse_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn6: true;
---            connection conn9: true;
---            connection conn12: true;
-            
-            -- Many to One connection block
-            -- Target Port: OsmPlannerService.RouteRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn44: true;
---            connection conn47: true;
---            connection conn50: true;
---            connection conn53: true;
-            
-            -- Many to One connection block
-            -- Target Port: RoutePlannerService.RouteRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn45: true;
---            connection conn48: true;
---            connection conn51: true;
---            connection conn54: true;
-            
-            -- Many to One connection block
-            -- Target Port: RoutePlannerVisibilityService.RouteRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn46: true;
---            connection conn49: true;
---            connection conn52: true;
---            connection conn55: true;
-            
-            -- Many to One connection block
-            -- Target Port: OsmPlannerService.EgressRouteRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn56: true;
---            connection conn57: true;
-            
-            -- Many to One connection block
-            -- Target Port: SensorManagerService.SensorFootprintRequests_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn70: true;
---            connection conn71: true;
---            connection conn72: true;
-
-            -- Many to One connection block
-            -- Target Port: AssignmentTreeBranchBoundBase.UniqueAutomationRequest_in
-            connection conn73: true;
-            connection conn78: true;
-            
-            -- Many to One connection block
-            -- Target Port: AutomationDiagramDataService.UniqueAutomationRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn74: true;
---            connection conn79: true;
-            
-            -- Many to One connection block
-            -- Target Port: PlanBuilderService.UniqueAutomationRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
-            connection conn75: true;
-            connection conn80: true;
-            
-            -- Many to One connection block
-            -- Target Port: RouteAggregatorService.UniqueAutomationRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
-            connection conn76: true;
-            connection conn81: true;
-            
-            -- Many to One connection block
-            -- Target Port: TaskServiceBase.UniqueAutomationRequest_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
-            connection conn77: true;
-            connection conn82: true;
-            
-            -- Many to One connection block
-            -- Target Port: AssignmentTreeBranchBoundBase.TaskPlanOptions_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn85: true;
---            connection conn87: true;
---            connection conn89: true;
---            connection conn91: true;
---            connection conn93: true;
---            connection conn95: true;
---            connection conn97: true;
---            connection conn99: true;
---            connection conn101: true;
---            connection conn103: true;
---            connection conn105: true;
-            
-            -- Many to One connection block
-            -- Target Port: AssignmentTreeBranchBoundBase.TaskPlanOptions_in
-            -- Note: Uncomment when the connection gets AGREE contracts on both sides of connection
---            connection conn86: true;
---            connection conn88: true;
---            connection conn90: true;
---            connection conn92: true;
---            connection conn94: true;
---            connection conn96: true;
---            connection conn98: true;
---            connection conn100: true;
---            connection conn102: true;
---            connection conn104: true;
---            connection conn106: true;          
-            
-            
-            
-        **};
     end uxas.i;
 end UxAS;

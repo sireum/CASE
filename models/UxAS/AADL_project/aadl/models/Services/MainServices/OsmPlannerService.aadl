@@ -4,6 +4,8 @@ public
     with IMPACT;
     with ROUTE;
 
+    with TB_SYS;
+    
     thread OsmPlannerService
         features
             --subscribes to the "GroundPathPlanner" mailbox. it could receive any message from this mailbox
@@ -14,6 +16,12 @@ public
             RoutePlanResponse_out: out event data port route::RoutePlanResponse.i;
             RouteRequest_in: in event data port route::RouteRequest.i;
             EgressRouteResponse_out: out event data port route::EgressRouteResponse.i;
+         properties
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          Dispatch_Protocol => Sporadic;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end OsmPlannerService;
     
 end OsmPlannerService_Pkg;

@@ -5,6 +5,8 @@ public
     with IMPACT;
     with ROUTE;
     
+    with TB_SYS;
+    
     thread RoutePlannerService
         features
             GroundVehicleConfiguration_in: in event data port impact::GroundVehicleConfiguration.i;
@@ -22,6 +24,12 @@ public
             SurfaceVehicleState_in: in event data port impact::SurfaceVehicleState.i;
             WaterZone_in: in event data port impact::WaterZone.i;
             RoutePlanResponse_out: out event data port route::RoutePlanResponse.i;
+        properties
+            Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;                
     end RoutePlannerService;
     
 end RoutePlannerService_Pkg;

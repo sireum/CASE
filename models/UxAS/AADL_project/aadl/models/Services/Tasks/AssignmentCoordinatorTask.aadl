@@ -6,7 +6,7 @@ public
     
     -- Included
     with TaskServiceBase_Package;
-    
+    with TB_SYS;
     thread AssignmentCoordinatorTask extends TaskServiceBase_Package::TaskServiceBase
         features
             AssignmentCoordination_in: in event data port uxtask::AssignmentCoordination.i;
@@ -14,8 +14,13 @@ public
             AutomationResponse_out: out event data port cmasi::AutomationResponse.i;
             AssignmentCoordination_out: out event data port uxtask::AssignmentCoordination.i;
             TaskAutomationRequest_out: out event data port uxtask::TaskAutomationRequest.i;
+            
         properties
             Dispatch_Protocol => Sporadic;
+          TB_SYS::Is_External => true;
+          Priority => 253;
+          TB_SYS::Thread_Type => Active;
+          Compute_Execution_Time => 10 us .. 100 us;             
     end AssignmentCoordinatorTask;
     
 end AssignmentCoordinatorTask_Package;
