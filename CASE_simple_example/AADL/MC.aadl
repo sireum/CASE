@@ -24,6 +24,9 @@ public
 			recv_map_out: out event data port SW::Command.Impl;
 			send_status_in: in event data port SW::Coordinate.Impl;
 			send_status_out: out event data port MISSING_TYPE.Impl;
+		flows
+			comm_map : flow path recv_map_in -> recv_map_out;
+			comm_status : flow path send_status_in -> send_status_out;
 	end Radio;
 
 	device UART
@@ -34,6 +37,9 @@ public
 			waypoint_out: out event data port MISSING_TYPE.Impl;
 			position_status_in: in event data port MISSING_TYPE.Impl;
 			position_status_out: out event data port SW::Coordinate.Impl;
+		flows
+			comm_waypoint : flow path waypoint_in -> waypoint_out;
+			comm_status : flow path position_status_in -> position_status_out;
 	end UART;
 
 	processor MC_Proc
@@ -64,7 +70,9 @@ public
 			send_status: out event data port MISSING_TYPE.Impl;
 			UARTA: requires bus access UAV::Serial;
 			RFA: requires bus access UAS::RF;
-
+		flows 
+			compute_waypoint: flow path recv_map -> waypoint;
+			compute_status: flow path position_status -> send_status;
 	end MissionComputer;
 	
 	system implementation MissionComputer.Impl
@@ -93,10 +101,10 @@ public
 			c7: port position_status -> UART_HW.position_status_in;
 			c8: port UART_HW.position_status_out -> PROC_SW.position_status;
 		
-		properties
-			Actual_Processor_Binding => (reference (PROC_HW)) applies to PROC_SW;
-			Actual_Memory_Binding => (reference (MEM_HW)) applies to PROC_SW;
-			Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5, c8;
+--		properties
+--			Actual_Processor_Binding => (reference (PROC_HW)) applies to PROC_SW;
+--			Actual_Memory_Binding => (reference (MEM_HW)) applies to PROC_SW;
+--			Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5, c8;
 		
 	end MissionComputer.Impl;
 	

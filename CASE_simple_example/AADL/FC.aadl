@@ -8,6 +8,9 @@ public
 			waypoint: in event data port;
 			position_status: out event data port;
 			UARTA: requires bus access UAV::Serial;			
+	    flows 
+	    	follow_waypoints: flow sink waypoint;
+	    	send_pos: flow source position_status;
 	end FlightController;
 	
 end FC;

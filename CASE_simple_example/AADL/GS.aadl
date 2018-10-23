@@ -9,6 +9,9 @@ public
 			send_map: out event data port;
 			recv_status: in event data port;
 			RFA: requires bus access UAS::RF;
+		flows
+			transmit_map: flow source send_map;
+			receive_status: flow sink recv_status;
 	end GroundStation;
 	
 end GS;

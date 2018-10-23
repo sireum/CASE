@@ -13,6 +13,10 @@ public
 			recv_map: in event data port;
 			send_status: out event data port;
 			RFA: requires bus access UAS::RF;
+		flows
+		    provide_map: flow sink recv_map;
+		    update_status: flow source send_status;
+		    
 	end UAV;
 	
 	system implementation UAV.Impl
@@ -30,8 +34,8 @@ public
 			c3: port MCMP.waypoint -> FCTL.waypoint;
 			c4: port FCTL.position_status -> MCMP.position_status;
 			
-		properties
-			Actual_Connection_Binding => (reference (SBUS)) applies to c3, c4;
+--		properties
+--			Actual_Connection_Binding => (reference (SBUS)) applies to c3, c4;
 			
 	end UAV.Impl;
 	
