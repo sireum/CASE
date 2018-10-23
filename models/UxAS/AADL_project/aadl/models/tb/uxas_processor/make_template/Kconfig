@@ -1,0 +1,13 @@
+config APP_UXAS_PROCESSOR
+    bool "uxas_processor (from AADL)"
+    default n
+    select APP_CAMKES_EXECUTIVE
+    help
+        uxas_processor (from AADL).
+
+config APP_UXAS_PROCESSOR_TB_DEBUG
+    bool "Enable trusted build debugging for the UXAS_PROCESSOR application"
+    default n
+    depends on APP_UXAS_PROCESSOR && PRINTING
+    help
+        Enable trusted build debugging for the UXAS_PROCESSOR application.
