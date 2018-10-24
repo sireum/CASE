@@ -11,6 +11,19 @@ public
 	    flows 
 	    	follow_waypoints: flow sink waypoint;
 	    	send_pos: flow source position_status;
+	    annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+
+				waypoint : in propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error sink waypoint{authenticated_cmd};
+
+				wellformed_map : error sink waypoint{wellformed_cmd};
+
+				
+			end propagations;
+		**};
 	end FlightController;
 	
 end FC;

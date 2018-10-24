@@ -2,7 +2,7 @@ package GS
 
 public
 	
-	with UAS;
+	with UAS, UAS_Errors;
 	
 	device GroundStation
 		features
@@ -12,6 +12,20 @@ public
 		flows
 			transmit_map: flow source send_map;
 			receive_status: flow sink recv_status;
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				send_map : out propagation {authenticated_cmd, 
+					unauthenticated_cmd, wellformed_cmd, not_wellformed_cmd
+				};
+			flows
+				authenticated_map : error source send_map{authenticated_cmd};
+				unauthenticated_map : error source send_map{unauthenticated_cmd};
+				wellformed_map : error source send_map{wellformed_cmd};
+				not_wellformed_map : error source send_map{not_wellformed_cmd};
+				
+			end propagations;
+		**};
 	end GroundStation;
 	
 end GS;

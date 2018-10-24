@@ -120,7 +120,23 @@ public
 			assume "Authenticated command from the Ground Station" : recv_map_in.HMAC = True;
 			guarantee "Authenticated command from the Ground Station" : recv_map_out.HMAC = True;
 		**};
-
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				recv_map_in : in propagation {authenticated_cmd, 
+					unauthenticated_cmd, wellformed_cmd, not_wellformed_cmd
+				};
+				recv_map_out : out propagation {authenticated_cmd, 
+					 wellformed_cmd, not_wellformed_cmd
+				};
+			flows
+				authenticated_map : error path recv_map_in{authenticated_cmd} -> recv_map_out{authenticated_cmd};
+				unauthenticated_map : error sink recv_map_in{unauthenticated_cmd};
+				wellformed_map : error path recv_map_in{wellformed_cmd} -> recv_map_out{wellformed_cmd};
+				not_wellformed_map : error path recv_map_in{not_wellformed_cmd} -> recv_map_out{not_wellformed_cmd};
+				
+			end propagations;
+		**};
 	end RadioDriver;
 	
 	
@@ -145,6 +161,21 @@ public
 --			guarantee "The Flight Planner shall receive an authenticated command from the Ground Station" : filter_out.HMAC = True;
 --			guarantee "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(filter_out);
 --		**};
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				filter_in : in propagation {authenticated_cmd, 
+					 wellformed_cmd, not_wellformed_cmd
+				};
+				filter_out : out propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error path filter_in{authenticated_cmd} -> filter_out{authenticated_cmd};
+				
+				wellformed_map : error path filter_in{wellformed_cmd} -> filter_out{wellformed_cmd};
+				not_wellformed_map : error sink filter_in{not_wellformed_cmd};
+				
+			end propagations;
+		**};
 			
 	end Filter;
 	
@@ -173,6 +204,19 @@ public
 		annex Resolute {**
 			prove (well_formed(this))
 		**};
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				recv_map : in propagation {authenticated_cmd, wellformed_cmd};
+				flight_plan : out propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error path recv_map{authenticated_cmd} -> flight_plan{authenticated_cmd};
+				
+				wellformed_map : error path recv_map{wellformed_cmd} -> flight_plan{wellformed_cmd};
+				
+				
+			end propagations;
+		**};
 			
 	end FlightPlanner;
 	
@@ -198,7 +242,19 @@ public
 --			assume "The Waypoint Manager shall receive a well-formed mission" : SW.good_mission(flight_plan);
 --			guarantee "The Waypoint Manager shall output a well-formed mission window." : SW.good_mission_window(waypoint);
 --		**};
-			
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				flight_plan : in propagation {authenticated_cmd, wellformed_cmd};
+				waypoint : out propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error path flight_plan{authenticated_cmd} -> waypoint{authenticated_cmd};
+				
+				wellformed_map : error path flight_plan{wellformed_cmd} -> waypoint{wellformed_cmd};
+				
+				
+			end propagations;
+		**};
 	end WaypointManager;
 	
 	thread UARTDriver
@@ -221,6 +277,19 @@ public
 --			assume "Well-formed mission window" : SW.good_mission_window(waypoint_in);
 --			guarantee "A CRC shall be appended to the message to determine message correctness" : waypoint_out.crc = True;
 --		**};
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				waypoint_in : in propagation {authenticated_cmd, wellformed_cmd};
+				waypoint_out : out propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error path waypoint_in{authenticated_cmd} -> waypoint_out{authenticated_cmd};
+				
+				wellformed_map : error path waypoint_in{wellformed_cmd} -> waypoint_out{wellformed_cmd};
+				
+				
+			end propagations;
+		**};
 			
 	end UARTDriver;
 
@@ -239,6 +308,21 @@ public
 			assume "The Mission Computer shall only accept authenticated commands from the Ground Station" : recv_map.HMAC = True;
 			guarantee "The Mission Computer shall output a valid mission window to the Flight Controller" : waypoint.crc = True;
 		**};
+		annex EMV2{**
+			use types UAS_Errors;
+			error propagations
+				recv_map : in propagation {authenticated_cmd, unauthenticated_cmd,
+					 wellformed_cmd, not_wellformed_cmd
+				};
+				waypoint : out propagation {authenticated_cmd, wellformed_cmd};
+			flows
+				authenticated_map : error path recv_map{authenticated_cmd} -> waypoint{authenticated_cmd};
+				unauthenticated_map : error sink recv_map{unauthenticated_cmd};
+				wellformed_map : error path recv_map{wellformed_cmd} -> waypoint{wellformed_cmd};
+				not_wellformed_map : error sink recv_map{not_wellformed_cmd};
+				
+			end propagations;
+		**};	
 			
 	end MC_SW;
 
