@@ -9,4 +9,8 @@ bool tb_can2self_frame_dequeue(SMACCM_DATA__CAN_Frame_i * tb_can2self_frame);
 bool tb_can2self_status_dequeue(bool * tb_can2self_status);
 bool tb_self2can_enqueue(const SMACCM_DATA__CAN_Frame_i * tb_self2can);
 
+// user entrypoints for periodic dispatch
+void component_entry(const int64_t * periodic_dispatcher);
+void component_init(const int64_t *arg);
+
 #endif // __tb_AADL_CAN_Framing_types__H

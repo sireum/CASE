@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.7.2)
 
 project (software C)
 
+
+CAmkESAddTemplatesPath(../../../../components/templates/)
+
 DeclareCAmkESComponent(Clock_Driver
   SOURCES components/Clock_Driver/src/tb_Clock_Driver.c
   INCLUDES components/Clock_Driver/includes/ includes
@@ -45,6 +48,16 @@ DeclareCAmkESComponent(CAN_Driver
 DeclareCAmkESComponent(Virtual_Machine
   SOURCES components/Virtual_Machine/src/tb_Virtual_Machine.c
   INCLUDES components/Virtual_Machine/includes/ includes
+)
+
+DeclareCAmkESComponent(TimeServer
+
+  INCLUDES includes
+)
+
+DeclareCAmkESComponent(dispatch_periodic
+
+  INCLUDES includes
 )
 
 DeclareCAmkESComponent(tb_can_framing_can2self_frame_Monitor

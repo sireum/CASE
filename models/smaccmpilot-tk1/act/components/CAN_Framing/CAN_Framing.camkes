@@ -2,6 +2,7 @@ import "../../interfaces/tb_Monitor_SMACCM_DATA__GIDL_1.idl4";
 import "../../interfaces/tb_Monitor_SMACCM_DATA__CAN_Frame_i_10.idl4";
 import "../../interfaces/tb_Monitor_bool_1.idl4";
 import "../../interfaces/tb_Monitor_SMACCM_DATA__CAN_Frame_i_1.idl4";
+import "../../interfaces/Timer.idl4";
 
 component CAN_Framing {
   include <tb_smaccmpilot_tk1_types.h>;
@@ -11,7 +12,10 @@ component CAN_Framing {
   uses tb_Monitor_SMACCM_DATA__CAN_Frame_i_10 tb_can2self_frame;
   uses tb_Monitor_bool_1 tb_can2self_status;
   uses tb_Monitor_SMACCM_DATA__CAN_Frame_i_1 tb_self2can0;
+  uses Timer tb_timer;
   consumes QueuedData tb_server2self_notification;
   consumes QueuedData tb_can2self_frame_notification;
   consumes QueuedData tb_can2self_status_notification;
+  consumes Notification tb_timer_complete;
+  has binary_semaphore tb_dispatch_sem;
 }

@@ -10,4 +10,8 @@ bool tb_self2framing_enqueue(const SMACCM_DATA__GIDL * tb_self2framing);
 bool tb_framing2self_dequeue(tb_SMACCM_DATA__GIDL_container * tb_framing2self);
 bool tb_self2vm_reboot_enqueue(const bool * tb_self2vm_reboot);
 
+// user entrypoints for periodic dispatch
+void component_entry(const int64_t * periodic_dispatcher);
+void component_init(const int64_t *arg);
+
 #endif // __tb_AADL_Server_types__H

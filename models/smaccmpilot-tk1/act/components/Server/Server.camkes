@@ -1,6 +1,7 @@
 import "../../interfaces/tb_Monitor_SMACCM_DATA__Camera_Bounding_Box_i.idl4";
 import "../../interfaces/tb_Monitor_SMACCM_DATA__GIDL_1.idl4";
 import "../../interfaces/tb_Monitor_bool_1.idl4";
+import "../../interfaces/Timer.idl4";
 
 component Server {
   include <tb_smaccmpilot_tk1_types.h>;
@@ -11,7 +12,10 @@ component Server {
   uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_self2framing0;
   uses tb_Monitor_SMACCM_DATA__GIDL_1 tb_framing2self;
   uses tb_Monitor_bool_1 tb_self2vm_reboot0;
+  uses Timer tb_timer;
   consumes DataportWrite tb_vm2self_notification;
   consumes QueuedData tb_decrypt2self_notification;
   consumes QueuedData tb_framing2self_notification;
+  consumes Notification tb_timer_complete;
+  has binary_semaphore tb_dispatch_sem;
 }
