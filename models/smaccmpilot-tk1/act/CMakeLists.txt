@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7.2)
+cmake_minimum_required(VERSION 3.8.2)
 
 project (software C)
 
@@ -51,7 +51,7 @@ DeclareCAmkESComponent(Virtual_Machine
 )
 
 DeclareCAmkESComponent(TimeServer
-
+  SOURCES components/TimeServer/src/tb_time_server.c
   INCLUDES includes
 )
 
