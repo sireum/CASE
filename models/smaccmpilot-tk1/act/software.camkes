@@ -32,6 +32,11 @@ connector seL4TimeServer {
   to Procedure template "seL4TimeServer-to.template.c";
 }
 
+connector seL4GlobalAsynchCallback {
+  from Events template "seL4GlobalAsynchCallback-from.template.c";
+  to Event template "seL4GlobalAsynchCallback-to.template.c";
+}
+
 assembly {
   composition {
     component Clock_Driver clock_driver;
@@ -67,7 +72,7 @@ assembly {
     connection seL4TimeServer conn7(from can_framing.tb_timer, to time_server.the_timer);
     connection seL4Notification conn8(from dispatch_periodic_inst.can_framing_periodic_dispatcher, to can_framing.tb_timer_complete);
     connection seL4TimeServer conn9(from dispatch_periodic_inst.timer, to time_server.the_timer);
-    connection seL4Notification conn10(from time_server.timer_notification, to dispatch_periodic_inst.timer_complete);
+    connection seL4GlobalAsynchCallback conn10(from time_server.timer_notification, to dispatch_periodic_inst.timer_complete);
     connection seL4Notification conn11(from gpio_driver.CAN1Int, to can_driver.CAN1Int);
     connection seL4RPCCall conn12(from uart_driver.tb_self2decrypt0, to tb_decrypt_uart2self_monitor.mon);
     connection seL4RPCCall conn13(from decrypt.tb_uart2self, to tb_decrypt_uart2self_monitor.mon);
@@ -116,14 +121,20 @@ assembly {
 
   configuration {
     decrypt.tb_timer_attributes = 0;
-    decrypt.tb_timer_global_endpoint = "decrypt_tb_timer";
+    decrypt.tb_timer_global_endpoint = "Decrypt_tb_timer";
+    decrypt.priority = 150;
     encrypt.tb_timer_attributes = 1;
-    encrypt.tb_timer_global_endpoint = "encrypt_tb_timer";
+    encrypt.tb_timer_global_endpoint = "Encrypt_tb_timer";
+    encrypt.priority = 150;
     server.tb_timer_attributes = 2;
-    server.tb_timer_global_endpoint = "server_tb_timer";
+    server.tb_timer_global_endpoint = "Server_tb_timer";
+    server.priority = 150;
     can_framing.tb_timer_attributes = 3;
-    can_framing.tb_timer_global_endpoint = "can_framing_tb_timer";
+    can_framing.tb_timer_global_endpoint = "CAN_Framing_tb_timer";
+    can_framing.priority = 150;
     dispatch_periodic_inst.timer_attributes = 4;
-    dispatch_periodic_inst.timer_global_endpoint = "dispatch_periodic_inst_timer";
+    dispatch_periodic_inst.timer_global_endpoint = "dispatch_periodic_timer";
+    dispatch_periodic_inst.timer_complete_global_endpoint = "dispatch_periodic_timer_complete";
+    dispatch_periodic_inst.priority = 201;
   }
 }

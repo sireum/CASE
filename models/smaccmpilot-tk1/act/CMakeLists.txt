@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.7.2)
 
 project (software C)
 
-
+# add path to connector templates
 CAmkESAddTemplatesPath(../../../../components/templates/)
 
 DeclareCAmkESComponent(Clock_Driver
@@ -56,7 +56,7 @@ DeclareCAmkESComponent(TimeServer
 )
 
 DeclareCAmkESComponent(dispatch_periodic
-
+  SOURCES components/dispatch_periodic/src/tb_dispatch_periodic.c
   INCLUDES includes
 )
 
