@@ -145,10 +145,10 @@ public
 			c7: port position_status -> UART_HW.position_status_in;
 			c8: port UART_HW.position_status_out -> PROC_SW.position_status;
 		
---		properties
---			Actual_Processor_Binding => (reference (PROC_HW)) applies to PROC_SW;
---			Actual_Memory_Binding => (reference (MEM_HW)) applies to PROC_SW;
---			Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5, c8;
+		properties
+			Actual_Processor_Binding => (reference (PROC_HW)) applies to PROC_SW;
+			Actual_Memory_Binding => (reference (MEM_HW)) applies to PROC_SW;
+			Actual_Connection_Binding => (reference (BUS_HW)) applies to c2, c3, c5, c8;
 		
 	end MissionComputer.Impl;
 	

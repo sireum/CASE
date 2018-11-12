@@ -48,8 +48,8 @@ public
 			c3: port MCMP.waypoint -> FCTL.waypoint;
 			c4: port FCTL.position_status -> MCMP.position_status;
 			
---		properties
---			Actual_Connection_Binding => (reference (SBUS)) applies to c3, c4;
+		properties
+			Actual_Connection_Binding => (reference (SBUS)) applies to c3, c4;
 			
 	end UAV.Impl;
 	
