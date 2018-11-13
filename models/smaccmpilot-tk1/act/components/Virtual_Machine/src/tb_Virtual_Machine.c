@@ -1,4 +1,5 @@
 #include "../includes/tb_Virtual_Machine.h"
+#include "../../../aux/includes/test.h"
 #include <string.h>
 #include <camkes.h>
 
