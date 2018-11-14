@@ -1,3 +1,7 @@
+#ifndef TB_VERIFY
+#include <stdio.h>
+#endif // TB_VERIFY
+
 #include "../../../../includes/tb_PROC_HW_types.h"
 #include "../includes/tb_RADIO_send_status_in_Monitor.h"
 

@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.7.2)
+cmake_minimum_required(VERSION 3.8.2)
 
 project (PROC_SW C)
+
+
 
 DeclareCAmkESComponent(RadioDriver
   SOURCES components/RadioDriver/src/tb_RadioDriver.c

@@ -50,4 +50,8 @@ assembly {
     connection seL4RPCCall conn20(from RADIO.tb_send_status_in, to tb_radio_send_status_in_monitor.mon);
     connection seL4Notification conn21(from tb_radio_send_status_in_monitor.monsig, to RADIO.tb_send_status_in_notification);
   }
+
+  configuration {
+
+  }
 }
