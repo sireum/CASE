@@ -1,4 +1,4 @@
-#include "../includes/tb_FlightPlanner.h"
+#include "../includes/tb_FlightPlanner_Impl.h"
 #include <string.h>
 #include <camkes.h>
 
@@ -8,9 +8,9 @@ bool tb_flight_plan_write(const SW__Mission_Impl * tb_flight_plan){
   return tb_result;
 }
 
-void tb_entrypoint_tb_FlightPlanner_recv_map(const SW__Command_Impl * in_arg) { }
+void tb_entrypoint_tb_FlightPlanner_Impl_recv_map(const SW__Command_Impl * in_arg) { }
 
-void tb_entrypoint_tb_FlightPlanner_position_status(const SW__Coordinate_Impl * in_arg) { }
+void tb_entrypoint_tb_FlightPlanner_Impl_position_status(const SW__Coordinate_Impl * in_arg) { }
 
 void pre_init(void) { }
 

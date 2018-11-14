@@ -33,7 +33,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "UAV::Serial"
+              "name" : "UAV::Serial.Impl"
             }
           },
           "properties" : [
@@ -70,7 +70,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "UAS::RF"
+              "name" : "UAS::RF.Impl"
             }
           },
           "properties" : [
@@ -201,7 +201,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "MC::MC_Bus"
+              "name" : "MC::MC_Bus.Impl"
             }
           },
           "features" : [
@@ -247,7 +247,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "MC::Radio"
+              "name" : "MC::Radio.Impl"
             }
           },
           "features" : [
@@ -365,7 +365,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "MC::MC_Bus"
+                  "name" : "MC::MC_Bus.Impl"
                 }
               },
               "properties" : [
@@ -402,7 +402,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "UAS::RF"
+                  "name" : "UAS::RF.Impl"
                 }
               },
               "properties" : [
@@ -463,7 +463,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "MC::UART"
+              "name" : "MC::UART.Impl"
             }
           },
           "features" : [
@@ -581,7 +581,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "MC::MC_Bus"
+                  "name" : "MC::MC_Bus.Impl"
                 }
               },
               "properties" : [
@@ -618,7 +618,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "UAV::Serial"
+                  "name" : "UAV::Serial.Impl"
                 }
               },
               "properties" : [
@@ -679,7 +679,7 @@
             "type" : "Some",
             "value" : {
               "type" : "Classifier",
-              "name" : "MC::MC_Mem"
+              "name" : "MC::MC_Mem.Impl"
             }
           },
           "features" : [
@@ -701,7 +701,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "MC::MC_Bus"
+                  "name" : "MC::MC_Bus.Impl"
                 }
               },
               "properties" : [
@@ -942,7 +942,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "SW::RadioDriver"
+                  "name" : "SW::RadioDriver.Impl"
                 }
               },
               "features" : [
@@ -1274,307 +1274,6 @@
               "type" : "Component",
               "identifier" : {
                 "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT"]
-              },
-              "category" : {
-                "type" : "ComponentCategory",
-                "value" : "Thread"
-              },
-              "classifier" : {
-                "type" : "Some",
-                "value" : {
-                  "type" : "Classifier",
-                  "name" : "SW::Filter"
-                }
-              },
-              "features" : [
-                {
-                  "type" : "FeatureEnd",
-                  "identifier" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_in"]
-                  },
-                  "direction" : {
-                    "type" : "Direction",
-                    "value" : "In"
-                  },
-                  "category" : {
-                    "type" : "FeatureCategory",
-                    "value" : "EventDataPort"
-                  },
-                  "classifier" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Classifier",
-                      "name" : "SW::Command.Impl"
-                    }
-                  },
-                  "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_in", "Deployment_Properties::Actual_Memory_Binding"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ReferenceProp",
-                          "value" : {
-                            "type" : "Name",
-                            "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type" : "FeatureEnd",
-                  "identifier" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_out"]
-                  },
-                  "direction" : {
-                    "type" : "Direction",
-                    "value" : "Out"
-                  },
-                  "category" : {
-                    "type" : "FeatureCategory",
-                    "value" : "EventDataPort"
-                  },
-                  "classifier" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Classifier",
-                      "name" : "SW::Command.Impl"
-                    }
-                  },
-                  "properties" : [
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_out", "Deployment_Properties::Actual_Memory_Binding"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ReferenceProp",
-                          "value" : {
-                            "type" : "Name",
-                            "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "subComponents" : [
-              ],
-              "connections" : [
-              ],
-              "connectionInstances" : [
-              ],
-              "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Deployment_Properties::Actual_Processor_Binding"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ReferenceProp",
-                      "value" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_HW"]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Deployment_Properties::Actual_Memory_Binding"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ReferenceProp",
-                      "value" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Thread_Properties::Dispatch_Protocol"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "Sporadic"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Thread_Properties::Priority"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "UnitProp",
-                      "value" : "200.0",
-                      "unit" : {
-                        "type" : "None"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Memory_Properties::Stack_Size"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "UnitProp",
-                      "value" : "8192.0",
-                      "unit" : {
-                        "type" : "Some",
-                        "value" : "bits"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Timing_Properties::Compute_Execution_Time"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "RangeProp",
-                      "low" : {
-                        "type" : "UnitProp",
-                        "value" : "1.0E7",
-                        "unit" : {
-                          "type" : "Some",
-                          "value" : "ps"
-                        }
-                      },
-                      "high" : {
-                        "type" : "UnitProp",
-                        "value" : "1.0E8",
-                        "unit" : {
-                          "type" : "Some",
-                          "value" : "ps"
-                        }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "Timing_Properties::Period"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "UnitProp",
-                      "value" : "1.0E9",
-                      "unit" : {
-                        "type" : "Some",
-                        "value" : "ps"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "TB_SYS::Sends_Events_To"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "{{}}"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "CASE::COMP_TYPE"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "FILTER"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "CASE::COMP_IMPL"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "CAKEML"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "CASE::COMP_SPEC"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "(\\\\i{-90,90}\\\\i{-180,180}\\\\i{0,15000}){4}(Z|S|P)(T|F)"
-                    }
-                  ]
-                }
-              ],
-              "flows" : [
-              ],
-              "modes" : [
-              ],
-              "annexes" : [
-                {
-                  "type" : "Annex",
-                  "name" : "Emv2",
-                  "clause" : {
-                    "type" : "Emv2Clause",
-                    "libraries" : [],
-                    "propagations" : [
-                    ],
-                    "flows" : [
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "type" : "Component",
-              "identifier" : {
-                "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN"]
               },
               "category" : {
@@ -1585,7 +1284,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "SW::FlightPlanner"
+                  "name" : "SW::FlightPlanner.Impl"
                 }
               },
               "features" : [
@@ -1887,7 +1586,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "SW::WaypointManager"
+                  "name" : "SW::WaypointManager.Impl"
                 }
               },
               "features" : [
@@ -2241,7 +1940,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "SW::UARTDriver"
+                  "name" : "SW::UARTDriver.Impl"
                 }
               },
               "features" : [
@@ -2869,72 +2568,6 @@
                   "type" : "EndPoint",
                   "component" : {
                     "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT"]
-                  },
-                  "feature" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Name",
-                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_in"]
-                    }
-                  },
-                  "direction" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Direction",
-                      "value" : "In"
-                    }
-                  }
-                }
-              ],
-              "kind" : {
-                "type" : "ConnectionKind",
-                "value" : "Port"
-              },
-              "isBiDirectional" : false,
-              "connectionInstances" : [
-                {
-                  "type" : "Name",
-                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_out -> FLT", "filter_in"]
-                }
-              ],
-              "properties" : [
-              ]
-            },
-            {
-              "type" : "Connection",
-              "name" : {
-                "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c4"]
-              },
-              "src" : [
-                {
-                  "type" : "EndPoint",
-                  "component" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT"]
-                  },
-                  "feature" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Name",
-                      "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_out"]
-                    }
-                  },
-                  "direction" : {
-                    "type" : "Some",
-                    "value" : {
-                      "type" : "Direction",
-                      "value" : "Out"
-                    }
-                  }
-                }
-              ],
-              "dst" : [
-                {
-                  "type" : "EndPoint",
-                  "component" : {
-                    "type" : "Name",
                     "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN"]
                   },
                   "feature" : {
@@ -2961,7 +2594,7 @@
               "connectionInstances" : [
                 {
                   "type" : "Name",
-                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_out -> FPLN", "recv_map"]
+                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_out -> FPLN", "recv_map"]
                 }
               ],
               "properties" : [
@@ -3303,7 +2936,7 @@
               "type" : "ConnectionInstance",
               "name" : {
                 "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO.recv_map_out -> FLT.filter_in"]
+                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO.recv_map_out -> FPLN.recv_map"]
               },
               "src" : {
                 "type" : "EndPoint",
@@ -3316,75 +2949,6 @@
                   "value" : {
                     "type" : "Name",
                     "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_out"]
-                  }
-                },
-                "direction" : {
-                  "type" : "Some",
-                  "value" : {
-                    "type" : "Direction",
-                    "value" : "Out"
-                  }
-                }
-              },
-              "dst" : {
-                "type" : "EndPoint",
-                "component" : {
-                  "type" : "Name",
-                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT"]
-                },
-                "feature" : {
-                  "type" : "Some",
-                  "value" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_in"]
-                  }
-                },
-                "direction" : {
-                  "type" : "Some",
-                  "value" : {
-                    "type" : "Direction",
-                    "value" : "In"
-                  }
-                }
-              },
-              "kind" : {
-                "type" : "ConnectionKind",
-                "value" : "Port"
-              },
-              "connectionRefs" : [
-                {
-                  "type" : "ConnectionReference",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c3"]
-                  },
-                  "context" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW"]
-                  },
-                  "isParent" : true
-                }
-              ],
-              "properties" : [
-              ]
-            },
-            {
-              "type" : "ConnectionInstance",
-              "name" : {
-                "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT.filter_out -> FPLN.recv_map"]
-              },
-              "src" : {
-                "type" : "EndPoint",
-                "component" : {
-                  "type" : "Name",
-                  "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT"]
-                },
-                "feature" : {
-                  "type" : "Some",
-                  "value" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FLT", "filter_out"]
                   }
                 },
                 "direction" : {
@@ -3425,7 +2989,7 @@
                   "type" : "ConnectionReference",
                   "name" : {
                     "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c4"]
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "c3"]
                   },
                   "context" : {
                     "type" : "Name",
@@ -3872,7 +3436,7 @@
                 "type" : "Some",
                 "value" : {
                   "type" : "Classifier",
-                  "name" : "MC::MC_Bus"
+                  "name" : "MC::MC_Bus.Impl"
                 }
               },
               "properties" : [

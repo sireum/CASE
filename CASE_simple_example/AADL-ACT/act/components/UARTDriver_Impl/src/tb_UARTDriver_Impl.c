@@ -1,8 +1,8 @@
-#include "../includes/tb_UARTDriver.h"
+#include "../includes/tb_UARTDriver_Impl.h"
 #include <string.h>
 #include <camkes.h>
 
-void tb_entrypoint_tb_UARTDriver_position_status_in(const SW__Coordinate_Impl * in_arg) { }
+void tb_entrypoint_tb_UARTDriver_Impl_position_status_in(const SW__Coordinate_Impl * in_arg) { }
 
 
 
@@ -14,7 +14,7 @@ bool tb_position_status_out_enqueue(const SW__Coordinate_Impl * tb_position_stat
   return tb_result;
 }
 
-void tb_entrypoint_tb_UARTDriver_waypoint_in(const SW__MissionWindow_Impl * in_arg) { }
+void tb_entrypoint_tb_UARTDriver_Impl_waypoint_in(const SW__MissionWindow_Impl * in_arg) { }
 
 void pre_init(void) { }
 

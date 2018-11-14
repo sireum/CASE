@@ -1,12 +1,12 @@
-#include "../includes/tb_RadioDriver.h"
+#include "../includes/tb_RadioDriver_Impl.h"
 #include <string.h>
 #include <camkes.h>
 
-void tb_entrypoint_tb_RadioDriver_recv_map_in(const SW__Command_Impl * in_arg) { }
+void tb_entrypoint_tb_RadioDriver_Impl_recv_map_in(const SW__Command_Impl * in_arg) { }
 
 
 
-void tb_entrypoint_tb_RadioDriver_send_status_in(const SW__Coordinate_Impl * in_arg) { }
+void tb_entrypoint_tb_RadioDriver_Impl_send_status_in(const SW__Coordinate_Impl * in_arg) { }
 
 bool tb_recv_map_out_enqueue(const SW__Command_Impl * tb_recv_map_out){
   bool tb_result = true;

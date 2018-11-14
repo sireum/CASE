@@ -1,4 +1,4 @@
-#include "../includes/tb_WaypointManager.h"
+#include "../includes/tb_WaypointManager_Impl.h"
 #include <string.h>
 #include <camkes.h>
 
@@ -10,7 +10,7 @@ bool tb_waypoint_enqueue(const SW__MissionWindow_Impl * tb_waypoint){
   return tb_result;
 }
 
-void tb_entrypoint_tb_WaypointManager_position_status(const SW__Coordinate_Impl * in_arg) { }
+void tb_entrypoint_tb_WaypointManager_Impl_position_status(const SW__Coordinate_Impl * in_arg) { }
 
 void pre_init(void) { }
 
