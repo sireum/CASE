@@ -15,6 +15,11 @@ void tb_entrypoint_tb_RadioDriver_Impl_recv_map_in(const SW__Command_Impl * in_a
 
 }
 
+static void tb_send_status_in_notification_handler(void * unused) {
+  MUTEXOP(tb_dispatch_sem_post())
+  CALLBACKOP(tb_send_status_in_notification_reg_callback(tb_send_status_in_notification_handler, NULL));
+}
+
 /************************************************************************
  * tb_entrypoint_tb_RadioDriver_Impl_send_status_in:
  *
@@ -24,7 +29,7 @@ void tb_entrypoint_tb_RadioDriver_Impl_recv_map_in(const SW__Command_Impl * in_a
  *
  ************************************************************************/
 void tb_entrypoint_tb_RadioDriver_Impl_send_status_in(const SW__Coordinate_Impl * in_arg) {
-
+  radio_driver_send_status_in_event_handler((SW__Coordinate_Impl *) in_arg);
 }
 
 /************************************************************************
@@ -59,6 +64,7 @@ void tb_entrypoint_RadioDriver_Impl_initializer(const int64_t * in_arg) {
 }
 
 void pre_init(void) {
+  CALLBACKOP(tb_send_status_in_notification_reg_callback(tb_send_status_in_notification_handler, NULL));
 }
 
 /************************************************************************
@@ -66,6 +72,7 @@ void pre_init(void) {
  * Main active thread function.
  ************************************************************************/
 int run(void) {
+  SW__Coordinate_Impl tb_send_status_in;
   {
     int64_t tb_dummy;
     tb_entrypoint_RadioDriver_Impl_initializer(&tb_dummy);
@@ -76,6 +83,9 @@ int run(void) {
   for(;;) {
     MUTEXOP(tb_dispatch_sem_wait())
     // Drain the queues
+    while (tb_send_status_in_dequeue((SW__Coordinate_Impl *) &tb_send_status_in)) {
+      tb_entrypoint_tb_RadioDriver_Impl_send_status_in(&tb_send_status_in);
+    }
   }
   return 0;
 }

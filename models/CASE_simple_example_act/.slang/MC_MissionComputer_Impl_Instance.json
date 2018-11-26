@@ -1063,6 +1063,19 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_in", "TB_SYS::Compute_Entrypoint_Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "radio_driver_send_status_in_event_handler"
+                        }
+                      ]
                     }
                   ]
                 },

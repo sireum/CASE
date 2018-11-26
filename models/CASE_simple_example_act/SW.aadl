@@ -107,7 +107,9 @@ public
 		features
 			recv_map_in: in event data port Command.Impl;
 			send_status_out: out event data port Coordinate.Impl;
-			send_status_in: in event data port Coordinate.Impl;
+			send_status_in: in event data port Coordinate.Impl {
+				TB_SYS::Compute_Entrypoint_Source_Text => ("radio_driver_send_status_in_event_handler");
+			};
 			recv_map_out: out event data port Command.Impl;
     
     properties

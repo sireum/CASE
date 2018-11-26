@@ -259,6 +259,15 @@
           </ownedValue>
           <propertyAssociation href="../MC.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
         </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../TB_SYS.aadl#TB_SYS.Compute_Entrypoint_Source_Text"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="radio_driver_send_status_in_event_handler"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventDataPort.2/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventDataPort.2"/>
       </featureInstance>
       <featureInstance name="recv_map_out" category="eventDataPort" direction="out">
