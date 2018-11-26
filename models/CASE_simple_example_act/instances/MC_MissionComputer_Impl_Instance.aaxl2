@@ -218,6 +218,13 @@
         </ownedValue>
         <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.5"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Initialize_Entrypoint_Source_Text"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:StringLiteral" value="radio_driver_component_init"/>
+        </ownedValue>
+        <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.6"/>
+      </ownedPropertyAssociation>
       <featureInstance name="recv_map_in" category="eventDataPort">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>

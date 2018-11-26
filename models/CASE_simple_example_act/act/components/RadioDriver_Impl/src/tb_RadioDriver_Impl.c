@@ -1,4 +1,5 @@
 #include "../includes/tb_RadioDriver_Impl.h"
+#include "../../../aux/includes/radiodriver.h"
 #include <string.h>
 #include <camkes.h>
 
@@ -45,6 +46,18 @@ bool tb_recv_map_out_enqueue(const SW__Command_Impl * tb_recv_map_out){
   return tb_result;
 }
 
+/************************************************************************
+ *  tb_entrypoint_RadioDriver_Impl_initializer:
+ *
+ * This is the function invoked by an active thread dispatcher to
+ * call to a user-defined entrypoint function.  It sets up the dispatch
+ * context for the user-defined entrypoint, then calls it.
+ *
+ ************************************************************************/
+void tb_entrypoint_RadioDriver_Impl_initializer(const int64_t * in_arg) {
+  radio_driver_component_init((int64_t *) in_arg);
+}
+
 void pre_init(void) {
 }
 
@@ -53,6 +66,10 @@ void pre_init(void) {
  * Main active thread function.
  ************************************************************************/
 int run(void) {
+  {
+    int64_t tb_dummy;
+    tb_entrypoint_RadioDriver_Impl_initializer(&tb_dummy);
+  }
 
   // Initial lock to await dispatch input.
   MUTEXOP(tb_dispatch_sem_wait())

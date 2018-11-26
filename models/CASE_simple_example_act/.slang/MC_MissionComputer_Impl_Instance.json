@@ -1249,6 +1249,19 @@
                       "value" : "{{}}"
                     }
                   ]
+                },
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "Programming_Properties::Initialize_Entrypoint_Source_Text"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "radio_driver_component_init"
+                    }
+                  ]
                 }
               ],
               "flows" : [

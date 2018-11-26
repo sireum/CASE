@@ -11,4 +11,6 @@ bool tb_send_status_in_dequeue(SW__Coordinate_Impl * tb_send_status_in);
 
 bool tb_recv_map_out_enqueue(const SW__Command_Impl * tb_recv_map_out);
 
+void radio_driver_component_init(const int64_t *arg);
+
 #endif // __tb_AADL_RadioDriver_Impl_types__H

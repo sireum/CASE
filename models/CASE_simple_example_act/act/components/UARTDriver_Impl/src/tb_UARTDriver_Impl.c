@@ -1,4 +1,5 @@
 #include "../includes/tb_UARTDriver_Impl.h"
+#include "../../../aux/includes/radiodriver.h"
 #include <string.h>
 #include <camkes.h>
 
