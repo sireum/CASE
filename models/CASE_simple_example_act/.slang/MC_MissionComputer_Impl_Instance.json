@@ -983,6 +983,19 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_in", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/radiodriver.c"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1023,6 +1036,19 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_out", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/radiodriver.c"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1061,6 +1087,19 @@
                             "type" : "Name",
                             "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
                           }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "send_status_in", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/radiodriver.c"
                         }
                       ]
                     },
@@ -1114,6 +1153,19 @@
                             "type" : "Name",
                             "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
                           }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "recv_map_out", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/radiodriver.c"
                         }
                       ]
                     }
@@ -1273,6 +1325,19 @@
                     {
                       "type" : "ValueProp",
                       "value" : "radio_driver_component_init"
+                    }
+                  ]
+                },
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "Programming_Properties::Source_Text"]
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "aux_c\/radiodriver.c"
                     }
                   ]
                 }

@@ -225,6 +225,15 @@
         </ownedValue>
         <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.6"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Source_Text"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="aux_c/radiodriver.c"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.7"/>
+      </ownedPropertyAssociation>
       <featureInstance name="recv_map_in" category="eventDataPort">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
@@ -234,6 +243,15 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../MC.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Source_Text"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="aux_c/radiodriver.c"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.7"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventDataPort.0"/>
       </featureInstance>
@@ -247,6 +265,15 @@
           </ownedValue>
           <propertyAssociation href="../MC.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
         </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Source_Text"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="aux_c/radiodriver.c"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.7"/>
+        </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventDataPort.1"/>
       </featureInstance>
       <featureInstance name="send_status_in" category="eventDataPort">
@@ -258,6 +285,15 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../MC.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Source_Text"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="aux_c/radiodriver.c"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.7"/>
         </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../TB_SYS.aadl#TB_SYS.Compute_Entrypoint_Source_Text"/>
@@ -279,6 +315,15 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../MC.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Programming_Properties.aadl#Programming_Properties.Source_Text"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="aux_c/radiodriver.c"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedPropertyAssociation.7"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../SW.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventDataPort.3"/>
       </featureInstance>

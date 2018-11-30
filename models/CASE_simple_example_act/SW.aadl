@@ -120,6 +120,7 @@ public
       Period => 1 ms;
       TB_SYS::Sends_Events_To => "{{}}";
       Initialize_Entrypoint_Source_Text => "radio_driver_component_init";
+      Source_Text => ("aux_c/radiodriver.c");
             			
     annex agree {**
       assume Req001_RadioDriver "Authenticated command from the Ground Station" : recv_map_in.HMAC = True;
