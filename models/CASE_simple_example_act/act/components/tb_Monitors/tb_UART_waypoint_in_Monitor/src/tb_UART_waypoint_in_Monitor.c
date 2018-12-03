@@ -21,9 +21,7 @@ static bool is_empty(void) {
 }
 
 bool mon_dequeue(SW__MissionWindow_Impl * m) {
-  if (mon_get_sender_id() != TB_MONITOR_READ_ACCESS) {
-    return false;
-  } else if (is_empty()) {
+  if (is_empty()) {
     return false;
   } else {
     *m = contents[front];
@@ -34,9 +32,7 @@ bool mon_dequeue(SW__MissionWindow_Impl * m) {
 }
 
 bool mon_enqueue(const SW__MissionWindow_Impl * m) {
-  if (mon_get_sender_id() != TB_MONITOR_WRITE_ACCESS) {
-    return false;
-  } else if (is_full()) {
+  if (is_full()) {
     return false;
   } else {
     contents[(front + length) % 1] = *m;

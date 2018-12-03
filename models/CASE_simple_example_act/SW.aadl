@@ -167,8 +167,6 @@ public
 			waypoint: out event data port MissionWindow.Impl;
 			position_status: in event data port Coordinate.Impl;
     properties
-      Programming_Properties::Source_Text => ("test.o");
-    
       Dispatch_Protocol => Sporadic;
       Priority => 200;
       Stack_Size => 1024 Bytes;

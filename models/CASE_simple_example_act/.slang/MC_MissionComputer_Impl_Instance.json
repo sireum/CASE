@@ -1718,19 +1718,6 @@
                           }
                         }
                       ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "WPM", "flight_plan", "Programming_Properties::Source_Text"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "test.o"
-                        }
-                      ]
                     }
                   ]
                 },
@@ -1771,19 +1758,6 @@
                           }
                         }
                       ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "WPM", "waypoint", "Programming_Properties::Source_Text"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "test.o"
-                        }
-                      ]
                     }
                   ]
                 },
@@ -1822,19 +1796,6 @@
                             "type" : "Name",
                             "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
                           }
-                        }
-                      ]
-                    },
-                    {
-                      "type" : "Property",
-                      "name" : {
-                        "type" : "Name",
-                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "WPM", "position_status", "Programming_Properties::Source_Text"]
-                      },
-                      "propertyValues" : [
-                        {
-                          "type" : "ValueProp",
-                          "value" : "test.o"
                         }
                       ]
                     }
@@ -1981,19 +1942,6 @@
                     {
                       "type" : "ValueProp",
                       "value" : "{{}}"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "WPM", "Programming_Properties::Source_Text"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "test.o"
                     }
                   ]
                 }
@@ -5608,7 +5556,11 @@
           }
         }
       ]
-    },
+    }
+  ],
+  "errorLib" : [
+  ],
+  "dataComponents" : [
     {
       "type" : "Component",
       "identifier" : {
@@ -11476,7 +11428,5 @@
       "annexes" : [
       ]
     }
-  ],
-  "errorLib" : [
   ]
 }

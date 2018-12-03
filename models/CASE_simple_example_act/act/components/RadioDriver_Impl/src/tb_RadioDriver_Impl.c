@@ -77,8 +77,6 @@ int run(void) {
     tb_entrypoint_RadioDriver_Impl_initializer(&tb_dummy);
   }
 
-  // Initial lock to await dispatch input.
-  MUTEXOP(tb_dispatch_sem_wait())
   for(;;) {
     MUTEXOP(tb_dispatch_sem_wait())
     // Drain the queues
