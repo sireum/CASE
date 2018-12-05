@@ -1,0 +1,4 @@
+#ifdef __tb_waypoint_manager_in_send_success_Monitor_H__
+#define __tb_waypoint_manager_in_send_success_Monitor_H__
+
+#endif // __tb_waypoint_manager_in_send_success_Monitor_H__

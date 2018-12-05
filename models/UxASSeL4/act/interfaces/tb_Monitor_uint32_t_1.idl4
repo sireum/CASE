@@ -1,0 +1,5 @@
+procedure tb_Monitor_uint32_t_1 {
+  include <tb_soi_tk1_types.h>;
+  bool enqueue(refin uint32_t m);
+  bool dequeue(out uint32_t m);
+};

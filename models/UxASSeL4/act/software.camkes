@@ -1,0 +1,101 @@
+import <std_connector.camkes>;
+
+import "components/Clock_Driver/Clock_Driver.camkes";
+import "components/UART_Driver/UART_Driver.camkes";
+import "components/Asset_Waypoint_Manager/Asset_Waypoint_Manager.camkes";
+import "components/Waypoint_Manager/Waypoint_Manager.camkes";
+import "components/Virtual_Machine/Virtual_Machine.camkes";
+import "components/TimeServer/TimeServer.camkes";
+import "components/dispatch_periodic/dispatch_periodic.camkes";
+import "components/tb_Monitors/tb_uart_driver_in_uart_packet_Monitor/tb_uart_driver_in_uart_packet_Monitor.camkes";
+import "components/tb_Monitors/tb_waypoint_manager_in_send_success_Monitor/tb_waypoint_manager_in_send_success_Monitor.camkes";
+import "components/tb_Monitors/tb_waypoint_manager_mission_write_Monitor/tb_waypoint_manager_mission_write_Monitor.camkes";
+import "components/tb_Monitors/tb_waypoint_manager_waypoint_write_Monitor/tb_waypoint_manager_waypoint_write_Monitor.camkes";
+import "components/tb_Monitors/tb_virtual_machine_waypoint_write_Monitor/tb_virtual_machine_waypoint_write_Monitor.camkes";
+import "components/tb_Monitors/tb_asset_waypoint_manager_in_uart_packet_Monitor/tb_asset_waypoint_manager_in_uart_packet_Monitor.camkes";
+import "components/tb_Monitors/tb_asset_waypoint_manager_waypoint_read_wm_Monitor/tb_asset_waypoint_manager_waypoint_read_wm_Monitor.camkes";
+import "components/tb_Monitors/tb_asset_waypoint_manager_waypoint_read_vm_Monitor/tb_asset_waypoint_manager_waypoint_read_vm_Monitor.camkes";
+import "components/tb_Monitors/tb_virtual_machine_mission_read_Monitor/tb_virtual_machine_mission_read_Monitor.camkes";
+
+connector seL4TimeServer {
+  from Procedures template "seL4TimeServer-from.template.c";
+  to Procedure template "seL4TimeServer-to.template.c";
+}
+
+connector seL4GlobalAsynchCallback {
+  from Events template "seL4GlobalAsynchCallback-from.template.c";
+  to Event template "seL4GlobalAsynchCallback-to.template.c";
+}
+
+assembly {
+  composition {
+    component Clock_Driver clock_driver;
+    component UART_Driver uart_driver;
+    component Asset_Waypoint_Manager asset_waypoint_manager;
+    component Waypoint_Manager waypoint_manager;
+    component Virtual_Machine virtual_machine;
+    component TimeServer time_server;
+    component dispatch_periodic dispatch_periodic_inst;
+    component tb_uart_driver_in_uart_packet_Monitor tb_uart_driver_in_uart_packet_monitor;
+    component tb_waypoint_manager_in_send_success_Monitor tb_waypoint_manager_in_send_success_monitor;
+    component tb_waypoint_manager_mission_write_Monitor tb_waypoint_manager_mission_write_monitor;
+    component tb_waypoint_manager_waypoint_write_Monitor tb_waypoint_manager_waypoint_write_monitor;
+    component tb_virtual_machine_waypoint_write_Monitor tb_virtual_machine_waypoint_write_monitor;
+    component tb_asset_waypoint_manager_in_uart_packet_Monitor tb_asset_waypoint_manager_in_uart_packet_monitor;
+    component tb_asset_waypoint_manager_waypoint_read_wm_Monitor tb_asset_waypoint_manager_waypoint_read_wm_monitor;
+    component tb_asset_waypoint_manager_waypoint_read_vm_Monitor tb_asset_waypoint_manager_waypoint_read_vm_monitor;
+    component tb_virtual_machine_mission_read_Monitor tb_virtual_machine_mission_read_monitor;
+
+    connection seL4TimeServer conn1(from asset_waypoint_manager.tb_timer, to time_server.the_timer);
+    connection seL4Notification conn2(from dispatch_periodic_inst.asset_waypoint_manager_periodic_dispatcher, to asset_waypoint_manager.tb_timer_complete);
+    connection seL4TimeServer conn3(from waypoint_manager.tb_timer, to time_server.the_timer);
+    connection seL4Notification conn4(from dispatch_periodic_inst.waypoint_manager_periodic_dispatcher, to waypoint_manager.tb_timer_complete);
+    connection seL4TimeServer conn5(from dispatch_periodic_inst.timer, to time_server.the_timer);
+    connection seL4GlobalAsynchCallback conn6(from time_server.timer_notification, to dispatch_periodic_inst.timer_complete);
+    connection seL4RPCCall conn7(from uart_driver.tb_out_uart_packet0, to tb_asset_waypoint_manager_in_uart_packet_monitor.mon);
+    connection seL4RPCCall conn8(from asset_waypoint_manager.tb_in_uart_packet, to tb_asset_waypoint_manager_in_uart_packet_monitor.mon);
+    connection seL4Notification conn9(from tb_asset_waypoint_manager_in_uart_packet_monitor.monsig, to asset_waypoint_manager.tb_in_uart_packet_notification);
+    connection seL4RPCCall conn10(from uart_driver.tb_out_send_success0, to tb_waypoint_manager_in_send_success_monitor.mon);
+    connection seL4RPCCall conn11(from waypoint_manager.tb_in_send_success, to tb_waypoint_manager_in_send_success_monitor.mon);
+    connection seL4Notification conn12(from tb_waypoint_manager_in_send_success_monitor.monsig, to waypoint_manager.tb_in_send_success_notification);
+    connection seL4RPCCall conn13(from uart_driver.clkcar, to clock_driver.clkcar);
+    connection seL4RPCCall conn14(from asset_waypoint_manager.tb_waypoint_write_wm0, to tb_waypoint_manager_waypoint_write_monitor.mon);
+    connection seL4RPCCall conn15(from waypoint_manager.tb_waypoint_write, to tb_waypoint_manager_waypoint_write_monitor.mon);
+    connection seL4Notification conn16(from tb_waypoint_manager_waypoint_write_monitor.monsig, to waypoint_manager.tb_waypoint_write_notification);
+    connection seL4RPCCall conn17(from asset_waypoint_manager.tb_waypoint_write_vm0, to tb_virtual_machine_waypoint_write_monitor.mon);
+    connection seL4RPCCall conn18(from virtual_machine.tb_waypoint_write, to tb_virtual_machine_waypoint_write_monitor.mon);
+    connection seL4Notification conn19(from tb_virtual_machine_waypoint_write_monitor.monsig, to virtual_machine.tb_waypoint_write_notification);
+    connection seL4RPCCall conn20(from waypoint_manager.tb_mission_read0, to tb_virtual_machine_mission_read_monitor.mon);
+    connection seL4RPCCall conn21(from virtual_machine.tb_mission_read, to tb_virtual_machine_mission_read_monitor.mon);
+    connection seL4Notification conn22(from tb_virtual_machine_mission_read_monitor.monsig, to virtual_machine.tb_mission_read_notification);
+    connection seL4RPCCall conn23(from waypoint_manager.tb_waypoint_read0, to tb_asset_waypoint_manager_waypoint_read_wm_monitor.mon);
+    connection seL4RPCCall conn24(from asset_waypoint_manager.tb_waypoint_read_wm, to tb_asset_waypoint_manager_waypoint_read_wm_monitor.mon);
+    connection seL4Notification conn25(from tb_asset_waypoint_manager_waypoint_read_wm_monitor.monsig, to asset_waypoint_manager.tb_waypoint_read_wm_notification);
+    connection seL4RPCCall conn26(from waypoint_manager.tb_out_uart_packet0, to tb_uart_driver_in_uart_packet_monitor.mon);
+    connection seL4RPCCall conn27(from uart_driver.tb_in_uart_packet, to tb_uart_driver_in_uart_packet_monitor.mon);
+    connection seL4Notification conn28(from tb_uart_driver_in_uart_packet_monitor.monsig, to uart_driver.tb_in_uart_packet_notification);
+    connection seL4RPCCall conn29(from virtual_machine.tb_mission_write0, to tb_waypoint_manager_mission_write_monitor.mon);
+    connection seL4RPCCall conn30(from waypoint_manager.tb_mission_write, to tb_waypoint_manager_mission_write_monitor.mon);
+    connection seL4Notification conn31(from tb_waypoint_manager_mission_write_monitor.monsig, to waypoint_manager.tb_mission_write_notification);
+    connection seL4RPCCall conn32(from virtual_machine.tb_waypoint_read0, to tb_asset_waypoint_manager_waypoint_read_vm_monitor.mon);
+    connection seL4RPCCall conn33(from asset_waypoint_manager.tb_waypoint_read_vm, to tb_asset_waypoint_manager_waypoint_read_vm_monitor.mon);
+    connection seL4Notification conn34(from tb_asset_waypoint_manager_waypoint_read_vm_monitor.monsig, to asset_waypoint_manager.tb_waypoint_read_vm_notification);
+    connection seL4RPCCall conn35(from virtual_machine.clkcarfwd, to clock_driver.clkcarfwd);
+    connection seL4RPCCall conn36(from virtual_machine.uartfwd, to uart_driver.uartfwd);
+  }
+
+  configuration {
+    asset_waypoint_manager.tb_timer_attributes = 0;
+    asset_waypoint_manager.tb_timer_global_endpoint = "Asset_Waypoint_Manager_tb_timer";
+    asset_waypoint_manager.priority = 151;
+    asset_waypoint_manager._control_stack_size = 256;
+    waypoint_manager.tb_timer_attributes = 1;
+    waypoint_manager.tb_timer_global_endpoint = "Waypoint_Manager_tb_timer";
+    waypoint_manager.priority = 150;
+    waypoint_manager._control_stack_size = 1024;
+    dispatch_periodic_inst.timer_attributes = 2;
+    dispatch_periodic_inst.timer_global_endpoint = "dispatch_periodic_timer";
+    dispatch_periodic_inst.timer_complete_global_endpoint = "dispatch_periodic_timer_complete";
+    dispatch_periodic_inst.priority = 201;
+  }
+}

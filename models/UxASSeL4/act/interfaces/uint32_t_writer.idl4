@@ -1,0 +1,4 @@
+procedure uint32_t_writer {
+  include <tb_soi_tk1_types.h>;
+  bool write_uint32_t(refin uint32_t arg);
+};

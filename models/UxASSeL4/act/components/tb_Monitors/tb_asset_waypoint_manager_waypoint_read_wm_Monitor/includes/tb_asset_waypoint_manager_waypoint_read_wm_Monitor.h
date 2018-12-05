@@ -1,0 +1,4 @@
+#ifdef __tb_asset_waypoint_manager_waypoint_read_wm_Monitor_H__
+#define __tb_asset_waypoint_manager_waypoint_read_wm_Monitor_H__
+
+#endif // __tb_asset_waypoint_manager_waypoint_read_wm_Monitor_H__

@@ -1,0 +1,7 @@
+import "../../../interfaces/tb_Monitor_bool_1.idl4";
+
+component tb_waypoint_manager_in_send_success_Monitor {
+
+  provides tb_Monitor_bool_1 mon;
+  emits QueuedData monsig;
+}

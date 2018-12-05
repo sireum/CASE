@@ -1,0 +1,16 @@
+import "../../interfaces/gen_fwd_inf.idl4";
+import "../../interfaces/clkcar_inf.idl4";
+import "../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_23388.idl4";
+import "../../interfaces/tb_Monitor_bool_1.idl4";
+
+component UART_Driver {
+  include <tb_soi_tk1_types.h>;
+  control;
+  provides gen_fwd_inf uartfwd;
+  uses clkcar_inf clkcar;
+  uses tb_Monitor_SMACCM_DATA__UART_Packet_i_23388 tb_out_uart_packet0;
+  uses tb_Monitor_SMACCM_DATA__UART_Packet_i_23388 tb_in_uart_packet;
+  uses tb_Monitor_bool_1 tb_out_send_success0;
+  consumes QueuedData tb_in_uart_packet_notification;
+  has binary_semaphore tb_dispatch_sem;
+}

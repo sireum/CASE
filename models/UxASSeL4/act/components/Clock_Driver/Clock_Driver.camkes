@@ -1,0 +1,10 @@
+import "../../interfaces/clkcar_inf.idl4";
+import "../../interfaces/gen_fwd_inf.idl4";
+
+component Clock_Driver {
+  include <tb_soi_tk1_types.h>;
+
+  provides clkcar_inf clkcar;
+  provides gen_fwd_inf clkcarfwd;
+  has binary_semaphore tb_dispatch_sem;
+}

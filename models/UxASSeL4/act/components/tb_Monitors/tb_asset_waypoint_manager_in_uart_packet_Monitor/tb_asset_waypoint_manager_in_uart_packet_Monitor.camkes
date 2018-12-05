@@ -1,0 +1,7 @@
+import "../../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_23388.idl4";
+
+component tb_asset_waypoint_manager_in_uart_packet_Monitor {
+
+  provides tb_Monitor_SMACCM_DATA__UART_Packet_i_23388 mon;
+  emits QueuedData monsig;
+}

@@ -1,0 +1,7 @@
+import "../../../interfaces/tb_Monitor_uint32_t_1.idl4";
+
+component tb_waypoint_manager_waypoint_write_Monitor {
+
+  provides tb_Monitor_uint32_t_1 mon;
+  emits QueuedData monsig;
+}

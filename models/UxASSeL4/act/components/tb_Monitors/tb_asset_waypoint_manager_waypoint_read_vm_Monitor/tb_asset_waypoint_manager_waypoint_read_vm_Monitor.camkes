@@ -1,0 +1,7 @@
+import "../../../interfaces/tb_Monitor_bool_1.idl4";
+
+component tb_asset_waypoint_manager_waypoint_read_vm_Monitor {
+
+  provides tb_Monitor_bool_1 mon;
+  emits QueuedData monsig;
+}

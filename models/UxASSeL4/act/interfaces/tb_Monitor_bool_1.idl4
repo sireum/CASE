@@ -1,0 +1,5 @@
+procedure tb_Monitor_bool_1 {
+  include <tb_soi_tk1_types.h>;
+  bool enqueue(refin bool m);
+  bool dequeue(out bool m);
+};

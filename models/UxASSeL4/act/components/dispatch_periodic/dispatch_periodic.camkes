@@ -1,0 +1,9 @@
+import "../../interfaces/Timer.idl4";
+
+component dispatch_periodic {
+
+  uses Timer timer;
+  emits Notification asset_waypoint_manager_periodic_dispatcher;
+  emits Notification waypoint_manager_periodic_dispatcher;
+  consumes Notification timer_complete;
+}

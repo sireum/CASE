@@ -1,0 +1,9 @@
+procedure Timer {
+  unsigned int completed();
+  int periodic(in int tid, in uint64_t ns);
+  int oneshot_absolute(in int tid, in uint64_t ns);
+  int oneshot_relative(in int tid, in uint64_t ns);
+  int stop(in int tid);
+  uint64_t time();
+  uint64_t tsc_frequency();
+};
