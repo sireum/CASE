@@ -16,5 +16,5 @@ component Virtual_Machine {
   consumes QueuedData tb_waypoint_write_notification;
   dataport MissionSoftware__mission_command_impl mission;
   dataport MissionSoftware__mission_command_impl waypoint;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }

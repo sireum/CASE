@@ -13,7 +13,7 @@ static uint32_t front = 0;
 static uint32_t length = 0;
 
 static bool is_full(void) {
-  return length == 1;
+  return length == 23388;
 }
 
 static bool is_empty(void) {

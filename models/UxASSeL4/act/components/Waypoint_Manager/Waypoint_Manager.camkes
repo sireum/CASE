@@ -20,5 +20,5 @@ component Waypoint_Manager {
   consumes Notification tb_timer_complete;
   dataport MissionSoftware__mission_command_impl mission;
   dataport MissionSoftware__mission_command_impl waypoint;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }

@@ -6,5 +6,5 @@ component Clock_Driver {
 
   provides clkcar_inf clkcar;
   provides gen_fwd_inf clkcarfwd;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }

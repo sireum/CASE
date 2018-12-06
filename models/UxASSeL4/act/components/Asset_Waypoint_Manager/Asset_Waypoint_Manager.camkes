@@ -19,5 +19,5 @@ component Asset_Waypoint_Manager {
   consumes Notification tb_timer_complete;
   dataport MissionSoftware__mission_command_impl waypoint;
   dataport MissionSoftware__mission_command_impl vm_waypoint;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }

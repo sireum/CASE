@@ -12,5 +12,5 @@ component UART_Driver {
   uses tb_Monitor_SMACCM_DATA__UART_Packet_i_23388 tb_in_uart_packet;
   uses tb_Monitor_bool_1 tb_out_send_success0;
   consumes QueuedData tb_in_uart_packet_notification;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }
