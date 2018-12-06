@@ -9,5 +9,5 @@ component UARTDriver_Impl {
   uses tb_Monitor_SW__Coordinate_Impl_1 tb_position_status_out2;
   uses tb_Monitor_SW__MissionWindow_Impl_1 tb_waypoint_in;
   consumes QueuedData tb_waypoint_in_notification;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }
