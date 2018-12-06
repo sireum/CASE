@@ -10,5 +10,5 @@ component FlightPlanner_Impl {
   uses tb_Monitor_SW__Coordinate_Impl_1 tb_position_status;
   consumes QueuedData tb_recv_map_notification;
   consumes QueuedData tb_position_status_notification;
-  has binary_semaphore tb_dispatch_sem;
+  has semaphore tb_dispatch_sem;
 }
