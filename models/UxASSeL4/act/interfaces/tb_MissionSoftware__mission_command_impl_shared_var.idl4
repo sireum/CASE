@@ -1,0 +1,5 @@
+procedure tb_MissionSoftware__mission_command_impl_shared_var {
+  include <tb_soi_tk1_types.h>;
+  void read_MissionSoftware__mission_command_impl(out MissionSoftware__mission_command_impl arg);
+  void write_MissionSoftware__mission_command_impl(refin MissionSoftware__mission_command_impl arg);
+};
