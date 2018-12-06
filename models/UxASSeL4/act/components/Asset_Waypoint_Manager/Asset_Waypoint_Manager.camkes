@@ -1,4 +1,4 @@
-import "../../interfaces/mission_command_impl.idl4";
+import "../../interfaces/tb_MissionSoftware__mission_command_impl_shared_var.idl4";
 import "../../interfaces/tb_Monitor_uint32_t_1.idl4";
 import "../../interfaces/tb_Monitor_bool_1.idl4";
 import "../../interfaces/tb_Monitor_SMACCM_DATA__UART_Packet_i_23388.idl4";
@@ -17,5 +17,7 @@ component Asset_Waypoint_Manager {
   consumes QueuedData tb_waypoint_read_wm_notification;
   consumes QueuedData tb_in_uart_packet_notification;
   consumes Notification tb_timer_complete;
+  dataport MissionSoftware__mission_command_impl waypoint;
+  dataport MissionSoftware__mission_command_impl vm_waypoint;
   has binary_semaphore tb_dispatch_sem;
 }

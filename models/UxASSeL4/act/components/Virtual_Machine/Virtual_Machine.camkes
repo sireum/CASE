@@ -1,4 +1,4 @@
-import "../../interfaces/mission_command_impl.idl4";
+import "../../interfaces/tb_MissionSoftware__mission_command_impl_shared_var.idl4";
 import "../../interfaces/gen_fwd_inf.idl4";
 import "../../interfaces/tb_Monitor_bool_1.idl4";
 import "../../interfaces/tb_Monitor_uint32_t_1.idl4";
@@ -14,5 +14,7 @@ component Virtual_Machine {
   uses tb_Monitor_bool_1 tb_waypoint_read0;
   consumes QueuedData tb_mission_read_notification;
   consumes QueuedData tb_waypoint_write_notification;
+  dataport MissionSoftware__mission_command_impl mission;
+  dataport MissionSoftware__mission_command_impl waypoint;
   has binary_semaphore tb_dispatch_sem;
 }

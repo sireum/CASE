@@ -16,14 +16,10 @@
       },
       "features" : [
         {
-          "type" : "FeatureEnd",
+          "type" : "FeatureAccess",
           "identifier" : {
             "type" : "Name",
             "name" : ["MissionComputer_Impl_Instance", "UARTA"]
-          },
-          "direction" : {
-            "type" : "Direction",
-            "value" : "InOut"
           },
           "category" : {
             "type" : "FeatureCategory",
@@ -36,31 +32,22 @@
               "name" : "UAV::Serial.Impl"
             }
           },
+          "accessType" : {
+            "type" : "AccessType",
+            "value" : "Requires"
+          },
+          "accessCategory" : {
+            "type" : "AccessCategory",
+            "value" : "Bus"
+          },
           "properties" : [
-            {
-              "type" : "Property",
-              "name" : {
-                "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "AccessType"]
-              },
-              "propertyValues" : [
-                {
-                  "type" : "ValueProp",
-                  "value" : "requires"
-                }
-              ]
-            }
           ]
         },
         {
-          "type" : "FeatureEnd",
+          "type" : "FeatureAccess",
           "identifier" : {
             "type" : "Name",
             "name" : ["MissionComputer_Impl_Instance", "RFA"]
-          },
-          "direction" : {
-            "type" : "Direction",
-            "value" : "InOut"
           },
           "category" : {
             "type" : "FeatureCategory",
@@ -73,20 +60,15 @@
               "name" : "UAS::RF.Impl"
             }
           },
+          "accessType" : {
+            "type" : "AccessType",
+            "value" : "Requires"
+          },
+          "accessCategory" : {
+            "type" : "AccessCategory",
+            "value" : "Bus"
+          },
           "properties" : [
-            {
-              "type" : "Property",
-              "name" : {
-                "type" : "Name",
-                "name" : ["MissionComputer_Impl_Instance", "AccessType"]
-              },
-              "propertyValues" : [
-                {
-                  "type" : "ValueProp",
-                  "value" : "requires"
-                }
-              ]
-            }
           ]
         },
         {
@@ -348,14 +330,10 @@
               ]
             },
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "MCA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -368,31 +346,22 @@
                   "name" : "MC::MC_Bus.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             },
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "RFA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -405,20 +374,15 @@
                   "name" : "UAS::RF.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "RADIO_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             }
           ],
@@ -564,14 +528,10 @@
               ]
             },
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "UART_HW", "MCA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -584,31 +544,22 @@
                   "name" : "MC::MC_Bus.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "UART_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             },
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "UART_HW", "UARTA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -621,20 +572,15 @@
                   "name" : "UAV::Serial.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "UART_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             }
           ],
@@ -684,14 +630,10 @@
           },
           "features" : [
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "MCA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -704,20 +646,15 @@
                   "name" : "MC::MC_Bus.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "MEM_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             }
           ],
@@ -3458,14 +3395,10 @@
           },
           "features" : [
             {
-              "type" : "FeatureEnd",
+              "type" : "FeatureAccess",
               "identifier" : {
                 "type" : "Name",
                 "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "MCA"]
-              },
-              "direction" : {
-                "type" : "Direction",
-                "value" : "InOut"
               },
               "category" : {
                 "type" : "FeatureCategory",
@@ -3478,20 +3411,15 @@
                   "name" : "MC::MC_Bus.Impl"
                 }
               },
+              "accessType" : {
+                "type" : "AccessType",
+                "value" : "Requires"
+              },
+              "accessCategory" : {
+                "type" : "AccessCategory",
+                "value" : "Bus"
+              },
               "properties" : [
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_HW", "AccessType"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "requires"
-                    }
-                  ]
-                }
               ]
             }
           ],

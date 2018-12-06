@@ -1,0 +1,4 @@
+procedure clkcar_inf {
+    include <tb_soi_tk1_types.h>;
+
+}

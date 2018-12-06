@@ -29,6 +29,13 @@ if((OP) != 0) {\
 #define CALLBACKOP(OP) OP
 #endif // TB_VERIFY
 
+typedef uint8_t MissionSoftware__mission_command_impl [23264];
+
+typedef
+  struct tb_MissionSoftware__mission_command_impl_container {
+    MissionSoftware__mission_command_impl f;
+  } tb_MissionSoftware__mission_command_impl_container;
+
 typedef uint8_t SMACCM_DATA__UART_Buffer [255];
 
 typedef
