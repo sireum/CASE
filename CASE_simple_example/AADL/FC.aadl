@@ -14,14 +14,9 @@ public
 	    annex EMV2{**
 			use types UAS_Errors;
 			error propagations
-
-				waypoint : in propagation {authenticated_cmd, wellformed_cmd};
+				waypoint : in propagation {wellformed_authenticated};
 			flows
-				authenticated_map : error sink waypoint{authenticated_cmd};
-
-				wellformed_map : error sink waypoint{wellformed_cmd};
-
-				
+				authenticated_wellformed : error sink waypoint{wellformed_authenticated};
 			end propagations;
 		**};
 	end FlightController;

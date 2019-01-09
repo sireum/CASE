@@ -30,17 +30,17 @@ public
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
-				recv_map_in : in propagation {authenticated_cmd, 
-					unauthenticated_cmd, wellformed_cmd, not_wellformed_cmd
+				recv_map_in : in propagation {wellformed_authenticated, wellformed_unauthenticated, 
+					not_wellformed_authenticated, not_wellformed_unauthenticated
 				};
-				recv_map_out : out propagation {authenticated_cmd, unauthenticated_cmd,
-					 wellformed_cmd, not_wellformed_cmd
+				recv_map_out : out propagation {wellformed_authenticated, wellformed_unauthenticated, 
+					not_wellformed_authenticated, not_wellformed_unauthenticated
 				};
 			flows
-				authenticated_map : error path recv_map_in{authenticated_cmd} -> recv_map_out{authenticated_cmd};
-				unauthenticated_map : error path recv_map_in{unauthenticated_cmd} -> recv_map_out{unauthenticated_cmd};
-				wellformed_map : error path recv_map_in{wellformed_cmd} -> recv_map_out{wellformed_cmd};
-				not_wellformed_map : error path recv_map_in{not_wellformed_cmd} -> recv_map_out{not_wellformed_cmd};
+				wellformed_authenticated : error path recv_map_in{wellformed_authenticated} -> recv_map_out{wellformed_authenticated};
+				wellformed_unauthenticated : error path recv_map_in{wellformed_unauthenticated} -> recv_map_out{wellformed_unauthenticated};
+				not_wellformed_authenticated : error path recv_map_in{not_wellformed_authenticated} -> recv_map_out{not_wellformed_authenticated};
+				not_wellformed_unauthenticated : error path recv_map_in{not_wellformed_unauthenticated} -> recv_map_out{not_wellformed_unauthenticated};
 				
 			end propagations;
 		**};	
@@ -60,11 +60,11 @@ public
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
-				waypoint_in : in propagation {authenticated_cmd, wellformed_cmd};
-				waypoint_out : out propagation {authenticated_cmd, wellformed_cmd};
+				waypoint_in : in propagation {wellformed_authenticated};
+				waypoint_out : out propagation {wellformed_authenticated};
 			flows
-				authenticated_map : error path waypoint_in{authenticated_cmd} -> waypoint_out{authenticated_cmd};
-				wellformed_map : error path waypoint_in{wellformed_cmd} -> waypoint_out{wellformed_cmd};
+				authenticated_wellformed : error path waypoint_in{wellformed_authenticated} -> 
+				waypoint_out{wellformed_authenticated};
 				
 			end propagations;
 		**};	
@@ -105,15 +105,14 @@ public
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
-				recv_map : in propagation {authenticated_cmd, 
-					unauthenticated_cmd, wellformed_cmd, not_wellformed_cmd
+				recv_map : in propagation {wellformed_authenticated, 
+					wellformed_unauthenticated, not_wellformed_authenticated, not_wellformed_unauthenticated
 				};
-				waypoint : out propagation {authenticated_cmd, wellformed_cmd};
+				waypoint : out propagation {wellformed_authenticated};
 			flows
-				authenticated_map : error path recv_map{authenticated_cmd} -> waypoint{authenticated_cmd};
-				unauthenticated_map : error sink recv_map{unauthenticated_cmd};
-				wellformed_map : error path recv_map{wellformed_cmd} -> waypoint{wellformed_cmd};
-				not_wellformed_map : error sink recv_map{not_wellformed_cmd};
+				wellformed_authenticated : error path recv_map{wellformed_authenticated} -> waypoint{wellformed_authenticated};
+				unauthenticated_map : error sink recv_map{not_wellformed_unauthenticated, wellformed_unauthenticated};
+				not_wellformed_map : error sink recv_map{not_wellformed_unauthenticated, not_wellformed_authenticated};
 				
 			end propagations;
 		**};		
