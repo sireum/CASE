@@ -2,4 +2,20 @@ CASE_simple_example/.aadlbin-gen
 CASE_simple_example/AADL/.aadlbin-gen
 CASE_simple_example/AADL/instances
 CASE_simple_example/AADL/json-generated
+.DS_Store
 
+*Theory.sml
+*Theory.sig
+*.uo
+*.ui
+*.dat
+
+**/target/**
+**/splat/splat
+**/splat/.HOLMK
+**/splat/.hollogs
+.aadlbin-gen
+
+json-generated
+
+caseAttestationDemo
