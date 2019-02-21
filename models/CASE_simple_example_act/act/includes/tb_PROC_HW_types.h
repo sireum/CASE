@@ -36,7 +36,7 @@ typedef
 
 typedef
   struct SW__FlightPattern_Impl {
-    int32_t enumAsInt;
+    int32_t pattern;
   } SW__FlightPattern_Impl;
 
 typedef

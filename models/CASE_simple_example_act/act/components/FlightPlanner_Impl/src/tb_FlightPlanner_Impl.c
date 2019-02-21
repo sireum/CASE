@@ -21,6 +21,11 @@ bool tb_flight_plan_write(const SW__Mission_Impl * tb_flight_plan){
   return tb_result;
 }
 
+static void tb_recv_map_notification_handler(void * unused) {
+  MUTEXOP(tb_dispatch_sem_post())
+  CALLBACKOP(tb_recv_map_notification_reg_callback(tb_recv_map_notification_handler, NULL));
+}
+
 /************************************************************************
  * tb_entrypoint_tb_FlightPlanner_Impl_recv_map:
  *
@@ -30,7 +35,12 @@ bool tb_flight_plan_write(const SW__Mission_Impl * tb_flight_plan){
  *
  ************************************************************************/
 void tb_entrypoint_tb_FlightPlanner_Impl_recv_map(const SW__Command_Impl * in_arg) {
+  recv_map_handler((SW__Command_Impl *) in_arg);
+}
 
+static void tb_position_status_notification_handler(void * unused) {
+  MUTEXOP(tb_dispatch_sem_post())
+  CALLBACKOP(tb_position_status_notification_reg_callback(tb_position_status_notification_handler, NULL));
 }
 
 /************************************************************************
@@ -42,10 +52,12 @@ void tb_entrypoint_tb_FlightPlanner_Impl_recv_map(const SW__Command_Impl * in_ar
  *
  ************************************************************************/
 void tb_entrypoint_tb_FlightPlanner_Impl_position_status(const SW__Coordinate_Impl * in_arg) {
-
+  position_status_handler((SW__Coordinate_Impl *) in_arg);
 }
 
 void pre_init(void) {
+  CALLBACKOP(tb_recv_map_notification_reg_callback(tb_recv_map_notification_handler, NULL));
+  CALLBACKOP(tb_position_status_notification_reg_callback(tb_position_status_notification_handler, NULL));
 }
 
 /************************************************************************
@@ -53,10 +65,18 @@ void pre_init(void) {
  * Main active thread function.
  ************************************************************************/
 int run(void) {
+  SW__Command_Impl tb_recv_map;
+  SW__Coordinate_Impl tb_position_status;
 
   for(;;) {
     MUTEXOP(tb_dispatch_sem_wait())
     // Drain the queues
+    while (tb_recv_map_dequeue((SW__Command_Impl *) &tb_recv_map)) {
+      tb_entrypoint_tb_FlightPlanner_Impl_recv_map(&tb_recv_map);
+    }
+    while (tb_position_status_dequeue((SW__Coordinate_Impl *) &tb_position_status)) {
+      tb_entrypoint_tb_FlightPlanner_Impl_position_status(&tb_position_status);
+    }
   }
   return 0;
 }

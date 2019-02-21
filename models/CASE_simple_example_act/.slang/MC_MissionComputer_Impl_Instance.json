@@ -1243,19 +1243,6 @@
                   "type" : "Property",
                   "name" : {
                     "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "TB_SYS::Sends_Events_To"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "{{}}"
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
                     "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "RADIO", "Programming_Properties::Initialize_Entrypoint_Source_Text"]
                   },
                   "propertyValues" : [
@@ -1353,6 +1340,19 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "flight_plan", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/flight_planner.c"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1393,6 +1393,32 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "recv_map", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/flight_planner.c"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "recv_map", "TB_SYS::Compute_Entrypoint_Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "recv_map_handler"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1431,6 +1457,32 @@
                             "type" : "Name",
                             "name" : ["MissionComputer_Impl_Instance", "MEM_HW"]
                           }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "position_status", "Programming_Properties::Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "aux_c\/flight_planner.c"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "position_status", "TB_SYS::Compute_Entrypoint_Source_Text"]
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "position_status_handler"
                         }
                       ]
                     }
@@ -1571,12 +1623,12 @@
                   "type" : "Property",
                   "name" : {
                     "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "TB_SYS::Sends_Events_To"]
+                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "FPLN", "Programming_Properties::Source_Text"]
                   },
                   "propertyValues" : [
                     {
                       "type" : "ValueProp",
-                      "value" : "{{}}"
+                      "value" : "aux_c\/flight_planner.c"
                     }
                   ]
                 }
@@ -1866,19 +1918,6 @@
                         "type" : "Some",
                         "value" : "ps"
                       }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "WPM", "TB_SYS::Sends_Events_To"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "{{}}"
                     }
                   ]
                 }
@@ -2208,19 +2247,6 @@
                         "type" : "Some",
                         "value" : "ps"
                       }
-                    }
-                  ]
-                },
-                {
-                  "type" : "Property",
-                  "name" : {
-                    "type" : "Name",
-                    "name" : ["MissionComputer_Impl_Instance", "PROC_SW", "UART", "TB_SYS::Sends_Events_To"]
-                  },
-                  "propertyValues" : [
-                    {
-                      "type" : "ValueProp",
-                      "value" : "{{}}"
                     }
                   ]
                 }
@@ -10138,7 +10164,7 @@
               "type" : "Component",
               "identifier" : {
                 "type" : "Name",
-                "name" : ["enumAsInt"]
+                "name" : ["pattern"]
               },
               "category" : {
                 "type" : "ComponentCategory",
@@ -10297,7 +10323,7 @@
           "type" : "Component",
           "identifier" : {
             "type" : "Name",
-            "name" : ["enumAsInt"]
+            "name" : ["pattern"]
           },
           "category" : {
             "type" : "ComponentCategory",

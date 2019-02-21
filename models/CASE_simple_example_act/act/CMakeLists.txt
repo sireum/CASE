@@ -10,7 +10,7 @@ DeclareCAmkESComponent(RadioDriver_Impl
 )
 
 DeclareCAmkESComponent(FlightPlanner_Impl
-  SOURCES components/FlightPlanner_Impl/src/tb_FlightPlanner_Impl.c
+  SOURCES components/FlightPlanner_Impl//src/flight_planner.c components/FlightPlanner_Impl/src/tb_FlightPlanner_Impl.c
   INCLUDES components/FlightPlanner_Impl/includes/ includes
 )
 
