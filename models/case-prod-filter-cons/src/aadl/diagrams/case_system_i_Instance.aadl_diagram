@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="5">
-  <element id="0" manual="true">
-    <element id="1" manual="true">
-      <element id="7" manual="true">
-        <element id="11" manual="true" dockArea="left">
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="28363be6-7a19-4529-8c13-d07e15bb8a2d" manual="true">
+    <element uuid="3adadb1e-e26f-4434-9d63-22263ab2498e" manual="true">
+      <element uuid="6c5ee443-46e4-4fd1-a703-610db95dc628" manual="true">
+        <element uuid="18f4e944-4bd6-41b0-9eb9-eb700511de37" manual="true" dockArea="left">
           <bo>
             <seg>org.osate.ge.diagrams.instance</seg>
             <seg>feature_instance</seg>
@@ -12,7 +12,7 @@
           <position y="30.0"/>
           <contentFilters/>
         </element>
-        <element id="10" manual="true" dockArea="right">
+        <element uuid="c9f681f9-800c-4978-855a-46d9eb52b614" manual="true" dockArea="right">
           <bo>
             <seg>org.osate.ge.diagrams.instance</seg>
             <seg>feature_instance</seg>
@@ -33,8 +33,8 @@
           <filter>connections</filter>
         </contentFilters>
       </element>
-      <element id="9" manual="true">
-        <element id="12" manual="true" dockArea="left">
+      <element uuid="f6fbb263-3de0-46b7-bf16-6380294694a6" manual="true">
+        <element uuid="1da9ae6d-45bd-423c-a69f-c746aaaa4c58" manual="true" dockArea="left">
           <bo>
             <seg>org.osate.ge.diagrams.instance</seg>
             <seg>feature_instance</seg>
@@ -55,8 +55,8 @@
           <filter>connections</filter>
         </contentFilters>
       </element>
-      <element id="8" manual="true">
-        <element id="13" manual="true" dockArea="right">
+      <element uuid="3fd1b2ab-da14-4f39-952a-45987f6c5893" manual="true">
+        <element uuid="4eb25f67-b05a-4363-a9fe-b4348f8f3443" manual="true" dockArea="right">
           <bo>
             <seg>org.osate.ge.diagrams.instance</seg>
             <seg>feature_instance</seg>
@@ -77,8 +77,8 @@
           <filter>connections</filter>
         </contentFilters>
       </element>
-      <element id="6" manual="true">
-        <element id="14" manual="true" dockArea="left">
+      <element uuid="b0c0ffed-eb6a-435e-a501-63e9118ee8cb" manual="true">
+        <element uuid="48ff9cd4-e4dc-4a21-b2df-e1e916e5b371" manual="true" dockArea="left">
           <bo>
             <seg>org.osate.ge.diagrams.instance</seg>
             <seg>feature_instance</seg>
@@ -99,7 +99,7 @@
           <filter>connections</filter>
         </contentFilters>
       </element>
-      <element id="4" manual="true">
+      <element uuid="524754f1-c3df-4283-8d84-19d2d2f6ec02" manual="true">
         <bo>
           <seg>org.osate.ge.diagrams.instance</seg>
           <seg>connection_reference</seg>
@@ -107,7 +107,7 @@
         </bo>
         <contentFilters/>
       </element>
-      <element id="5" manual="true">
+      <element uuid="ca055787-21be-4134-9e18-626c19900a46" manual="true">
         <bo>
           <seg>org.osate.ge.diagrams.instance</seg>
           <seg>connection_reference</seg>
@@ -125,6 +125,20 @@
       <contentFilters>
         <filter>features</filter>
         <filter>connections</filter>
+      </contentFilters>
+    </element>
+    <element uuid="4dfb9235-24b2-4e92-87d1-52e52c77efc8">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>proc_hw</seg>
+      </bo>
+      <position/>
+      <size width="113.0" height="35.0"/>
+      <contentFilters>
+        <filter>features</filter>
+        <filter>connections</filter>
+        <filter>flowSpecifications</filter>
       </contentFilters>
     </element>
     <bo>

@@ -258,7 +258,7 @@
         <seg>feature</seg>
         <seg>position_status</seg>
       </bo>
-      <position x="998.0" y="200.0"/>
+      <position x="994.0" y="200.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -306,7 +306,7 @@
         <seg>feature</seg>
         <seg>uarta</seg>
       </bo>
-      <position x="1048.0" y="437.0"/>
+      <position x="1046.0" y="437.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -318,7 +318,7 @@
         <seg>feature</seg>
         <seg>waypoint</seg>
       </bo>
-      <position x="1033.0" y="110.0"/>
+      <position x="1034.0" y="110.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -370,7 +370,7 @@
           <seg>feature</seg>
           <seg>mca</seg>
         </bo>
-        <position x="163.0" y="44.0"/>
+        <position x="162.0" y="44.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -452,7 +452,7 @@
           <seg>feature</seg>
           <seg>position_status</seg>
         </bo>
-        <position x="186.0" y="90.0"/>
+        <position x="182.0" y="90.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -488,7 +488,7 @@
           <seg>feature</seg>
           <seg>waypoint</seg>
         </bo>
-        <position x="221.0" y="45.0"/>
+        <position x="222.0" y="45.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -577,7 +577,7 @@
           <seg>feature</seg>
           <seg>send_status_in</seg>
         </bo>
-        <position x="109.0" y="111.0"/>
+        <position x="106.0" y="111.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -642,7 +642,7 @@
           <seg>feature</seg>
           <seg>position_status_in</seg>
         </bo>
-        <position x="80.0" y="125.0"/>
+        <position x="77.0" y="125.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -690,7 +690,7 @@
           <seg>feature</seg>
           <seg>waypoint_out</seg>
         </bo>
-        <position x="110.0" y="28.0"/>
+        <position x="111.0" y="28.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>

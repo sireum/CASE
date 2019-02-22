@@ -41,8 +41,8 @@
         <seg>c10</seg>
       </bo>
       <bendpoints>
-        <point x="659.0" y="113.0"/>
-        <point x="659.0" y="108.0"/>
+        <point x="-315.0" y="102.0"/>
+        <point x="-315.0" y="71.0"/>
       </bendpoints>
       <primaryLabelPosition x="-201.0" y="3.0"/>
       <contentFilters>
@@ -82,6 +82,10 @@
         <seg>connection</seg>
         <seg>c2</seg>
       </bo>
+      <bendpoints>
+        <point x="-313.0" y="362.0"/>
+        <point x="-313.0" y="400.0"/>
+      </bendpoints>
       <primaryLabelPosition x="-179.0" y="3.0"/>
       <contentFilters>
         <filter>generalizations</filter>
@@ -101,7 +105,11 @@
         <seg>connection</seg>
         <seg>c3</seg>
       </bo>
-      <primaryLabelPosition x="29.0" y="3.0"/>
+      <bendpoints>
+        <point x="-252.0" y="312.0"/>
+        <point x="-252.0" y="362.0"/>
+      </bendpoints>
+      <primaryLabelPosition x="-28.0" y="17.0"/>
       <contentFilters/>
     </element>
     <element uuid="80034561-4412-4b4e-86c9-136f241e55c4">
@@ -120,7 +128,11 @@
         <seg>connection</seg>
         <seg>c5</seg>
       </bo>
-      <primaryLabelPosition x="17.0" y="3.0"/>
+      <bendpoints>
+        <point x="214.0" y="337.0"/>
+        <point x="214.0" y="202.0"/>
+      </bendpoints>
+      <primaryLabelPosition x="11.0" y="-12.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -143,12 +155,6 @@
         <seg>connection</seg>
         <seg>c6</seg>
       </bo>
-      <bendpoints>
-        <point x="1667.0" y="175.0"/>
-        <point x="1667.0" y="167.0"/>
-        <point x="659.0" y="167.0"/>
-        <point x="659.0" y="163.0"/>
-      </bendpoints>
       <primaryLabelPosition x="22.0" y="-24.0"/>
       <contentFilters>
         <filter>generalizations</filter>
@@ -172,13 +178,7 @@
         <seg>connection</seg>
         <seg>c7</seg>
       </bo>
-      <bendpoints>
-        <point x="709.0" y="213.0"/>
-        <point x="709.0" y="178.0"/>
-        <point x="1667.0" y="178.0"/>
-        <point x="1667.0" y="225.0"/>
-      </bendpoints>
-      <primaryLabelPosition x="44.0" y="3.0"/>
+      <primaryLabelPosition x="-2.0" y="-22.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -202,10 +202,10 @@
         <seg>c8</seg>
       </bo>
       <bendpoints>
-        <point x="1193.0" y="213.0"/>
-        <point x="1193.0" y="250.0"/>
+        <point x="-211.0" y="202.0"/>
+        <point x="-211.0" y="312.0"/>
       </bendpoints>
-      <primaryLabelPosition x="26.0" y="3.0"/>
+      <primaryLabelPosition x="-14.0" y="38.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -229,34 +229,36 @@
         <seg>c9</seg>
       </bo>
       <bendpoints>
-        <point x="659.0" y="213.0"/>
-        <point x="659.0" y="300.0"/>
+        <point x="-310.0" y="202.0"/>
+        <point x="-310.0" y="252.0"/>
+        <point x="-748.0" y="252.0"/>
+        <point x="-748.0" y="312.0"/>
       </bendpoints>
-      <primaryLabelPosition x="10.0" y="85.0"/>
+      <primaryLabelPosition x="-36.0" y="-22.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
         <filter>calledSubprogram</filter>
       </contentFilters>
     </element>
-    <element uuid="c95db0ad-c179-48aa-9d66-3e02b4c95c7b" dockArea="left">
+    <element uuid="c95db0ad-c179-48aa-9d66-3e02b4c95c7b" dockArea="left" primaryLabelVisible="false">
       <bo>
         <seg>feature</seg>
         <seg>position_status</seg>
       </bo>
-      <position y="119.0"/>
+      <position y="116.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
         <filter>calledSubprogram</filter>
       </contentFilters>
     </element>
-    <element uuid="818e0602-39bb-490c-8b6b-a2dcf632be56" dockArea="left">
+    <element uuid="818e0602-39bb-490c-8b6b-a2dcf632be56" dockArea="left" primaryLabelVisible="false">
       <bo>
         <seg>feature</seg>
         <seg>recv_map</seg>
       </bo>
-      <position y="306.0"/>
+      <position y="326.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -268,7 +270,7 @@
         <seg>feature</seg>
         <seg>send_status</seg>
       </bo>
-      <position x="2112.0" y="306.0"/>
+      <position x="997.0" y="344.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -280,7 +282,7 @@
         <seg>feature</seg>
         <seg>waypoint</seg>
       </bo>
-      <position x="2131.0" y="64.0"/>
+      <position x="1016.0" y="15.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -303,7 +305,7 @@
           <seg>feature</seg>
           <seg>flight_plan</seg>
         </bo>
-        <position x="320.0" y="35.0"/>
+        <position x="287.0" y="35.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -349,8 +351,8 @@
         <seg>subcomponent</seg>
         <seg>fpln</seg>
       </bo>
-      <position x="1191.0" y="196.0"/>
-      <size width="404.0" height="110.0"/>
+      <position x="635.0" y="246.0"/>
+      <size width="371.0" height="110.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -380,7 +382,7 @@
           <seg>feature</seg>
           <seg>recv_map_out</seg>
         </bo>
-        <position x="300.0" y="10.0"/>
+        <position x="276.0" y="10.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -404,7 +406,7 @@
           <seg>feature</seg>
           <seg>send_status_out</seg>
         </bo>
-        <position x="285.0" y="60.0"/>
+        <position x="261.0" y="60.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -426,8 +428,8 @@
         <seg>subcomponent</seg>
         <seg>radio</seg>
       </bo>
-      <position x="707.0" y="246.0"/>
-      <size width="407.0" height="110.0"/>
+      <position x="80.0" y="246.0"/>
+      <size width="383.0" height="110.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -457,7 +459,7 @@
           <seg>feature</seg>
           <seg>position_status_out</seg>
         </bo>
-        <position x="308.0" y="110.0"/>
+        <position x="237.0" y="110.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -469,7 +471,7 @@
           <seg>feature</seg>
           <seg>waypoint_in</seg>
         </bo>
-        <position x="360.0" y="60.0"/>
+        <position x="289.0" y="60.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -481,7 +483,7 @@
           <seg>feature</seg>
           <seg>waypoint_out</seg>
         </bo>
-        <position x="352.0" y="10.0"/>
+        <position x="281.0" y="10.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -503,8 +505,8 @@
         <seg>subcomponent</seg>
         <seg>uart</seg>
       </bo>
-      <position x="183.0" y="59.0"/>
-      <size width="454.0" height="160.0"/>
+      <position x="80.0" y="36.0"/>
+      <size width="383.0" height="160.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -517,12 +519,12 @@
       </contentFilters>
     </element>
     <element uuid="baec18eb-c3e0-4e34-8e4e-4e0e776f0472">
-      <element uuid="8a78e0cd-9eb1-41ee-9e6a-add0eb102219" dockArea="left">
+      <element uuid="8a78e0cd-9eb1-41ee-9e6a-add0eb102219" dockArea="right">
         <bo>
           <seg>feature</seg>
           <seg>flight_plan</seg>
         </bo>
-        <position y="110.0"/>
+        <position x="277.0" y="90.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -534,7 +536,7 @@
           <seg>feature</seg>
           <seg>position_status</seg>
         </bo>
-        <position y="60.0"/>
+        <position y="90.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -546,7 +548,7 @@
           <seg>feature</seg>
           <seg>waypoint</seg>
         </bo>
-        <position y="10.0"/>
+        <position y="40.0"/>
         <contentFilters>
           <filter>generalizations</filter>
           <filter>subprogramCallOrders</filter>
@@ -568,8 +570,8 @@
         <seg>subcomponent</seg>
         <seg>wpm</seg>
       </bo>
-      <position x="1665.0" y="121.0"/>
-      <size width="435.0" height="160.0"/>
+      <position x="640.0" y="56.0"/>
+      <size width="361.0" height="139.0"/>
       <contentFilters>
         <filter>generalizations</filter>
         <filter>subprogramCallOrders</filter>
@@ -585,8 +587,8 @@
       <seg>classifier</seg>
       <seg>mc_sw.impl</seg>
     </bo>
-    <position x="12.0" y="12.0"/>
-    <size width="2206.0" height="375.0"/>
+    <position x="-820.0" y="24.0"/>
+    <size width="1091.0" height="407.0"/>
     <contentFilters>
       <filter>generalizations</filter>
       <filter>subprogramCallOrders</filter>

@@ -1,6 +1,6 @@
 package SW_CASE_Claims
 public
-with Model_Transformations;
+
 	annex resolute {**
 --			test() <=
 --			** "test" **
