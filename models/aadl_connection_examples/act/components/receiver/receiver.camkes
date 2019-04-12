@@ -1,0 +1,17 @@
+import "../../interfaces/sb_ConnectionExamples__shared_data_impl_shared_var.idl4";
+import "../../interfaces/add_subtract_interface.idl4";
+import "../../interfaces/sb_Monitor_uint32_t.idl4";
+import "../../interfaces/sb_Monitor_uint32_t_1.idl4";
+
+component receiver {
+  include <sb_proc_types.h>;
+  control;
+  provides add_subtract_interface add_subtract;
+  uses sb_Monitor_uint32_t sb_dataPort;
+  uses sb_Monitor_uint32_t_1 sb_eventDataPort;
+  consumes DataportWrite sb_dataPort_notification;
+  consumes QueuedData sb_eventDataPort_notification;
+  consumes Notification eventPort;
+  dataport ConnectionExamples__shared_data_impl sharedData;
+  has semaphore sb_dispatch_sem;
+}

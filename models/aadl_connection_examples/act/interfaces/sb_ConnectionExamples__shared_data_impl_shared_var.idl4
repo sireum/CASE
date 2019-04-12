@@ -1,0 +1,5 @@
+procedure sb_ConnectionExamples__shared_data_impl_shared_var {
+  include <sb_proc_types.h>;
+  void read_ConnectionExamples__shared_data_impl(out ConnectionExamples__shared_data_impl arg);
+  void write_ConnectionExamples__shared_data_impl(refin ConnectionExamples__shared_data_impl arg);
+};

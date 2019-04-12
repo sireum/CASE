@@ -1,0 +1,5 @@
+component TimeServer {
+
+  provides Timer the_timer;
+  emits Notification timer_notification;
+}

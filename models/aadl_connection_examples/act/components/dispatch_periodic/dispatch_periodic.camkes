@@ -1,0 +1,8 @@
+import "../../interfaces/Timer.idl4";
+
+component dispatch_periodic {
+
+  uses Timer timer;
+  emits Notification s_periodic_dispatcher;
+  consumes Notification timer_complete;
+}

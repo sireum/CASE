@@ -1,0 +1,7 @@
+import "../../../interfaces/sb_Monitor_uint32_t_1.idl4";
+
+component sb_r_eventDataPort_Monitor {
+
+  provides sb_Monitor_uint32_t_1 mon;
+  emits QueuedData monsig;
+}

@@ -1,0 +1,5 @@
+procedure sb_Monitor_uint32_t {
+  include <sb_proc_types.h>;
+  bool read(out uint32_t m);
+  bool write(refin uint32_t m);
+};

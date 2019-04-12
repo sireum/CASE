@@ -1,0 +1,7 @@
+import "../../../interfaces/sb_Monitor_uint32_t.idl4";
+
+component sb_r_dataPort_Monitor {
+
+  provides sb_Monitor_uint32_t mon;
+  emits DataportWrite monsig;
+}
