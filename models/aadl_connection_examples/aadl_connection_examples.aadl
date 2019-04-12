@@ -47,7 +47,7 @@ thread sender
 		Period => 250 ms;		
 		Source_Text => ("user_code/user_sender.c");
 		Initialize_Entrypoint_Source_Text => "sender_init";
-	    SB_SYS::Compute_Entrypoint_Source_Text => ("periodic_ping");
+		SB_SYS::Compute_Entrypoint_Source_Text => ("periodic_ping");
 
 end sender ; 
  
@@ -83,7 +83,7 @@ process implementation proc.Impl
 		
 		shared: data shared_data.impl {
 			SB_SYS::CAmkES_Owner_Thread => "sender";
-        };
+		};
 		
 		spg: subprogram group add_subtract_interface;
 		sp1: subprogram add_two_numbers;
