@@ -1,0 +1,5 @@
+RadioComm1 = (reach from UAS_Impl_Instance.GND to UAS_Impl_Instance.UAV) intersect UAS_Impl_Instance.RFB
+RadioComm2 = (reach from UAS_Impl_Instance.UAV to UAS_Impl_Instance.GND) intersect (UAS_Impl_Instance.RFB)
+GroundStation2FlightCtrl = (reach forward UAS_Impl_Instance.GND.send_map) intersect UAS_Impl_Instance.UAV.FCTL:port
+AuthenticatedMap = reach refined paths from UAS_Impl_Instance.GND.send_map to UAS_Impl_Instance.UAV.FCTL:port with none(UAS_Impl_Instance.UAV.MCMP.PROC_SW.RADIO:port)
+WellFormedMap = reach refined paths from UAS_Impl_Instance.GND.send_map to UAS_Impl_Instance.UAV.FCTL:port with none(UAS_Impl_Instance.UAV.MCMP.PROC_SW.FLT:port)

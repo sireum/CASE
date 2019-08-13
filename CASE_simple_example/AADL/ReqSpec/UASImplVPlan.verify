@@ -1,0 +1,21 @@
+verification plan UASImplVPlan for UASImplReq [
+	claim RadioComm [
+		activities 
+		// UASQueries.RadioComm1 is not empty  and  UASQueries.RadioComm2 is not empty
+	]
+	
+	claim GroundStation2FlightCtrl [
+		activities
+			//UASQueries.GroundStation2FlightCtrl is not empty
+	]
+	
+	claim AuthenticatedMap [
+		activities
+			//UASQueries.AuthenticatedMap is empty	   
+	]
+	
+	claim WellFormedMap [
+		activities
+		   //UASQueries.WellFormedMap is empty
+	]
+]

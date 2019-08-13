@@ -1,0 +1,47 @@
+system requirements UASReqSpec for UAS::UAS [
+	requirement connectivity1 [
+		description "The Ground station is capable of communicating with the UAV"
+		category Kind.Constraint
+	]
+	
+	requirement connectivity2 [
+		description "UAV has the ability to send feedback to the ground station"
+		category Kind.Constraint
+	]
+]
+
+system requirements UASImplReq for UAS::UAS.Impl [
+	requirement RadioComm [
+		val radio = this.RFB
+		val Ground_station = this.GND
+		val UAV = this.UAV
+		description "Ground_station and UAV communicate over radio frequency bus"
+		category Kind.Constraint
+	]
+	
+	requirement GroundStation2FlightCtrl  [
+		val flight_controller = this.UAV.FCTL
+		val map = this.GND.send_map
+		val UAV = this.UAV
+		description "The map transmitted to the UAV, which in turn sent to the flight_controller"
+		category Kind.Constraint
+	]
+	
+	requirement AuthenticatedMap [
+		val authenticated = this.UAV.MCMP.PROC_SW.RADIO
+		val flight_controller = this.UAV.FCTL
+		val map = this.GND.send_map
+		description "The map transmitted from ground station must be authenticated before reaching the flight_controller"
+		category Quality.Security
+	]
+	
+	requirement WellFormedMap [
+		val wellformed = this.UAV.MCMP.PROC_SW.FLT
+		val flight_controller = this.UAV.FCTL
+		val map = this.GND.send_map
+		description "Only wellformed map from the ground station reaches the flight_controller"
+		category Quality.Safety
+		
+	]
+]
+
