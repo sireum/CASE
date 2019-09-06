@@ -15,6 +15,8 @@ system requirements UASImplReq for UAS::UAS.Impl [
 		val radio = this.RFB
 		val Ground_station = this.GND
 		val UAV = this.UAV
+		val radioComm1Query = "(reach from UAS_Impl_Instance.GND to UAS_Impl_Instance.UAV) intersect UAS_Impl_Instance.RFB"
+		val radioComm2Query = "(reach from UAS_Impl_Instance.UAV to UAS_Impl_Instance.GND) intersect (UAS_Impl_Instance.RFB)"
 		description "Ground_station and UAV communicate over radio frequency bus"
 		category Kind.Constraint
 	]
@@ -23,6 +25,7 @@ system requirements UASImplReq for UAS::UAS.Impl [
 		val flight_controller = this.UAV.FCTL
 		val map = this.GND.send_map
 		val UAV = this.UAV
+		val groundStation2FlightCtrlQuery = "(reach forward UAS_Impl_Instance.GND.send_map) intersect UAS_Impl_Instance.UAV.FCTL:port"
 		description "The map transmitted to the UAV, which in turn sent to the flight_controller"
 		category Kind.Constraint
 	]
@@ -31,6 +34,7 @@ system requirements UASImplReq for UAS::UAS.Impl [
 		val authenticated = this.UAV.MCMP.PROC_SW.RADIO
 		val flight_controller = this.UAV.FCTL
 		val map = this.GND.send_map
+		val authenticatedMapQuery = "reach refined paths from UAS_Impl_Instance.GND.send_map to UAS_Impl_Instance.UAV.FCTL:port with none(UAS_Impl_Instance.UAV.MCMP.PROC_SW.RADIO:port)"
 		description "The map transmitted from ground station must be authenticated before reaching the flight_controller"
 		category Quality.Security
 	]
@@ -39,6 +43,7 @@ system requirements UASImplReq for UAS::UAS.Impl [
 		val wellformed = this.UAV.MCMP.PROC_SW.FLT
 		val flight_controller = this.UAV.FCTL
 		val map = this.GND.send_map
+		val wellFormedMapQuery = "reach refined paths from UAS_Impl_Instance.GND.send_map to UAS_Impl_Instance.UAV.FCTL:port with none(UAS_Impl_Instance.UAV.MCMP.PROC_SW.FLT:port)"
 		description "Only wellformed map from the ground station reaches the flight_controller"
 		category Quality.Safety
 		
