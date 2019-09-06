@@ -1,0 +1,8 @@
+verification methods AwasMethods [
+	method isQueryEmpty(component, query: string) [
+		java org.osate.isse.verificationmethods.AwasMethods.isQueryEmpty
+	]
+	method isQueryNotEmpty(component, query: string) [
+		java org.osate.isse.verificationmethods.AwasMethods.isQueryNotEmpty
+	]
+]

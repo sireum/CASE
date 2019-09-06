@@ -1,21 +1,26 @@
 verification plan UASImplVPlan for UASImplReq [
 	claim RadioComm [
 		activities 
-		// UASQueries.RadioComm1 is not empty  and  UASQueries.RadioComm2 is not empty
+			// UASQueries.RadioComm1 is not empty  and  UASQueries.RadioComm2 is not empty
+			RadioComm1_not_empty: AwasMethods.isQueryNotEmpty(radioComm1Query)
+			RadioComm2_not_empty: AwasMethods.isQueryNotEmpty(radioComm2Query)
 	]
 	
 	claim GroundStation2FlightCtrl [
 		activities
 			//UASQueries.GroundStation2FlightCtrl is not empty
+			GroundStation2FlightCtrl_not_empty: AwasMethods.isQueryNotEmpty(groundStation2FlightCtrlQuery)
 	]
 	
 	claim AuthenticatedMap [
 		activities
-			//UASQueries.AuthenticatedMap is empty	   
+			//UASQueries.AuthenticatedMap is empty
+			AuthenticatedMap_empty: AwasMethods.isQueryEmpty(authenticatedMapQuery)
 	]
 	
 	claim WellFormedMap [
 		activities
 		   //UASQueries.WellFormedMap is empty
+		   WellFormedMap_empty: AwasMethods.isQueryEmpty(wellFormedMapQuery)
 	]
 ]

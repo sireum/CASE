@@ -1,0 +1,5 @@
+assurance case UASAssuranceCase for UAS::UAS [
+	assurance plan UASImplAssurancePlan for UAS::UAS.Impl [
+		assure UASImplVPlan
+	]
+]
