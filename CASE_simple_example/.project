@@ -3,6 +3,7 @@
 	<name>CASE_simple_example</name>
 	<comment></comment>
 	<projects>
+		<project>Filter_Transformed</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
