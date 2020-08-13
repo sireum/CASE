@@ -1,13 +1,13 @@
 package SW
 public
-	
+	with SecurityLevels;
 	with Data_Model;
 	with Base_Types;
 	with claim;
 
 	with CASE;
 	
-	with TB_SYS;
+	--with TB_SYS;
 
 
 	-- This is the structure to hold the lat/long/alt values of a coordinate
@@ -58,6 +58,18 @@ public
 			Map : data Map.Impl;
 			Pattern: data FlightPattern.Impl;
 			HMAC: data Base_Types::Boolean;
+			annex InfoFlow {**
+				total domain Authenticity {
+					authenticated: type;
+					not_authenticated: type;	
+				}
+				total domain WellFormedness{
+					wellformed: type refinement "Agree" good_gs_command(this);
+					not_wellformed: type refinement "Agree" !good_gs_command(this);
+				}
+				invariant "wellformed messages are authenticated" :
+					if(WellFormedness = wellformed) then Authenticity = authenticated;
+			**};
 	end Command.Impl;
 	
 	data wellformedness
@@ -100,18 +112,8 @@ public
 			wp8 : data Coordinate.Impl;
 			wp9 : data Coordinate.Impl;
 			wp10 : data Coordinate.Impl;
-		annex InfoFlow {**
-			total domain WellFormedFlightPlan {
-				wellformed: type;
-				not_wellformed: type;
-			}
-			total domain Validity { 
-				valid: type; 
-				invalid: type;
-			}
-			invariant "valid missions are wellformed" : 
-				if(Validity = valid) then WellFormedFlightPlan = wellformed;
-		**};
+			wellness_prop : data wellformedness;
+			validity_prop : data validity;
 	end Mission.Impl;
 	
 	-- The Mission Window is a list of waypoints that the Waypoint Manager assembles from
@@ -129,18 +131,8 @@ public
 			wp3 : data Coordinate.Impl;
 			wp4 : data Coordinate.Impl;
 			crc : data Base_Types::Boolean;
-		annex InfoFlow {**
-			total domain WellFormedFlightPlan {
-				wellformed: type;
-				not_wellformed: type;
-			}
-			total domain validity { 
-				valid: type; 
-				invalid: type;
-			}
-			invariant "valid missions are wellformed" : 
-				if(Validity = valid) then WellFormedFlightPlan = wellformed;
-		**};	
+			wellness_prop : data wellformedness;
+			validity_prop : data validity;
 	end MissionWindow.Impl;
 	
 	
@@ -153,15 +145,22 @@ public
 		flows
 			comm_map : flow path recv_map_in -> recv_map_out;
 			comm_status : flow path send_status_in -> send_status_out;
+			
+		annex InfoFlow{**
+			guarantee 
+				"Authenticated command from the Ground Station" : recv_map_out.Authenticity = authenticated;
+		**};
+		
+		
     
-    properties
-      Dispatch_Protocol => Sporadic;
-      Priority => 200;
-      Stack_Size => 1024 Bytes;
-      Compute_Execution_Time => 10 us .. 100 us;
-      Period => 1 ms;
-      TB_SYS::Sends_Events_To => "{{}}";
-      			
+--    properties
+--      Dispatch_Protocol => Sporadic;
+--      Priority => 200;
+--      Stack_Size => 1024 Bytes;
+--      Compute_Execution_Time => 10 us .. 100 us;
+--      Period => 1 ms;
+--      TB_SYS::Sends_Events_To => "{{}}";
+--      			
 --		annex agree {**
 --			assume "Authenticated command from the Ground Station" : recv_map_in.HMAC = True;
 --			guarantee "Authenticated command from the Ground Station" : recv_map_out.HMAC = True;
@@ -189,17 +188,35 @@ public
 			filter_out: out event data port Command.Impl;
 		flows 
 			filtered_cmd : flow path filter_in -> filter_out;
-		properties
-			CASE::COMP_TYPE => FILTER;
-			CASE::COMP_IMPL => "CAKEML";
-			CASE::COMP_SPEC => "(\\i{-90,90}\\i{-180,180}\\i{0,15000}){4}(Z|S|P)(T|F)";
-
-      Dispatch_Protocol => Sporadic;
-      Priority => 200;
-      Stack_Size => 1024 Bytes;
-      Compute_Execution_Time => 10 us .. 100 us;
-      Period => 1 ms;
-      TB_SYS::Sends_Events_To => "{{}}";			
+		annex InfoFlow{**
+			assume "Filter shall reecive an authenticated command from the Ground Station" : 
+				filter_in.Authenticity = authenticated;
+			guarantee "The Flight Planner shall receive a well-formed command from the Ground Station" : 
+				filter_out.WellFormedness = wellformed;
+			preserve
+				filtered_cmd : {Authenticity}
+		**};
+		
+		annex smf {**
+			classification 
+				filter_in : untrusted;
+				filter_out : trusted;	
+			de-classification
+				filtered_cmd: untrusted -> trusted;
+				
+				
+		**};	
+--		properties
+--			CASE::COMP_TYPE => FILTER;
+--			CASE::COMP_IMPL => "CAKEML";
+--			CASE::COMP_SPEC => "(\\i{-90,90}\\i{-180,180}\\i{0,15000}){4}(Z|S|P)(T|F)";
+--
+--      Dispatch_Protocol => Sporadic;
+--      Priority => 200;
+--      Stack_Size => 1024 Bytes;
+--      Compute_Execution_Time => 10 us .. 100 us;
+--      Period => 1 ms;
+--      TB_SYS::Sends_Events_To => "{{}}";			
 --		annex agree {**
 --			guarantee "The Flight Planner shall receive an authenticated command from the Ground Station" : filter_out.HMAC = True;
 --			guarantee "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(filter_out);
@@ -234,7 +251,7 @@ public
       Stack_Size => 1024 Bytes;
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
-      TB_SYS::Sends_Events_To => "{{}}";
+      --TB_SYS::Sends_Events_To => "{{}}";
 --		annex agree {**
 --			assume "The Flight Planner shall receive an authenticated command from the Ground Station" : recv_map.HMAC = True;
 --			assume "The Flight Planner shall receive a well-formed command from the Ground Station" : SW.good_gs_command(recv_map);
@@ -265,47 +282,59 @@ public
 	thread flight_plan_fliter
 		features
 			flight_plan_in : in data port Mission.Impl;
-			flight_plan_out : out data port Mission.Impl;		
+			flight_plan_out : out data port Mission.Impl;
 		flows
 			flight_plan_wellformed: flow path flight_plan_in -> flight_plan_out;
 			flight_plan_notwellformed: flow sink flight_plan_in;
 		annex InfoFlow {**
+			assume "Waypoints from flight planner shall be wellformed or not_wellformed" : 
+				flight_plan_in:wellformedness = InfoFlow::wellformedness.wellformed or InfoFlow::wellformedness.not_wellformed;
+			
 			guarantee "flight_plan_fliter shall allow only wellformed waypoints":
-				flight_plan_out.WellFormedFlightPlan = wellformed;
+				if(flight_plan_in:wellformedness = InfoFlow::wellformedness.wellformed) 
+				then
+					flight_plan_out:wellformedness = flight_plan_in:wellformedness and -- preserves wellformedness
+					flight_plan_out:validity = InfoFlow::validity.Invalid_flight_plan or InfoFlow::validity.Valid_flight_plan; 
+				else 
+					flight_plan_out:validity = InfoFlow::validity.Invalid_flight_plan;
 	
 		**};	
---		annex agree {**
---			assume "Waypoints from flight planner shall be wellformed or not_wellformed" : flight_plan_in.wellness_prop =  enum(SW::wellformedness,wellformed) or flight_plan_in.wellness_prop = enum(SW::wellformedness,not_wellformed);
---			guarantee "flight_plan_fliter shall allow only wellformed waypoints":  if (flight_plan_in.wellness_prop = enum(SW::wellformedness,wellformed)) then flight_plan_out.validity_prop = enum(SW::validity,valid_flight_plan) or flight_plan_out.validity_prop = enum(SW::validity,invalid_flight_plan) else flight_plan_out.validity_prop = enum(SW::validity,invalid_flight_plan);
---		**};
+		annex agree {**
+			assume "Waypoints from flight planner shall be wellformed or not_wellformed" : flight_plan_in.wellness_prop =  enum(SW::wellformedness,wellformed) or flight_plan_in.wellness_prop = enum(SW::wellformedness,not_wellformed);
+			guarantee "flight_plan_fliter shall allow only wellformed waypoints":  if (flight_plan_in.wellness_prop = enum(SW::wellformedness,wellformed)) then flight_plan_out.validity_prop = enum(SW::validity,valid_flight_plan) or flight_plan_out.validity_prop = enum(SW::validity,invalid_flight_plan) else flight_plan_out.validity_prop = enum(SW::validity,invalid_flight_plan);
+		**};
 	end flight_plan_fliter;
 	
-	thread flight_plan_monitor
+	thread flight_plan_validator
 		features
 			flight_plan_in : in data port Mission.Impl;
-			flight_plan_validity : out event port; -- event port
+			flight_plan_out : out data port Mission.Impl;
 		flows
-			flight_plan_valid: flow path flight_plan_in -> flight_plan_validity;	
+			flight_plan_valid: flow path flight_plan_in -> flight_plan_out;	
 			flight_plan_invalid: flow sink flight_plan_in;
 		annex InfoFlow {**
-			assume "only wellformed waypoints reach validator" :
-				flight_plan_in:WellFormedFlightPlan = wellformed;
+			assume "Waypoints from flight planner shall be valid_flight_plan or invalid_flight_plan" :
+				flight_plan_in:validity = InfoFlow::validity.Invalid_flight_plan or flight_plan_in:validity = InfoFlow::validity.Valid_flight_plan;
+				
+			guarantee  "invalid flight plans shall not reach waypoint manager":
+				if(flight_plan_in:validity = InfoFlow::validity.Valid_flight_plan)
+				then 
+					flight_plan_out:validity = flight_plan_in:validity and flight_plan_out:wellformedness = flight_plan_in:wellformedness;
+				else
+					flight_plan_out:validity = InfoFlow::validity.Safe_flight_plan and flight_plan_out:wellformedness = flight_plan_in:wellformedness;
 		**};
---		annex agree {** 
---			assume "Waypoints from flight planner shall be valid_flight_plan or invalid_flight_plan" : flight_plan_in.validity_prop =  enum(SW::validity,valid_flight_plan) or flight_plan_in.validity_prop =enum(SW::validity,invalid_flight_plan);
---			guarantee "invalid flight plans shall not reach waypoint manager": if flight_plan_in.validity_prop =  enum(SW::validity,valid_flight_plan) then flight_plan_out.validity_prop = enum(SW::validity,valid_flight_plan) else flight_plan_out.validity_prop = enum(SW::validity,safe_flight_plan);
---		**};
-	end flight_plan_monitor;
+		annex agree {** 
+			assume "Waypoints from flight planner shall be valid_flight_plan or invalid_flight_plan" : flight_plan_in.validity_prop =  enum(SW::validity,valid_flight_plan) or flight_plan_in.validity_prop =enum(SW::validity,invalid_flight_plan);
+			guarantee "invalid flight plans shall not reach waypoint manager": if flight_plan_in.validity_prop =  enum(SW::validity,valid_flight_plan) then flight_plan_out.validity_prop = enum(SW::validity,valid_flight_plan) else flight_plan_out.validity_prop = enum(SW::validity,safe_flight_plan);
+		**};
+	end flight_plan_validator;
   	-- end of instrumented components for threat 10
   
 	thread WaypointManager
-		--holds waypoints for the entier mission
-		-- sends new window of waypoint to flight controller based on the position_status(config when 2 left or 3 left)
 		features
 			flight_plan: in data port Mission.Impl;
-			is_valid: in event port; -- event
 			waypoint: out event data port MissionWindow.Impl;
-			position_status: in event data port Coordinate.Impl; -- 
+			position_status: in event data port Coordinate.Impl;
 		flows
 			compute_waypoint_flight_plan: flow path flight_plan -> waypoint;
 			compute_waypoint_pos_status :flow path position_status -> waypoint;
@@ -317,23 +346,24 @@ public
       Stack_Size => 1024 Bytes;
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
-      TB_SYS::Sends_Events_To => "{{}}";  
+    --  TB_SYS::Sends_Events_To => "{{}}";  
 --		annex agree {**
 --			assume "The Waypoint Manager shall receive a well-formed mission" : SW.good_mission(flight_plan);
 --			guarantee "The Waypoint Manager shall output a well-formed mission window." : SW.good_mission_window(waypoint);
 --		**};
 		annex InfoFlow {**
-			assume "The Waypoint Manager shall receive a wellformed mission" :
-				flight_plan:WellFormedFlightPlan = wellformed;
+			assume "The Waypoint Manager shall receive a valid mission" :
+				(flight_plan:validity = InfoFlow::validity.Safe_flight_plan or flight_plan:validity = InfoFlow::validity.Valid_flight_plan) and
+				(flight_plan:wellformedness = InfoFlow.wellformedness.wellformed);
 		
 			guarantee "waypoint manager shall generate wellformed and valid missions":
-				waypoint:Validity = valid
-			-- invariant informs valid MissionWindows are wellformed	
+				waypoint:wellformedness = flight_plan.wellformedness and waypoint.validity = flight_plan.validity
+				
 		**};
---		annex agree {**
---			assume "The Waypoint Manager shall receive a valid mission" : flight_plan.validity_prop = enum(SW::validity,valid_flight_plan) or flight_plan.validity_prop = enum(SW::validity,safe_flight_plan);
---			guarantee "waypoint manager shall generate wellformed and valid missions": waypoint.wellness_prop = flight_plan.wellness_prop and waypoint.validity_prop = flight_plan.validity_prop;
---		**};
+		annex agree {**
+			assume "The Waypoint Manager shall receive a valid mission" : flight_plan.validity_prop = enum(SW::validity,valid_flight_plan) or flight_plan.validity_prop = enum(SW::validity,safe_flight_plan);
+			guarantee "waypoint manager shall generate wellformed and valid missions": waypoint.wellness_prop = flight_plan.wellness_prop and waypoint.validity_prop = flight_plan.validity_prop;
+		**};
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
@@ -360,19 +390,15 @@ public
       Stack_Size => 1024 Bytes;
       Compute_Execution_Time => 10 us .. 100 us;
       Period => 1 ms;
-      TB_SYS::Sends_Events_To => "{{}}";  	
-      annex InfoFlow {**
-      		preserve
-      			comm_waypoint : {WellFormedFlightPlan, Validity};
-      **};		
+   --   TB_SYS::Sends_Events_To => "{{}}";  			
 --		annex agree {**
 --			assume "Well-formed mission window" : SW.good_mission_window(waypoint_in);
 --			guarantee "A CRC shall be appended to the message to determine message correctness" : waypoint_out.crc = True;
 --		**};
---		annex agree {**
---			assume "UARTDriver shall receive a valid mission window" :  waypoint_in.validity_prop = enum(SW::validity,valid_flight_plan) or waypoint_in.validity_prop = enum(SW::validity,safe_flight_plan);
---			guarantee "UARTDriver shall generate a valid mission window" : waypoint_out = waypoint_in; 
---		**};
+		annex agree {**
+			assume "UARTDriver shall receive a valid mission window" :  waypoint_in.validity_prop = enum(SW::validity,valid_flight_plan) or waypoint_in.validity_prop = enum(SW::validity,safe_flight_plan);
+			guarantee "UARTDriver shall generate a valid mission window" : waypoint_out = waypoint_in; 
+		**};
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
@@ -405,10 +431,12 @@ public
 --		**};
 		annex InfoFlow {**
 			guarantee "The Mission Computer shall output a valid mission window to the Flight Controller" :
-				waypoint:WellFormedFlightPlan = wellformed and waypoint:Validity = valid;
-				
+				waypoint:wellformedness = InfoFlow::wellformedness.wellformed and 
+				(waypoint:validity = InfoFlow::validity.Safe_flight_plan or waypoint:validity = InfoFlow::validity.Valid_flight_plan)
 		**};
-  
+		annex agree {**
+			guarantee "The Mission Computer shall output a valid mission window to the Flight Controller" :waypoint.validity_prop = enum(SW::validity,valid_flight_plan) or waypoint.validity_prop =  enum(SW::validity,safe_flight_plan);
+		**};
 		annex EMV2{**
 			use types UAS_Errors;
 			error propagations
@@ -431,7 +459,7 @@ public
 			RADIO: thread RadioDriver;
 			FLT: thread Filter;
 			FPLN_FLT: thread flight_plan_fliter;
-			FPLN_MONITOR: thread flight_plan_monitor;
+			FPLN_VALID: thread flight_plan_validator;
 			FPLN: thread FlightPlanner;
 			WPM: thread WaypointManager;
 			UART: thread UARTDriver;
@@ -442,9 +470,8 @@ public
 			c4: port FLT.filter_out -> FPLN.recv_map;
 			--c5: port FPLN.flight_plan -> WPM.flight_plan;
 			c5_a: port FPLN.flight_plan -> FPLN_FLT.flight_plan_in; 
-			c5_b: port FPLN_FLT.flight_plan_out -> FPLN_MONITOR.flight_plan_in; 
-			c5_c: port FPLN_FLT.flight_plan_out ->  WPM.flight_plan;
-			c5: port FPLN_MONITOR.flight_plan_validity -> WPM.is_valid;
+			c5_b: port  FPLN_FLT.flight_plan_out -> FPLN_VALID.flight_plan_in; 
+			c5: port FPLN_VALID.flight_plan_out -> WPM.flight_plan;
 			
 			c6: port WPM.waypoint -> UART.waypoint_in;
 			c7: port UART.position_status_out -> WPM.position_status;
@@ -472,9 +499,9 @@ public
 	end MC_SW.Impl;
 	
 	
---	annex agree {**
---			
---		-- These functions check the well-formedness of message structures
+	annex agree {**
+			
+		-- These functions check the well-formedness of message structures
 --		fun good_coordinate(coord : SW::Coordinate.Impl) : bool =	coord.lat >= -90 and 
 --																	coord.lat <= 90 and 
 --											

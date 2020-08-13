@@ -133,7 +133,7 @@ public
 			bac2: bus access UART_HW.MCA <-> BUS_HW;
 			bac3: bus access PROC_HW.MCA <-> BUS_HW;
 			bac4: bus access MEM_HW.MCA <-> BUS_HW;
-			bac5: bus access RADIO_HW.RFA <-> RFA;
+			bac5: bus access RFA <-> RADIO_HW.RFA;
 			bac6: bus access UART_HW.UARTA <-> UARTA;
 			c1: port recv_map -> RADIO_HW.recv_map_in;
 			c2: port RADIO_HW.recv_map_out -> PROC_SW.recv_map;
